@@ -44,7 +44,7 @@ jobs:
           REPO: git@github.com:842u/personal-site-insights.git
           BRANCH: main
           FOLDER: .unlighthouse
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
       - name: Discord Notification
         env:
