@@ -17,28 +17,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
-
-      - name: Get Npm Cache Directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-
-      - name: Cache Npm Dependencies
-        uses: actions/cache@v3
-        id: npm-cache
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
 
       - name: Install Unlighthouse CLI
-        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install --global @unlighthouse/cli
-
-      - name: Install Dependencies
-        run: npm ci
 
       - name: Run Unlighthouse Audit
         run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
