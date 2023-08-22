@@ -32,12 +32,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-audit-
 
+      - name: Install Puppeteer
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install --global puppeteer
+
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install --global @unlighthouse/cli
 
       - name: Run Unlighthouse Audit
-        run: npx unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
+        run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
 
       - name: Push To Static Audit Repo
         uses: s0/git-publish-subdir-action@develop
