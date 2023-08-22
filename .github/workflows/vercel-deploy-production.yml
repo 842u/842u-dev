@@ -43,6 +43,10 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install --global vercel@latest
 
+      - name: Install Unlighthouse CLI
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install --global @unlighthouse/cli
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
