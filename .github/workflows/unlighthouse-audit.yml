@@ -35,7 +35,7 @@ jobs:
 
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm ci --global @unlighthouse/cli
+        run: npm install --global @unlighthouse/cli
 
       - name: Run Unlighthouse Audit
         run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
