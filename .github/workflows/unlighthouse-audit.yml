@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Add Node Modules to PATH
-        run: echo ${{ steps.npm-cache-dir.outputs.dir }} >> $GITHUB_PATH
+        run: echo ${{ steps.npm-cache-dir.outputs.dir }} >> $GITHUB_PATH && cd ${{ steps.npm-cache-dir.outputs.dir }} && ls -a
 
       - name: Add Node Modules to PATH
         run: echo "node_module" >> $GITHUB_PATH
