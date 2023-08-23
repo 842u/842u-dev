@@ -21,8 +21,10 @@ jobs:
       - name: Cache Npm Dependencies
         uses: actions/cache@v3
         id: npm-cache
+        env:
+          cache-name: cache-node-modules
         with:
-          path: ~/.npm
+          path: $(npm root -g)
           key: ${{ runner.os }}-build-${{ env.cache-name }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}
@@ -30,6 +32,10 @@ jobs:
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install --global unlighthouse
+
+      - name: Install Sanity CLI
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install --global sanity@latest
 
       - name: Install Sanity CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
