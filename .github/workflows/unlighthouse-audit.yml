@@ -44,7 +44,7 @@ jobs:
         run: sanity
 
       - name: Run Unlighthouse Audit
-        run: unlighthouse --site https://personal-site-842u.vercel.app --build-static
+        run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
 
       - name: Push To Static Audit Repo
         uses: s0/git-publish-subdir-action@develop
