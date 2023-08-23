@@ -36,6 +36,13 @@ jobs:
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install --global unlighthouse
 
+      - name: Install Sanity CLI
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install --global sanity@latest
+
+      - name: Run Sanity command
+        run: sanity
+
       - name: Run Unlighthouse Audit
         run: unlighthouse --site https://personal-site-842u.vercel.app --build-static
 
