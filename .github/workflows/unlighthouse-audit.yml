@@ -23,13 +23,6 @@ jobs:
         shell: bash
         run: ls -a $(npm config get cache) && echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
-      - name: Set Global Npm Directory
-        shell: bash
-        run: npm config set prefix $(npm config get cache)
-
-      - name: Add Node Modules to PATH
-        run: ls -a $(npm root -g) && echo $(npm root -g) >> $GITHUB_PATH
-
       - name: Cache Npm Dependencies
         uses: actions/cache@v3
         id: npm-cache
@@ -41,10 +34,10 @@ jobs:
 
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install --global @unlighthouse/cli
+        run: npm install @unlighthouse/cli
 
       - name: Run Unlighthouse Audit
-        run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
+        run: npx unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
 
       - name: Push To Static Audit Repo
         uses: s0/git-publish-subdir-action@develop
