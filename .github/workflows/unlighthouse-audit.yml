@@ -47,6 +47,9 @@ jobs:
       - name: List npm Packages
         run: npm list -g
 
+      - name: List npm Packages
+        run: cd /home/runner/work/personal-site/personal-site && ls
+
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install --global @unlighthouse/cli
