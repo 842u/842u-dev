@@ -37,7 +37,7 @@ jobs:
         run: cd $(npm root -g) && ls -a
 
       - name: Add to PATH
-        run: echo $(npm root -g)/sanity >> $GITHUB_PATH
+        run: echo ${{ steps.npm-cache-dir.outputs.dir }} >> $GITHUB_PATH
 
       - name: Install Sanity CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
