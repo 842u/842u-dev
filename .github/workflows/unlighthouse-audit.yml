@@ -56,5 +56,6 @@ jobs:
         run: sanity
 
       - name: Run Unlighthouse Audit
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
 
