@@ -33,22 +33,25 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Add Node Modules to PATH
+        run: echo ${{ steps.npm-cache-dir.outputs.dir }} >> $GITHUB_PATH
+
+      - name: Add Node Modules to PATH
         run: echo "node_module" >> $GITHUB_PATH
 
       - name: Global npm Packages Directory
         run: npm root -g
 
       - name: List files
-        run: ls
+        run: ls -a
 
       - name: List user files
-        run: cd ~ && ls
+        run: cd ~ && ls -a
 
       - name: List npm Packages
         run: npm list -g
 
       - name: List npm Packages
-        run: cd /home/runner/work/personal-site/personal-site && ls
+        run: cd /home/runner/work/personal-site/ && ls -a
 
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
