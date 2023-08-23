@@ -18,7 +18,34 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Get Npm Cache Directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+      - name: Cache Npm Dependencies
+        uses: actions/cache@v3
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Add Node Modules to PATH
+        run: echo "node_module" >> $GITHUB_PATH
+
+      - name: List files
+        run: ls
+
+      - name: List npm Packages
+        run: npm list
+
+      - name: List npm Packages
+        run: npm list -g
+
       - name: Install Unlighthouse CLI
+        if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install --global @unlighthouse/cli
 
       - name: Run Unlighthouse Audit
