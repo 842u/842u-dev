@@ -21,14 +21,14 @@ jobs:
       - name: Get Npm Cache Directory
         id: npm-cache-dir
         shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+        run: ls -a $(npm config get cache) && echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
       - name: Set Global Npm Directory
         shell: bash
         run: npm config set prefix $(npm config get cache)
 
       - name: Add Node Modules to PATH
-        run: echo $(npm bin -g) >> $GITHUB_PATH
+        run: ls -a $(npm bin -g) && echo $(npm bin -g) >> $GITHUB_PATH
 
       - name: Cache Npm Dependencies
         uses: actions/cache@v3
