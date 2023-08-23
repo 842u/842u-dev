@@ -34,10 +34,10 @@ jobs:
 
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install --global @unlighthouse/cli
+        run: npm install --global unlighthouse
 
       - name: Run Unlighthouse Audit
-        run: npx unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
+        run: unlighthouse --site https://personal-site-842u.vercel.app --build-static
 
       - name: Push To Static Audit Repo
         uses: s0/git-publish-subdir-action@develop
