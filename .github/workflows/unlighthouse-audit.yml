@@ -34,13 +34,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}
 
-      - name: Install Unlighthouse CLI
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install --global unlighthouse
-
-      - name: Install Sanity CLI
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install --global sanity@latest
+      - name: List npm root -g
+        run: cd $(npm root -g) && ls -a
 
       - name: Install Sanity CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
@@ -48,7 +43,4 @@ jobs:
 
       - name: Run Sanity command
         run: sanity
-
-      - name: Run Unlighthouse Audit
-        run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
 
