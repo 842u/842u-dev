@@ -33,11 +33,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}
 
-      - name: List npm root -g
+      - name: List npm prefix -g
         run: cd "$(npm prefix -g)" && ls -a
 
-      - name: Add to PATH
-        run: echo "$(npm root -g)" >> ${GITHUB_PATH}
+      - name: List npm prefix -g /bin
+        run: cd "$(npm prefix -g)/bin" && ls -a
+
+      - name: List npm prefix -g /bin
+        run: cd "$(npm prefix -g)/lib" && ls -a
+
+      - name: List npm root -g
+        run: cd "$(npm root -g)" && ls -a
 
       - name: Install Sanity CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
