@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Deploy-Preview:
+  vercel-deploy-preview:
     runs-on: ubuntu-latest
     environment:
       name: Preview

@@ -1,11 +1,11 @@
-name: Unlighthouse Audit
+name: Create Unlighthouse Audit
 
 on:
   workflow_dispatch:
   workflow_call:
 
 jobs:
-  Unlighthouse-Audit:
+  create-unlighthouse-audit:
     runs-on: ubuntu-latest
     environment:
       name: Insights

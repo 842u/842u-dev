@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Deploy-Production:
+  vercel-deploy-roduction:
     runs-on: ubuntu-latest
     environment:
       name: Production
@@ -59,7 +59,7 @@ jobs:
             New PRODUCTION for {{ EVENT_PAYLOAD.repository.full_name }}
             https://personal-site-842u.vercel.app
 
-  Run-Unlighthouse-Audit:
-    needs: Deploy-Production
-    uses: ./.github/workflows/unlighthouse-audit.yml
+  create-unlighthouse-audit:
+    needs: vercel-deploy-roduction
+    uses: ./.github/workflows/create-unlighthouse-audit.yml
     secrets: inherit
