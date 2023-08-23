@@ -29,9 +29,9 @@ jobs:
           cache-name: cache-npm-global-dependencies
         with:
           path: ${{ steps.npm-global-dir.outputs.dir }}
-          key: ${{ runner.os }}-${{ env.cache-name }}
+          key: ${{ runner.os }}-${{ github.job }}-${{ env.cache-name }}
           restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}
+            ${{ runner.os }}-${{ github.job }}-${{ env.cache-name }}
 
       - name: Install Unlighthouse CLI
         if: steps.npm-global-cache.outputs.cache-hit != 'true'
