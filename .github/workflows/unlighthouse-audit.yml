@@ -23,6 +23,13 @@ jobs:
         shell: bash
         run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
 
+      - name: Set Global Npm Directory
+        shell: bash
+        run: npm config set prefix $(npm config get cache)
+
+      - name: Add Node Modules to PATH
+        run: echo $(npm bin -g) >> $GITHUB_PATH
+
       - name: Cache Npm Dependencies
         uses: actions/cache@v3
         id: npm-cache
@@ -31,27 +38,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
-      - name: Add Node Modules to PATH
-        run: echo ${{ steps.npm-cache-dir.outputs.dir }} >> $GITHUB_PATH
-
-      - name: Add Node Modules to PATH
-        run: echo "node_module" >> $GITHUB_PATH
-
-      - name: Global npm Packages Directory
-        run: npm root -g
-
-      - name: List files
-        run: ls -a
-
-      - name: List user files
-        run: cd ~ && ls -a
-
-      - name: List npm Packages
-        run: npm list -g
-
-      - name: List npm Packages
-        run: cd /home/runner/work/personal-site/ && ls -a
 
       - name: Install Unlighthouse CLI
         if: steps.npm-cache.outputs.cache-hit != 'true'
