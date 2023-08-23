@@ -1,9 +1,5 @@
 name: Vercel Deploy Preview
 
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 on:
   pull_request:
     branches:
@@ -15,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Preview
-      url: ${{ env.URL }}
+      url: ${{ steps.vercel-deploy.outputs.URL }}
 
     steps:
       - uses: actions/checkout@v3
@@ -24,22 +20,23 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Get Npm Cache Directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - name: Get Npm Global Directory
+        id: npm-global-dir
+        run: echo "dir=$(npm prefix -g)" >> ${GITHUB_OUTPUT}
 
-      - name: Cache Npm Dependencies
+      - name: Cache Npm Global Dependencies
         uses: actions/cache@v3
-        id: npm-cache
+        id: npm-global-cache
+        env:
+          cache-name: cache-npm-global-dependencies
         with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.npm-global-dir.outputs.dir }}
+          key: ${{ runner.os }}-${{ env.cache-name }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-${{ env.cache-name }}
 
       - name: Install Vercel CLI
-        if: steps.npm-cache.outputs.cache-hit != 'true'
+        if: steps.npm-global-cache.outputs.cache-hit != 'true'
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
@@ -49,7 +46,8 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
-        run: echo "URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_ENV
+        id: vercel-deploy
+        run: echo "URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> ${GITHUB_OUTPUT}
 
       - name: Discord Notification
         env:
@@ -60,4 +58,4 @@ jobs:
         with:
           args: |
             New PR PREVIEW for {{ EVENT_PAYLOAD.repository.full_name }}
-            ${{ env.URL }}
+            ${{ steps.vercel-deploy.outputs.URL }}

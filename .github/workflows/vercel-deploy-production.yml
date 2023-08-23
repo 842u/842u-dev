@@ -1,9 +1,5 @@
 name: Vercel Deploy Production
 
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-
 on:
   push:
     branches:
@@ -24,22 +20,23 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Get Npm Cache Directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+      - name: Get Npm Global Directory
+        id: npm-global-dir
+        run: echo "DIR=$(npm prefix -g)" >> ${GITHUB_OUTPUT}
 
-      - name: Cache Npm Dependencies
+      - name: Cache Npm Global Dependencies
         uses: actions/cache@v3
-        id: npm-cache
+        id: npm-global-cache
+        env:
+          cache-name: cache-npm-global-dependencies
         with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.npm-global-dir.outputs.DIR }}
+          key: ${{ runner.os }}-${{ env.cache-name }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-${{ env.cache-name }}
 
       - name: Install Vercel CLI
-        if: steps.npm-cache.outputs.cache-hit != 'true'
+        if: steps.npm-global-cache.outputs.cache-hit != 'true'
         run: npm install --global vercel@latest
 
       - name: Pull Vercel Environment Information
