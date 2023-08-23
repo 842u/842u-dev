@@ -18,13 +18,18 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Get Npm Cache Directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm root -g)" >> ${GITHUB_OUTPUT}
+
       - name: Cache Npm Dependencies
         uses: actions/cache@v3
         id: npm-cache
         env:
-          cache-name: cache-node-modules
+          cache-name: cache-for-audit
         with:
-          path: $(npm root -g)
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-build-${{ env.cache-name }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}
