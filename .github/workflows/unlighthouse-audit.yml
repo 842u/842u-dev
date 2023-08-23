@@ -35,11 +35,14 @@ jobs:
       - name: Add Node Modules to PATH
         run: echo "node_module" >> $GITHUB_PATH
 
+      - name: Global npm Packages Directory
+        run: npm root -g
+
       - name: List files
         run: ls
 
-      - name: List npm Packages
-        run: npm list
+      - name: List user files
+        run: cd ~ && ls
 
       - name: List npm Packages
         run: npm list -g
