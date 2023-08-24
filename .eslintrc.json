@@ -23,6 +23,8 @@
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
     "react/jsx-sort-props": [
       "error",
       {

@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #222;
-  --text: #faebd7;
-  --accent: #ffed50;
-  --succes: #68ff77;
-  --error: #ff5a5a;
+  --color-background: #222;
+  --color-text: #faebd7;
+  --color-accent: #ffed50;
+  --color-success: #68ff77;
+  --color-error: #ff5a5a;
 }
 
 *,
@@ -20,6 +20,6 @@
 }
 
 body {
-  color: var(--text);
-  background: var(--background);
+  color: var(--color-text);
+  background: var(--color-background);
 }

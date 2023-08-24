@@ -8,11 +8,11 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      background: '#222222',
-      text: '#faebd7',
-      accent: '#ffed50',
-      succes: '#68ff77',
-      error: '#ff5a5a',
+      background: 'var(--color-background)',
+      text: 'var(--color-text)',
+      accent: 'var(--color-accent)',
+      success: 'var(--color-success)',
+      error: 'var(--color-error)',
     },
   },
   plugins: [],
