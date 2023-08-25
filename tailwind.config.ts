@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      background: 'var(--color-background)',
-      text: 'var(--color-text)',
+      light: 'var(--color-light)',
+      dark: 'var(--color-dark)',
       accent: 'var(--color-accent)',
       success: 'var(--color-success)',
       error: 'var(--color-error)',

@@ -1,3 +1,4 @@
+import { HamburgerButton } from './HamburgerButton';
 import { LinkButton } from './LinkButton';
 
 export type NavBarLink = {
@@ -12,10 +13,11 @@ type NavBarProps = {
 export function NavBar({ links }: NavBarProps) {
   return (
     <header>
-      <nav className="fixed z-50 flex h-screen w-screen flex-col justify-center bg-background">
+      <HamburgerButton className="z-50" />
+      <nav className="fixed z-40 flex h-screen w-screen flex-col justify-center bg-light">
         <ul className="p-4">
           {links.map((link) => (
-            <li>
+            <li key={link.name}>
               <LinkButton href={link.href}>{link.name}</LinkButton>
             </li>
           ))}

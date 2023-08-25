@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-light text-dark">
         <NavBar links={navBarLinks} />
         {children}
       </body>

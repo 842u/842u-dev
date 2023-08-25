@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --color-background: #222;
-  --color-text: #faebd7;
+  --color-dark: #222;
+  --color-light: #faebd7;
   --color-accent: #ffed50;
   --color-success: #68ff77;
   --color-error: #ff5a5a;
@@ -17,9 +17,4 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  color: var(--color-text);
-  background: var(--color-background);
 }
