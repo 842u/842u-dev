@@ -12,6 +12,7 @@ const config: Config = {
     colors: {
       light: 'var(--color-light)',
       dark: 'var(--color-dark)',
+      'dark-lighter': 'var(--color-dark-lighter)',
       accent: 'var(--color-accent)',
       success: 'var(--color-success)',
       error: 'var(--color-error)',

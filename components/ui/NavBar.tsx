@@ -3,43 +3,43 @@
 import { useState } from 'react';
 
 import { HamburgerButton } from './HamburgerButton';
-import { LinkButton } from './LinkButton';
+import { NavMenu } from './NavMenu';
 
-export type NavBarLink = {
-  name: string;
-  href: string;
-};
+const navItems = [
+  {
+    name: 'home',
+    href: '/',
+  },
+  {
+    name: 'about',
+    href: '/about',
+  },
+  {
+    name: 'projects',
+    href: '/projects',
+  },
+  {
+    name: 'contact',
+    href: '#contact',
+  },
+];
 
-type NavBarProps = {
-  links: NavBarLink[];
-};
-
-export function NavBar({ links }: NavBarProps) {
+export function NavBar() {
   const [isActive, setIsActive] = useState(false);
 
   const hamburgerButtonHandler = () =>
     setIsActive((activeState) => !activeState);
 
   return (
-    <header>
-      <HamburgerButton
-        className="z-50"
-        isActive={isActive}
-        onClick={hamburgerButtonHandler}
-      />
+    <header className="fixed z-50 h-20 w-screen">
+      <nav className="flex h-full w-full items-center">
+        <HamburgerButton
+          className="fixed right-0 top-0 z-40 md:hidden"
+          isActive={isActive}
+          onClick={hamburgerButtonHandler}
+        />
 
-      <nav
-        className={`${
-          isActive ? 'operational' : ''
-        } fixed left-full z-40 flex h-screen w-screen flex-col justify-center bg-light transition-all ease-in-out operational:left-0`}
-      >
-        <ul className="p-4">
-          {links.map((link) => (
-            <li key={link.name}>
-              <LinkButton href={link.href}>{link.name}</LinkButton>
-            </li>
-          ))}
-        </ul>
+        <NavMenu isActive={isActive} items={navItems} />
       </nav>
     </header>
   );

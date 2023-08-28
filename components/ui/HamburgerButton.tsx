@@ -1,5 +1,5 @@
 type HamburgerButtonProps = {
-  className: string;
+  className?: string;
   isActive?: boolean;
   onClick?: () => void;
 };
@@ -14,11 +14,11 @@ export function HamburgerButton({
       aria-label="menu"
       className={`${className} ${
         isActive ? 'operational' : ''
-      } group fixed right-0 top-0 aspect-square w-20 border-dark p-3`}
+      } group aspect-square w-20 border-dark p-3`}
       type="button"
       onClick={onClick}
     >
-      <div className="flex aspect-square w-full flex-col items-center justify-between overflow-hidden">
+      <div className="flex aspect-square w-full flex-col items-center justify-around overflow-hidden">
         <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0" />
 
         <div className="relative w-full">

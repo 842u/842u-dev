@@ -2,26 +2,7 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 
-import { NavBar, NavBarLink } from '@/components/ui/NavBar';
-
-const navBarLinks: NavBarLink[] = [
-  {
-    name: 'home',
-    href: '/',
-  },
-  {
-    name: 'about',
-    href: '/about',
-  },
-  {
-    name: 'projects',
-    href: '/projects',
-  },
-  {
-    name: 'contact',
-    href: '#contact',
-  },
-];
+import { NavBar } from '@/components/ui/NavBar';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -36,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-light text-dark">
-        <NavBar links={navBarLinks} />
+        <NavBar />
         {children}
       </body>
     </html>
