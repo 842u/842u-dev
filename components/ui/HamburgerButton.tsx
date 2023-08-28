@@ -1,11 +1,13 @@
 type HamburgerButtonProps = {
   className: string;
   isActive?: boolean;
+  onClick?: () => void;
 };
 
 export function HamburgerButton({
   className,
-  isActive = true,
+  isActive = false,
+  onClick,
 }: HamburgerButtonProps) {
   return (
     <button
@@ -14,6 +16,7 @@ export function HamburgerButton({
         isActive ? 'operational' : ''
       } group fixed right-0 top-0 aspect-square w-20 border-dark p-3`}
       type="button"
+      onClick={onClick}
     >
       <div className="flex aspect-square w-full flex-col items-center justify-between overflow-hidden">
         <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0" />

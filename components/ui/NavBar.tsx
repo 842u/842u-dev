@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 import { HamburgerButton } from './HamburgerButton';
 import { LinkButton } from './LinkButton';
 
@@ -11,10 +15,24 @@ type NavBarProps = {
 };
 
 export function NavBar({ links }: NavBarProps) {
+  const [isActive, setIsActive] = useState(false);
+
+  const hamburgerButtonHandler = () =>
+    setIsActive((activeState) => !activeState);
+
   return (
     <header>
-      <HamburgerButton className="z-50" />
-      <nav className="fixed z-40 flex h-screen w-screen flex-col justify-center bg-light">
+      <HamburgerButton
+        className="z-50"
+        isActive={isActive}
+        onClick={hamburgerButtonHandler}
+      />
+
+      <nav
+        className={`${
+          isActive ? 'operational' : ''
+        } fixed left-full z-40 flex h-screen w-screen flex-col justify-center bg-light transition-all ease-in-out operational:left-0`}
+      >
         <ul className="p-4">
           {links.map((link) => (
             <li key={link.name}>
