@@ -6,6 +6,6 @@ type ProvidersProps = {
   children: React.ReactNode;
 };
 
-export function Providers({ children }: ProvidersProps) {
+export function GlobalThemeProvider({ children }: ProvidersProps) {
   return <ThemeProvider attribute="class">{children}</ThemeProvider>;
 }
