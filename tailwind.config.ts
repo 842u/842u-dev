@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss';
 
+const plugin = require('tailwindcss/plugin');
+
 const config: Config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,13 +10,26 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      background: '#222222',
-      text: '#faebd7',
-      accent: '#ffed50',
-      succes: '#68ff77',
-      error: '#ff5a5a',
+      light: 'var(--color-light)',
+      dark: 'var(--color-dark)',
+      'dark-lighter': 'var(--color-dark-lighter)',
+      accent: 'var(--color-accent)',
+      success: 'var(--color-success)',
+      error: 'var(--color-error)',
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(
+      ({
+        addVariant,
+      }: {
+        addVariant: (firstArgument: string, secondArgument: string) => void;
+      }) => {
+        addVariant('operational', '&.operational');
+        addVariant('group-operational', ':merge(.group).operational &');
+      },
+    ),
+  ],
 };
+
 export default config;

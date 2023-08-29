@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #222;
-  --text: #faebd7;
-  --accent: #ffed50;
-  --succes: #68ff77;
-  --error: #ff5a5a;
+  --color-dark: #222;
+  --color-dark-lighter: #6b6b6b;
+  --color-light: #faebd7;
+  --color-accent: #ffed50;
+  --color-success: #68ff77;
+  --color-error: #ff5a5a;
 }
 
 *,
@@ -17,9 +18,4 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  color: var(--text);
-  background: var(--background);
 }

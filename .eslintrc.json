@@ -23,6 +23,10 @@
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
+    "import/prefer-default-export": "off",
+    "import/extensions": "off",
+    "react/require-default-props": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "react/jsx-sort-props": [
       "error",
       {
