@@ -31,14 +31,13 @@ export function NavBar() {
     setIsActive((activeState) => !activeState);
 
   return (
-    <header className="fixed z-50 h-20 w-screen">
-      <nav className="flex h-full w-full items-center">
+    <header className="fixed z-50 h-20 w-screen bg-light">
+      <nav className="flex h-full w-full items-center xl:justify-start">
         <HamburgerButton
           className="fixed right-0 top-0 z-40 md:hidden"
           isActive={isActive}
           onClick={hamburgerButtonHandler}
         />
-
         <NavMenu isActive={isActive} items={navItems} />
       </nav>
     </header>
