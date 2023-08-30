@@ -1,5 +1,6 @@
 'use client';
 
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
@@ -20,7 +21,7 @@ function ThemeButton() {
       type="button"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
-      {resolvedTheme === 'dark' ? 'light' : 'dark'}
+      {resolvedTheme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </button>
   );
 }
