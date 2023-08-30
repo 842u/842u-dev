@@ -3,6 +3,7 @@ import type { Config } from 'tailwindcss';
 const plugin = require('tailwindcss/plugin');
 
 const config: Config = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -10,9 +11,10 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      light: 'var(--color-light)',
       dark: 'var(--color-dark)',
       'dark-lighter': 'var(--color-dark-lighter)',
+      light: 'var(--color-light)',
+      'light-darker': 'var(--color-light-darker)',
       accent: 'var(--color-accent)',
       success: 'var(--color-success)',
       error: 'var(--color-error)',
