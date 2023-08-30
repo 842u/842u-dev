@@ -1,7 +1,3 @@
-import { GlobalThemeProvider } from '@/components/providers/GlobalThemeProvider';
-
-import ThemeButton from '../components/ui/ThemeButton';
-
 export default function Home() {
   return (
     <main className="flex h-screen flex-col items-center justify-center">
@@ -9,10 +5,6 @@ export default function Home() {
         <span className="p-2">kamil</span>
         <span className="p-2">bażanow</span>
       </h1>
-      <br />
-      <GlobalThemeProvider>
-        <ThemeButton />
-      </GlobalThemeProvider>
     </main>
   );
 }
