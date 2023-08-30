@@ -21,10 +21,10 @@ export function HamburgerButton({
       <div className="flex aspect-square w-full flex-col items-center justify-around overflow-hidden">
         <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0 dark:bg-light" />
 
-        <div className="relative w-full">
-          <div className="absolute h-1 w-full origin-center bg-dark transition-transform group-operational:rotate-45 group-operational:scale-[2] dark:bg-light" />
+        <div className="relative h-1 w-full">
+          <div className="absolute h-full w-full origin-center bg-dark transition-transform group-operational:rotate-45 dark:bg-light" />
 
-          <div className="absolute h-1 w-full origin-center bg-dark transition-transform group-operational:rotate-[-45deg] group-operational:scale-[2] dark:bg-light" />
+          <div className=" absolute h-full w-full origin-center bg-dark transition-transform group-operational:rotate-[-45deg] dark:bg-light" />
         </div>
 
         <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0 dark:bg-light" />
