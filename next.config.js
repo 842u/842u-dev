@@ -5,7 +5,7 @@ const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 const ContentSecurityPolicy = `
     default-src 'self';
     connect-src 'self';
-    script-src 'self' 'unsafe-inline';
+    script-src 'self' https://personal-site-ashy-rho.vercel.app/;
     style-src 'self';
     img-src 'self';
     font-src 'self';
