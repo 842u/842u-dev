@@ -14,20 +14,20 @@ export function HamburgerButton({
       aria-label="menu"
       className={`${className} ${
         isActive ? 'operational' : ''
-      } group aspect-square w-20 border-dark p-3`}
+      } group aspect-square w-20 p-3`}
       type="button"
       onClick={onClick}
     >
       <div className="flex aspect-square w-full flex-col items-center justify-around overflow-hidden">
-        <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0" />
+        <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0 dark:bg-light" />
 
         <div className="relative w-full">
-          <div className="absolute h-1 w-full origin-center bg-dark transition-transform group-operational:rotate-45 group-operational:scale-[2]" />
+          <div className="absolute h-1 w-full origin-center bg-dark transition-transform group-operational:rotate-45 group-operational:scale-[2] dark:bg-light" />
 
-          <div className="absolute h-1 w-full origin-center bg-dark transition-transform group-operational:rotate-[-45deg] group-operational:scale-[2]" />
+          <div className="absolute h-1 w-full origin-center bg-dark transition-transform group-operational:rotate-[-45deg] group-operational:scale-[2] dark:bg-light" />
         </div>
 
-        <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0" />
+        <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0 dark:bg-light" />
       </div>
     </button>
   );
