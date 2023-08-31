@@ -33,7 +33,7 @@ export function NavBar() {
     setIsActive((activeState) => !activeState);
 
   return (
-    <header className="fixed z-50 h-20 w-screen bg-light dark:bg-dark">
+    <header className="fixed z-50 h-20 w-screen bg-light transition-colors dark:bg-dark">
       <nav className="flex h-full w-full items-center md:flex-row-reverse md:justify-between">
         <HamburgerButton
           className="fixed right-0 top-0 z-40 md:invisible"
