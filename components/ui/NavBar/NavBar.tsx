@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 
-import { GlobalThemeProvider } from '../providers/GlobalThemeProvider';
-import { HamburgerButton } from './HamburgerButton';
-import { NavMenu } from './NavMenu';
-import ThemeButton from './ThemeButton';
+import { GlobalThemeProvider } from '../../providers/GlobalThemeProvider';
+import { HamburgerButton } from './HamburgerButton/HamburgerButton';
+import { NavMenu } from './NavMenu/NavMenu';
+import ThemeButton from './ThemeButton/ThemeButton';
 
 const navItems = [
   {

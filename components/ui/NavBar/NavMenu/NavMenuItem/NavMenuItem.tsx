@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { SelectionArrow } from '../decorative/SelectionArrow';
+import { SelectionArrow } from '../../../../decorative/SelectionArrow';
 
 export type NavItem = {
   name: string;
