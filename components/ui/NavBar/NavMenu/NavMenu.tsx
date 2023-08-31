@@ -1,4 +1,4 @@
-import { NavItem, NavMenuItem } from '../../NavMenuItem';
+import { NavItem, NavMenuItem } from './NavMenuItem/NavMenuItem';
 
 type NavMenuProps = {
   items?: NavItem[];

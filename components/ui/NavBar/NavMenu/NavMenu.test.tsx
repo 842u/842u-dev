@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
-import { NavItem } from '../../NavMenuItem';
 import { NavMenu } from './NavMenu';
+import { NavItem } from './NavMenuItem/NavMenuItem';
 
 const mockItems: NavItem[] = [
   {
