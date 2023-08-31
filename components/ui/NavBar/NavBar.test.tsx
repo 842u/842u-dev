@@ -4,10 +4,58 @@ import { render, screen } from '@testing-library/react';
 
 import { NavBar } from '@/components/ui/NavBar';
 
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: jest.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // deprecated
+    removeListener: jest.fn(), // deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
 describe('NavBar', () => {
   it('should render <header> element', () => {
     render(<NavBar />);
 
-    screen.getByRole();
+    const header = screen.getByRole('banner');
+
+    expect(header).toBeInTheDocument();
+  });
+
+  it('should render <nav> element', () => {
+    render(<NavBar />);
+
+    const nav = screen.getByRole('navigation');
+
+    expect(nav).toBeInTheDocument();
+  });
+
+  it('should render toggle menu button', () => {
+    render(<NavBar />);
+
+    const button = screen.getByRole('button', { name: 'menu' });
+
+    expect(button).toBeInTheDocument();
+  });
+
+  it('should render toggle color theme button', () => {
+    render(<NavBar />);
+
+    const button = screen.getByRole('button', { name: 'color theme' });
+
+    expect(button).toBeInTheDocument();
+  });
+
+  it('should render navigation list', () => {
+    render(<NavBar />);
+
+    const list = screen.getByRole('list');
+
+    expect(list).toBeInTheDocument();
   });
 });

@@ -21,7 +21,7 @@ function ThemeButton({ className, isActive }: ThemeButtonProps) {
 
   return (
     <button
-      aria-label="toggle color theme"
+      aria-label="color theme"
       className={`${
         !isActive ? 'invisible opacity-0' : 'visible opacity-100'
       } ${className} flex aspect-square w-full flex-col items-center justify-center p-2 transition-opacity md:visible md:opacity-100`}
