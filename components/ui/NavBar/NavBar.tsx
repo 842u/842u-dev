@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { GlobalThemeProvider } from '../../providers/GlobalThemeProvider';
 import { NavMenu } from '../NavMenu';
-import ThemeButton from '../ThemeButton';
 import { HamburgerButton } from './HamburgerButton/HamburgerButton';
+import ThemeButton from './ThemeButton/ThemeButton';
 
 const navItems = [
   {

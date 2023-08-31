@@ -13,6 +13,7 @@ function ThemeButton({ className, isActive }: ThemeButtonProps) {
   const { resolvedTheme, setTheme } = useTheme();
 
   const [mounted, setMounted] = useState(false);
+
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
@@ -23,8 +24,8 @@ function ThemeButton({ className, isActive }: ThemeButtonProps) {
     <button
       aria-label="color theme"
       className={`${
-        !isActive ? 'invisible opacity-0' : 'visible opacity-100'
-      } ${className} flex aspect-square w-full flex-col items-center justify-center p-2 transition-opacity md:visible md:opacity-100`}
+        isActive ? 'operational' : ''
+      } ${className} invisible flex aspect-square w-full flex-col items-center justify-center p-2 opacity-0 transition-opacity operational:visible operational:opacity-100 md:visible md:opacity-100`}
       type="button"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
