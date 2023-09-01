@@ -5,7 +5,10 @@ export function HeroSection() {
         <span className="pr-2">kamil</span>
         <span className="pl-2">bażanow</span>
       </h1>
-      <p className="text-justify text-lg md:text-2xl lg:max-w-[50vw] lg:text-xl">
+      <p
+        className="text-justify text-lg md:text-2xl lg:max-w-[50vw] lg:text-xl"
+        data-testid="hero-description"
+      >
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam ea
         dignissimos, iste quidem ducimus quis facere voluptatibus quasi cum quod
         repudiandae, atque et tenetur id ex tempora nobis pariatur aliquid
