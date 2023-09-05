@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { GlobalThemeProvider } from '../../providers/GlobalThemeProvider';
 import { HamburgerButton } from './HamburgerButton/HamburgerButton';
@@ -27,27 +27,59 @@ const navItems = [
 ];
 
 export function NavBar() {
-  const [isActive, setIsActive] = useState(false);
+  const [scrollShow, setScrollShow] = useState(true);
 
-  const hamburgerButtonHandler = () =>
-    setIsActive((activeState) => !activeState);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const [mobileIsActive, setMobileIsActive] = useState(false);
+
+  const scrollHandler = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > lastScrollY) {
+        setScrollShow(false);
+      } else {
+        setScrollShow(true);
+      }
+
+      setLastScrollY(window.scrollY);
+    }
+  };
+
+  const hamburgerButtonHandler = () => {
+    setMobileIsActive((activeState) => !activeState);
+    setScrollShow(true);
+  };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', scrollHandler);
+
+      return () => {
+        window.removeEventListener('scroll', scrollHandler);
+      };
+    }
+  }, [lastScrollY]);
 
   return (
-    <header className="fixed z-50 h-20 w-screen bg-light transition-colors dark:bg-dark">
+    <header
+      className={`fixed left-0 top-0 z-50 h-20 w-screen bg-light transition-all dark:bg-dark ${
+        !scrollShow && !mobileIsActive ? 'translate-y-[-100%]' : 'translate-y-0'
+      }`}
+    >
       <nav className="flex h-full w-full items-center md:flex-row-reverse md:justify-between">
         <HamburgerButton
           className="fixed right-0 top-0 z-40 md:invisible"
-          isActive={isActive}
+          isActive={mobileIsActive}
           onClick={hamburgerButtonHandler}
         />
 
         <div className="z-40 aspect-square w-20 md:visible md:w-16">
           <GlobalThemeProvider>
-            <ThemeButton className="md:visible" isActive={isActive} />
+            <ThemeButton className="md:visible" isActive={mobileIsActive} />
           </GlobalThemeProvider>
         </div>
 
-        <NavMenu isActive={isActive} items={navItems} />
+        <NavMenu isActive={mobileIsActive} items={navItems} />
       </nav>
     </header>
   );
