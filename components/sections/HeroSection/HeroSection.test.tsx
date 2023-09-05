@@ -18,4 +18,12 @@ describe('HeroSection', () => {
 
     expect(paragraph).toBeInTheDocument();
   });
+
+  it('should render link to about me page', () => {
+    render(<HeroSection />);
+
+    const link = screen.getByRole('link', { name: 'about me' });
+
+    expect(link).toBeInTheDocument();
+  });
 });
