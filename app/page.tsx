@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
+      <section className="h-screen">test</section>
     </main>
   );
 }

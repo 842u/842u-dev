@@ -27,6 +27,7 @@
     "import/extensions": "off",
     "react/require-default-props": "off",
     "@typescript-eslint/no-var-requires": "off",
+    "consistent-return": "off",
     "react/jsx-sort-props": [
       "error",
       {
