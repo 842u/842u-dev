@@ -12,7 +12,7 @@ export function HorizontalMenu({
   currentItem,
 }: HorizontalMenuProps) {
   return (
-    <menu className="flex flex-wrap justify-center gap-y-8 divide-x-2 divide-dark-lighter text-2xl text-dark-lighter dark:divide-light-darker dark:text-light-darker">
+    <menu className="flex flex-wrap justify-center gap-y-8 divide-x-2 divide-dark-lighter text-3xl text-dark-lighter dark:divide-light-darker dark:text-light-darker">
       {children?.map((child) => {
         const isActive = currentItem === child;
 

@@ -56,7 +56,7 @@ export function ProjectsSection() {
       className="min-h-screen px-4 md:px-16 lg:px-36"
     >
       <div className="flex flex-col items-center justify-center gap-8">
-        <h2 className="block self-start text-4xl">projects</h2>
+        <h2 className="self-start text-4xl">projects</h2>
 
         <HorizontalMenu
           currentItem={currentProject.name}
