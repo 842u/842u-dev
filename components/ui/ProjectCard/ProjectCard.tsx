@@ -31,13 +31,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
 
-        <h3 className="text-2xl">{project.name}</h3>
+        <h3 className="my-2 text-xl">{project.name}</h3>
 
         <p>{project.description}</p>
       </div>
 
       <div className="my-8">
-        <h3>TOOLS</h3>
+        <h3 className="my-2 text-xl">Built with:</h3>
 
         <div className="flex flex-wrap justify-evenly gap-8">
           {project.tools.map((tool) => (
