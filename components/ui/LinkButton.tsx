@@ -4,7 +4,7 @@ import { SelectionArrow } from '@/components/decorative/SelectionArrow';
 
 type LinkButtonProps = {
   href: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 };
 
