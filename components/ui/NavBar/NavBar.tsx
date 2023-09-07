@@ -62,7 +62,7 @@ export function NavBar() {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 h-20 w-screen bg-light transition-all dark:bg-dark ${
+      className={`fixed left-0 top-0 z-50 h-20 w-screen backdrop-blur-md transition-all ${
         !scrollShow && !mobileIsActive ? 'translate-y-[-100%]' : 'translate-y-0'
       }`}
     >
