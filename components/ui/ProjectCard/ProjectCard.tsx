@@ -12,6 +12,7 @@ export type Project = {
   image: string;
   description: string;
   tools: Tool[];
+  slug: string;
 };
 
 type ProjectCardProps = {
@@ -45,12 +46,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
               key={tool.name}
               className="relative aspect-square w-20 md:w-32"
             >
-              <Image fill alt={`${tool.name}`} src={tool.icon} />
+              <Image fill alt={`${tool.name} icon`} src={tool.icon} />
             </div>
           ))}
         </div>
 
-        <LinkButton className="lg:w-full" href="/projects">
+        <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
           See more...
         </LinkButton>
       </div>

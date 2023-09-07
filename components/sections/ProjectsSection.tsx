@@ -21,6 +21,7 @@ const mockProjects: Project[] = [
         icon: '/next.svg',
       },
     ],
+    slug: 'project-1',
   },
   {
     name: 'Project 2',
@@ -35,6 +36,7 @@ const mockProjects: Project[] = [
         icon: '/next.svg',
       },
     ],
+    slug: 'project-2',
   },
 ];
 
