@@ -20,9 +20,9 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <>
-      <div className="my-8">
-        <div className="relative my-8 aspect-square w-full">
+    <div className="lg:flex lg:justify-between">
+      <div className="my-8 lg:flex lg:w-1/2 lg:flex-col">
+        <div className="relative my-8 aspect-square w-full lg:aspect-video">
           <Image
             fill
             alt={`${project.name} overview image`}
@@ -36,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-lg md:text-2xl">{project.description}</p>
       </div>
 
-      <div className="my-8 flex flex-col">
+      <div className="my-8 flex flex-col lg:max-w-lg">
         <h3 className="my-2 text-2xl md:text-3xl">Built with:</h3>
 
         <div className="flex flex-wrap justify-evenly gap-8">
@@ -50,8 +50,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        <LinkButton href="/projects">See more...</LinkButton>
+        <LinkButton className="lg:w-full" href="/projects">
+          See more...
+        </LinkButton>
       </div>
-    </>
+    </div>
   );
 }
