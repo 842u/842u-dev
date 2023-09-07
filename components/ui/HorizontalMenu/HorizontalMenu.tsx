@@ -1,7 +1,7 @@
 import React from 'react';
 
 type HorizontalMenuProps = {
-  children?: string[];
+  children: string[];
   currentItem?: string;
   onClickItem?: <T extends React.SyntheticEvent>(event: T) => void;
 };
@@ -17,13 +17,14 @@ export function HorizontalMenu({
         const isActive = currentItem === child;
 
         return (
-          <li
-            key={child}
-            className={`${
-              isActive ? 'operational' : ''
-            } px-2 operational:text-dark operational:dark:text-light`}
-          >
-            <button type="button" onClick={onClickItem}>
+          <li key={child}>
+            <button
+              className={`${
+                isActive ? 'operational' : ''
+              } px-2 operational:text-dark operational:dark:text-light`}
+              type="button"
+              onClick={onClickItem}
+            >
               {child}
             </button>
           </li>

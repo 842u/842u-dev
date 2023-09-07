@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { HorizontalMenu } from '../ui/HorizontalMenu';
+import { HorizontalMenu } from '../ui/HorizontalMenu/HorizontalMenu';
 import { Project, ProjectCard } from '../ui/ProjectCard/ProjectCard';
 
 const mockProjects: Project[] = [
