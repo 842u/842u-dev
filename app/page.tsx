@@ -1,10 +1,12 @@
 import { HeroSection } from '@/components/sections/HeroSection/HeroSection';
+import { ProjectsSection } from '@/components/sections/ProjectsSection/ProjectsSection';
+import { allProjects } from '@/projects/allProjects';
 
 export default function Home() {
   return (
     <main>
       <HeroSection />
-      <section className="h-screen">test</section>
+      <ProjectsSection projects={allProjects} />
     </main>
   );
 }
