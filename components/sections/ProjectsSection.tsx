@@ -2,54 +2,25 @@
 
 import { useState } from 'react';
 
+import { Project } from '@/types';
+
 import { HorizontalMenu } from '../ui/HorizontalMenu/HorizontalMenu';
-import { Project, ProjectCard } from '../ui/ProjectCard/ProjectCard';
+import { ProjectCard } from '../ui/ProjectCard/ProjectCard';
 
-const mockProjects: Project[] = [
-  {
-    name: 'Project 1',
-    image: '/placeholder-image.jpg',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
-    vel aspernatur deleniti ipsam tempore molestias impedit aliquid
-    obcaecati! In rerum, odio quibusdam dicta quas voluptas illo iste
-    cumque aliquid quaerat, non harum natus dolor omnis. Architecto
-    obcaecati debitis accusamus labore, magni optio aliquid, itaque
-    officiis sed delectus ipsum. Pariatur, mollitia.`,
-    tools: [
-      {
-        name: 'nextjs',
-        icon: '/next.svg',
-      },
-    ],
-    slug: 'project-1',
-  },
-  {
-    name: 'Project 2',
-    image: '/placeholder-image.jpg',
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
-    vel aspernatur deleniti ipsam tempore molestias impedit aliquid
-    obcaecati! In rerum, odio quibusdam dicta quas voluptas illo iste
-    cumque aliquid quaerat, non harum natus dolor omnis.`,
-    tools: [
-      {
-        name: 'nextjs',
-        icon: '/next.svg',
-      },
-    ],
-    slug: 'project-2',
-  },
-];
+type ProjectsSectionProps = {
+  projects: Project[];
+};
 
-export function ProjectsSection() {
-  const [currentProject, setCurrentProject] = useState(mockProjects[0]);
+export function ProjectsSection({ projects }: ProjectsSectionProps) {
+  const [currentProject, setCurrentProject] = useState(projects[0]);
 
   const menuItemClickHandler = (event: React.SyntheticEvent<EventTarget>) => {
-    const clickedProject = mockProjects.find(
+    const clickedProject = projects.find(
       (project) =>
         project.name === (event.target as HTMLButtonElement).innerText,
     );
 
-    setCurrentProject(clickedProject || mockProjects[0]);
+    setCurrentProject(clickedProject || projects[0]);
   };
 
   return (
@@ -64,7 +35,7 @@ export function ProjectsSection() {
           currentItem={currentProject.name}
           onClickItem={menuItemClickHandler}
         >
-          {mockProjects.map((mockProject) => mockProject.name)}
+          {projects.map((project) => project.name)}
         </HorizontalMenu>
       </div>
 

@@ -1,19 +1,8 @@
 import Image from 'next/image';
 
+import { Project } from '@/types';
+
 import { LinkButton } from '../LinkButton';
-
-type Tool = {
-  name: string;
-  icon: string;
-};
-
-export type Project = {
-  name: string;
-  image: string;
-  description: string;
-  tools: Tool[];
-  slug: string;
-};
 
 type ProjectCardProps = {
   project: Project;
