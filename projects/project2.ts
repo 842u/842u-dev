@@ -1,4 +1,4 @@
-import { Project } from '@/components/ui/ProjectCard/ProjectCard';
+import { Project } from '@/types';
 
 export const project2: Project = {
   name: 'Project 2',
