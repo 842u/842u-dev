@@ -7,6 +7,7 @@ export function HeroSection() {
         <span className="pr-2">kamil</span>
         <span className="pl-2">bażanow</span>
       </h1>
+
       <p
         className="py-12 text-justify text-lg md:py-24 md:text-2xl lg:max-w-[50vw] lg:text-xl"
         data-testid="hero-description"
@@ -18,6 +19,7 @@ export function HeroSection() {
         consequatur, quisquam minima dignissimos consequuntur deleniti quo
         itaque fugit quia?
       </p>
+
       <LinkButton href="/about">about me</LinkButton>
     </section>
   );

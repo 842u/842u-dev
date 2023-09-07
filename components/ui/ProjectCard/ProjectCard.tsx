@@ -31,17 +31,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
 
-        <h3 className="my-2 text-2xl">{project.name}</h3>
+        <h3 className="my-2 text-2xl md:text-3xl">{project.name}</h3>
 
-        <p className="text-lg">{project.description}</p>
+        <p className="text-lg md:text-2xl">{project.description}</p>
       </div>
 
       <div className="my-8 flex flex-col">
-        <h3 className="my-2 text-2xl">Built with:</h3>
+        <h3 className="my-2 text-2xl md:text-3xl">Built with:</h3>
 
         <div className="flex flex-wrap justify-evenly gap-8">
           {project.tools.map((tool) => (
-            <div key={tool.name} className="relative aspect-square w-14">
+            <div
+              key={tool.name}
+              className="relative aspect-square w-20 md:w-32"
+            >
               <Image fill alt={`${tool.name}`} src={tool.icon} />
             </div>
           ))}
