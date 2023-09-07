@@ -2,10 +2,9 @@
 
 import { useState } from 'react';
 
+import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
+import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
 import { Project } from '@/types';
-
-import { HorizontalMenu } from '../ui/HorizontalMenu/HorizontalMenu';
-import { ProjectCard } from '../ui/ProjectCard/ProjectCard';
 
 type ProjectsSectionProps = {
   projects: Project[];

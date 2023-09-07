@@ -10,7 +10,7 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="lg:flex lg:justify-between">
+    <div className="lg:flex lg:justify-between" data-testid="project-card">
       <div className="my-8 lg:flex lg:w-1/2 lg:flex-col">
         <div className="relative my-8 aspect-square w-full lg:aspect-video">
           <Image

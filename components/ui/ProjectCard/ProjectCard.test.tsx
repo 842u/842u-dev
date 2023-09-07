@@ -1,30 +1,17 @@
 import { render, screen } from '@testing-library/react';
 
-import { Project, ProjectCard } from './ProjectCard';
+import { mockProjects } from '@/projects/mockProjects';
 
-const mockProject: Project = {
-  name: 'mock project',
-  image: '/mockImage.svg',
-  description: 'mock description',
-  tools: [
-    {
-      name: 'mock tool 1',
-      icon: '/mockIcon.svg',
-    },
-    {
-      name: 'mock tool 2',
-      icon: '/mockIcon.svg',
-    },
-  ],
-  slug: 'mock-project',
-};
+import { ProjectCard } from './ProjectCard';
+
+const mockProject = mockProjects[0];
 
 describe('ProjectCard', () => {
   it('should render image of a project', () => {
     render(<ProjectCard project={mockProject} />);
 
     const image = screen.getByRole('img', {
-      name: 'mock project overview image',
+      name: `${mockProject.name} overview image`,
     });
 
     expect(image).toBeInTheDocument();
