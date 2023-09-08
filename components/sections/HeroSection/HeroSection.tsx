@@ -2,7 +2,10 @@ import { LinkButton } from '@/components/ui/LinkButton';
 
 export function HeroSection() {
   return (
-    <section className="flex min-h-screen flex-col justify-center px-4 md:px-16 lg:px-36">
+    <section
+      aria-label="person overview"
+      className="flex min-h-screen flex-col justify-center px-4 md:px-16 lg:px-36"
+    >
       <h1 className="divide-x-2  text-5xl  md:text-7xl lg:text-5xl">
         <span className="pr-2">kamil</span>
         <span className="pl-2">bażanow</span>
