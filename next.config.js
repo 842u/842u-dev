@@ -45,10 +45,17 @@ const securityHeaders = [
 
 module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return {};
+    return {
+      eslint: {
+        dirs: ['app', 'components', 'projects', 'types'],
+      },
+    };
   }
 
   return {
+    eslint: {
+      dirs: ['app', 'components', 'projects', 'types'],
+    },
     async headers() {
       return [
         {
