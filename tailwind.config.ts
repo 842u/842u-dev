@@ -1,3 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+
 import type { Config } from 'tailwindcss';
 
 const plugin = require('tailwindcss/plugin');
