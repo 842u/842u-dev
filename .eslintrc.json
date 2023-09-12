@@ -28,6 +28,7 @@
     "react/require-default-props": "off",
     "@typescript-eslint/no-var-requires": "off",
     "consistent-return": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-sort-props": [
       "error",
       {
