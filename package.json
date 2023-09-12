@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prepare": "husky install",
     "test:jest": "jest",
-    "test:cypress": "cypress run",
+    "test:cypress": "cypress run --browser chrome",
     "test:cypress:open": "cypress open"
   },
   "dependencies": {
