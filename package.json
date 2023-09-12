@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "test": "jest"
+    "test:jest": "jest",
+    "test:cypress": "cypress run --browser chrome",
+    "test:cypress:open": "cypress open"
   },
   "dependencies": {
     "@heroicons/react": "2.0.18",
@@ -26,12 +28,14 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "13.4.19",
+    "@testing-library/cypress": "9.0.0",
     "@testing-library/jest-dom": "6.0.1",
     "@testing-library/react": "14.0.0",
     "@testing-library/user-event": "14.4.3",
     "@types/jest": "29.5.3",
     "@typescript-eslint/eslint-plugin": "6.4.0",
     "@typescript-eslint/parser": "6.4.0",
+    "cypress": "13.1.0",
     "eslint": "8.2.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "17.1.0",
@@ -46,5 +50,10 @@
     "jest-environment-jsdom": "29.6.3",
     "prettier": "3.0.2",
     "prettier-plugin-tailwindcss": "0.5.3"
+  },
+  "overrides": {
+    "@testing-library/cypress": {
+      "cypress": "^13.0.0"
+    }
   }
 }

@@ -1,6 +1,6 @@
-const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
-
 /** @type {import('next').NextConfig} */
+
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 
 const ContentSecurityPolicy = `
     default-src 'self';
