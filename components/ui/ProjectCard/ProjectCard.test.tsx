@@ -36,9 +36,12 @@ describe('ProjectCard', () => {
   it('should render link to project', () => {
     render(<ProjectCard project={mockProject} />);
 
-    const link = screen.getByRole('link');
+    const projectLink = screen.getByRole('link', { name: /see more/i });
 
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', `/projects/${mockProject.slug}`);
+    expect(projectLink).toBeInTheDocument();
+    expect(projectLink).toHaveAttribute(
+      'href',
+      `/projects/${mockProject.slug}`,
+    );
   });
 });
