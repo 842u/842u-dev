@@ -1,10 +1,6 @@
-import { ToolIcon } from './ToolIcon';
+import { SpecificToolIconProps, ToolIcon } from './ToolIcon';
 
-type TypeScriptIconProps = {
-  className?: string;
-};
-
-export function TypeScriptIcon({ className }: TypeScriptIconProps) {
+export function TypeScriptIcon({ className }: SpecificToolIconProps) {
   return (
     <ToolIcon
       className={className}

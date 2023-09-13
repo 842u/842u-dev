@@ -1,10 +1,6 @@
-import { ToolIcon } from './ToolIcon';
+import { SpecificToolIconProps, ToolIcon } from './ToolIcon';
 
-type GitHubIconProps = {
-  className?: string;
-};
-
-export function GitHubIcon({ className }: GitHubIconProps) {
+export function GitHubIcon({ className }: SpecificToolIconProps) {
   return (
     <ToolIcon className={className} href="https://github.com/" title="GitHub">
       <path

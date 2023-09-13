@@ -1,10 +1,6 @@
-import { ToolIcon } from './ToolIcon';
+import { SpecificToolIconProps, ToolIcon } from './ToolIcon';
 
-type TailwindCSSIconProps = {
-  className?: string;
-};
-
-export function TailwindCSSIcon({ className }: TailwindCSSIconProps) {
+export function TailwindCSSIcon({ className }: SpecificToolIconProps) {
   return (
     <ToolIcon
       className={className}

@@ -4,6 +4,7 @@ import { GitHubIcon } from '@/components/icons/GithubIcon';
 import { GitIcon } from '@/components/icons/GitIcon';
 import { JavaScriptIcon } from '@/components/icons/JavaScriptIcon';
 import { NextJSIcon } from '@/components/icons/NextJSIcon';
+import { ReactIcon } from '@/components/icons/ReactIcon';
 import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
 import { TypeScriptIcon } from '@/components/icons/TypeScriptIcon';
 import { Project } from '@/types';
@@ -42,6 +43,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <TypeScriptIcon />
           <GitIcon />
           <GitHubIcon />
+          <ReactIcon />
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
