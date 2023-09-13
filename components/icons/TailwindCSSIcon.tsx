@@ -7,6 +7,8 @@ export function TailwindCSSIcon({ className = 'w-9' }: TailwindCSSIconProps) {
     <a
       className={`block aspect-square ${className}`}
       href="https://tailwindcss.com/"
+      rel="noreferrer"
+      target="_blank"
       title="Tailwind CSS"
     >
       <svg className="fill-dark dark:fill-light" viewBox="0 0 128 128">
