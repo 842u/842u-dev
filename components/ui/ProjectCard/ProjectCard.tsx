@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
 import { Project } from '@/types';
 
 import { LinkButton } from '../LinkButton';
@@ -30,14 +31,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="my-2 text-2xl md:text-3xl">Built with:</h3>
 
         <div className="flex flex-wrap justify-evenly gap-8">
-          {project.tools.map((tool) => (
-            <div
-              key={tool.name}
-              className="relative aspect-square w-20 md:w-32"
-            >
-              <Image fill alt={`${tool.name} icon`} src={tool.icon} />
-            </div>
-          ))}
+          <TailwindCSSIcon />
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
