@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { JavaScriptIcon } from '@/components/icons/JavaScriptIcon';
 import { NextJSIcon } from '@/components/icons/NextJSIcon';
 import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
 import { Project } from '@/types';
@@ -34,6 +35,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="flex flex-wrap justify-evenly gap-8">
           <TailwindCSSIcon />
           <NextJSIcon />
+          <JavaScriptIcon />
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
