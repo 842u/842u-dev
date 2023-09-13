@@ -13,6 +13,7 @@ import { NextJSIcon } from '@/components/icons/NextJSIcon';
 import { ReactIcon } from '@/components/icons/ReactIcon';
 import { SanityIcon } from '@/components/icons/SanityIcon';
 import { SassIcon } from '@/components/icons/SassIcon';
+import { SendGridIcon } from '@/components/icons/SendGridIcon';
 import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
 import { TypeScriptIcon } from '@/components/icons/TypeScriptIcon';
 import { VercelIcon } from '@/components/icons/VercelIcon';
@@ -62,6 +63,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <GraphQLIcon />
           <SanityIcon />
           <VercelIcon />
+          <SendGridIcon />
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
