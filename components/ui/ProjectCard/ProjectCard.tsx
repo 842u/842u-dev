@@ -1,12 +1,21 @@
 import Image from 'next/image';
 
-import { GitHubIcon } from '@/components/icons/GithubIcon';
+import { CypressIcon } from '@/components/icons/CypressIcon';
+import { ESlintIcon } from '@/components/icons/ESlintIcon';
+import { FigmaIcon } from '@/components/icons/FigmaIcon';
+import { GitHubIcon } from '@/components/icons/GitHubIcon';
 import { GitIcon } from '@/components/icons/GitIcon';
+import { GraphQLIcon } from '@/components/icons/GraphQLIcon';
 import { JavaScriptIcon } from '@/components/icons/JavaScriptIcon';
+import { JestIcon } from '@/components/icons/JestIcon';
+import { JiraIcon } from '@/components/icons/Jira';
 import { NextJSIcon } from '@/components/icons/NextJSIcon';
 import { ReactIcon } from '@/components/icons/ReactIcon';
+import { SanityIcon } from '@/components/icons/SanityIcon';
+import { SassIcon } from '@/components/icons/SassIcon';
 import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
 import { TypeScriptIcon } from '@/components/icons/TypeScriptIcon';
+import { VercelIcon } from '@/components/icons/VercelIcon';
 import { Project } from '@/types';
 
 import { LinkButton } from '../LinkButton';
@@ -44,6 +53,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <GitIcon />
           <GitHubIcon />
           <ReactIcon />
+          <JestIcon />
+          <SassIcon />
+          <JiraIcon />
+          <FigmaIcon />
+          <ESlintIcon />
+          <CypressIcon />
+          <GraphQLIcon />
+          <SanityIcon />
+          <VercelIcon />
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
