@@ -30,10 +30,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <div className="my-8 flex flex-col lg:max-w-lg">
         <h3 className="my-2 text-2xl md:text-3xl">Built with:</h3>
 
-        <div className="my-10 flex flex-wrap justify-evenly gap-10">
+        <div className="my-10 flex flex-wrap justify-evenly gap-10 md:my-16">
           {project.tools.map((tool) => {
             const ToolIcon = toolIconMapping[tool];
-            return <ToolIcon key={tool} className="w-14" />;
+            return <ToolIcon key={tool} className="w-14 md:w-20" />;
           })}
         </div>
 
