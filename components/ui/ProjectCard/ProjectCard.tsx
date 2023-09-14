@@ -1,23 +1,7 @@
 import Image from 'next/image';
 
-import { CypressIcon } from '@/components/icons/CypressIcon';
-import { ESlintIcon } from '@/components/icons/ESlintIcon';
-import { FigmaIcon } from '@/components/icons/FigmaIcon';
-import { GitHubIcon } from '@/components/icons/GitHubIcon';
-import { GitIcon } from '@/components/icons/GitIcon';
-import { GraphQLIcon } from '@/components/icons/GraphQLIcon';
-import { JavaScriptIcon } from '@/components/icons/JavaScriptIcon';
-import { JestIcon } from '@/components/icons/JestIcon';
-import { JiraIcon } from '@/components/icons/Jira';
-import { NextJSIcon } from '@/components/icons/NextJSIcon';
-import { ReactIcon } from '@/components/icons/ReactIcon';
-import { SanityIcon } from '@/components/icons/SanityIcon';
-import { SassIcon } from '@/components/icons/SassIcon';
-import { SendGridIcon } from '@/components/icons/SendGridIcon';
-import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
-import { TypeScriptIcon } from '@/components/icons/TypeScriptIcon';
-import { VercelIcon } from '@/components/icons/VercelIcon';
 import { Project } from '@/types';
+import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { LinkButton } from '../LinkButton';
 
@@ -47,23 +31,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <h3 className="my-2 text-2xl md:text-3xl">Built with:</h3>
 
         <div className="flex flex-wrap justify-evenly gap-8">
-          <TailwindCSSIcon />
-          <NextJSIcon />
-          <JavaScriptIcon />
-          <TypeScriptIcon />
-          <GitIcon />
-          <GitHubIcon />
-          <ReactIcon />
-          <JestIcon />
-          <SassIcon />
-          <JiraIcon />
-          <FigmaIcon />
-          <ESlintIcon />
-          <CypressIcon />
-          <GraphQLIcon />
-          <SanityIcon />
-          <VercelIcon />
-          <SendGridIcon />
+          {project.tools.map((tool) => {
+            const ToolIcon = toolIconMapping[tool];
+            return <ToolIcon key={tool} />;
+          })}
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
