@@ -1,12 +1,38 @@
+export enum AvaliableTools {
+  TailwindCSS = 'TailwindCSS',
+  NextJS = 'NextJS',
+  JavaScript = 'JavaScript',
+  TypeScript = 'TypeScript',
+  Git = 'Git',
+  GitHub = 'GitHub',
+  React = 'React',
+  Jest = 'Jest',
+  Sass = 'Sass',
+  Jira = 'Jira',
+  Figma = 'Figma',
+  ESLint = 'ESLint',
+  Cypress = 'Cypress',
+  GraphQL = 'GraphQL',
+  Sanity = 'Sanity',
+  Vercel = 'Vercel',
+  SendGrid = 'SendGrid',
+}
+
 export type Tool = {
-  name: string;
-  icon: string;
+  name: AvaliableTools;
 };
 
 export type Project = {
   name: string;
   image: string;
   description: string;
-  tools: Tool[];
   slug: string;
+  tools: AvaliableTools[];
+};
+
+export type ProjectSettings = {
+  name: string;
+  image: string;
+  description: string;
+  tools: AvaliableTools[];
 };

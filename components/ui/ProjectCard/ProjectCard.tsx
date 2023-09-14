@@ -1,23 +1,7 @@
 import Image from 'next/image';
 
-import { CypressIcon } from '@/components/icons/CypressIcon';
-import { ESlintIcon } from '@/components/icons/ESlintIcon';
-import { FigmaIcon } from '@/components/icons/FigmaIcon';
-import { GitHubIcon } from '@/components/icons/GitHubIcon';
-import { GitIcon } from '@/components/icons/GitIcon';
-import { GraphQLIcon } from '@/components/icons/GraphQLIcon';
-import { JavaScriptIcon } from '@/components/icons/JavaScriptIcon';
-import { JestIcon } from '@/components/icons/JestIcon';
-import { JiraIcon } from '@/components/icons/Jira';
-import { NextJSIcon } from '@/components/icons/NextJSIcon';
-import { ReactIcon } from '@/components/icons/ReactIcon';
-import { SanityIcon } from '@/components/icons/SanityIcon';
-import { SassIcon } from '@/components/icons/SassIcon';
-import { SendGridIcon } from '@/components/icons/SendGridIcon';
-import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
-import { TypeScriptIcon } from '@/components/icons/TypeScriptIcon';
-import { VercelIcon } from '@/components/icons/VercelIcon';
 import { Project } from '@/types';
+import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { LinkButton } from '../LinkButton';
 
@@ -43,27 +27,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-lg md:text-2xl">{project.description}</p>
       </div>
 
-      <div className="my-8 flex flex-col lg:max-w-lg">
+      <div className="my-8 flex flex-col lg:max-w-md lg:flex-grow">
         <h3 className="my-2 text-2xl md:text-3xl">Built with:</h3>
 
-        <div className="flex flex-wrap justify-evenly gap-8">
-          <TailwindCSSIcon />
-          <NextJSIcon />
-          <JavaScriptIcon />
-          <TypeScriptIcon />
-          <GitIcon />
-          <GitHubIcon />
-          <ReactIcon />
-          <JestIcon />
-          <SassIcon />
-          <JiraIcon />
-          <FigmaIcon />
-          <ESlintIcon />
-          <CypressIcon />
-          <GraphQLIcon />
-          <SanityIcon />
-          <VercelIcon />
-          <SendGridIcon />
+        <div className="my-10 flex flex-wrap justify-evenly gap-10 md:my-16 lg:gap-14">
+          {project.tools.map((tool) => {
+            const ToolIcon = toolIconMapping[tool];
+            return <ToolIcon key={tool} className="w-14 md:w-20 lg:w-14" />;
+          })}
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
