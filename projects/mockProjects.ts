@@ -1,18 +1,21 @@
-import { AvaliableTools, Project } from '@/types';
+import { AvaliableTools, ProjectSettings } from '@/types';
+import { createProject } from '@/utils/createProject';
 
-export const mockProjects: Project[] = [
+const mockProjectsSettings: ProjectSettings[] = [
   {
     name: 'mock project 1',
     image: '/mockImage.svg',
     description: 'mock description',
     tools: [AvaliableTools.Cypress, AvaliableTools.Git],
-    slug: 'mock-project-1',
   },
   {
     name: 'mock project 2',
     image: '/mockImage.svg',
     description: 'mock description',
     tools: [AvaliableTools.Cypress, AvaliableTools.Git],
-    slug: 'mock-project-2',
   },
 ];
+
+export const mockProjects = mockProjectsSettings.map((projectSettings) =>
+  createProject(projectSettings),
+);
