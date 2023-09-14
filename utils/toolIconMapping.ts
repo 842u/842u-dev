@@ -13,11 +13,15 @@ import { SanityIcon } from '@/components/icons/SanityIcon';
 import { SassIcon } from '@/components/icons/SassIcon';
 import { SendGridIcon } from '@/components/icons/SendGridIcon';
 import { TailwindCSSIcon } from '@/components/icons/TailwindCSSIcon';
+import { SpecificToolIconProps } from '@/components/icons/ToolIcon';
 import { TypeScriptIcon } from '@/components/icons/TypeScriptIcon';
 import { VercelIcon } from '@/components/icons/VercelIcon';
 import { AvaliableTools } from '@/types';
 
-export const toolIconMapping: Record<AvaliableTools, React.FC> = {
+export const toolIconMapping: Record<
+  AvaliableTools,
+  React.FC<SpecificToolIconProps>
+> = {
   [AvaliableTools.Cypress]: CypressIcon,
   [AvaliableTools.ESLint]: ESlintIcon,
   [AvaliableTools.Figma]: FigmaIcon,

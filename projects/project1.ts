@@ -9,6 +9,10 @@ const projectSettings: ProjectSettings = {
     AvaliableTools.JavaScript,
     AvaliableTools.NextJS,
     AvaliableTools.GraphQL,
+    AvaliableTools.GraphQL,
+    AvaliableTools.GraphQL,
+    AvaliableTools.GraphQL,
+    AvaliableTools.GraphQL,
   ],
 };
 
