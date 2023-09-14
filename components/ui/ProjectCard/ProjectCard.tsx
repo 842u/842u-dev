@@ -27,13 +27,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-lg md:text-2xl">{project.description}</p>
       </div>
 
-      <div className="my-8 flex flex-col lg:max-w-lg">
+      <div className="my-8 flex flex-col lg:max-w-md lg:flex-grow">
         <h3 className="my-2 text-2xl md:text-3xl">Built with:</h3>
 
-        <div className="my-10 flex flex-wrap justify-evenly gap-10 md:my-16">
+        <div className="my-10 flex flex-wrap justify-evenly gap-10 md:my-16 lg:gap-14">
           {project.tools.map((tool) => {
             const ToolIcon = toolIconMapping[tool];
-            return <ToolIcon key={tool} className="w-14 md:w-20" />;
+            return <ToolIcon key={tool} className="w-14 md:w-20 lg:w-14" />;
           })}
         </div>
 
