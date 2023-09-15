@@ -8,7 +8,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <ProjectsSection projects={allProjects} />
-      <CmrSVG duration={5} rotate={0} text="Kamil Bażanow Kamil Bażanow" />
+      <CmrSVG duration={5} rotate="auto" text="Kamil Bażanow" />
     </main>
   );
 }
