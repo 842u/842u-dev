@@ -48,7 +48,7 @@ export function CmrSVG({ text, duration, rotate, spacing }: CmrSVGProps) {
   }, [charArray]);
 
   return (
-    <div className="overflow-hidden p-20">
+    <div className="overflow-hidden py-20">
       <svg viewBox="0 0 200 200">
         <path
           // d="M20,50 C20,-50 180,150 180,50 C180-50 20,150 20,50z"
