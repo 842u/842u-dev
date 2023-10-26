@@ -31,8 +31,9 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         <h2 className="self-end text-4xl md:text-5xl">projects</h2>
 
         <HorizontalMenu
-          currentItem={currentProject.name}
-          onClickItem={menuItemClickHandler}
+          activeItemLeftOffset={100}
+          itemsMultiplier={8}
+          onClick={menuItemClickHandler}
         >
           {projects.map((project) => project.name)}
         </HorizontalMenu>
