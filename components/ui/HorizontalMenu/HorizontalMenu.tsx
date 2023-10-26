@@ -3,7 +3,7 @@ import React from 'react';
 type HorizontalMenuProps = {
   children: string[];
   currentItem?: string;
-  onClickItem?: <T extends React.SyntheticEvent>(event: T) => void;
+  onClickItem?: (event: React.MouseEvent) => void;
 };
 
 export function HorizontalMenu({

@@ -13,7 +13,7 @@ type ProjectsSectionProps = {
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [currentProject, setCurrentProject] = useState(projects[0]);
 
-  const menuItemClickHandler = (event: React.SyntheticEvent<EventTarget>) => {
+  const menuItemClickHandler = (event: React.MouseEvent) => {
     const clickedProject = projects.find(
       (project) =>
         project.name === (event.target as HTMLButtonElement).innerText,
