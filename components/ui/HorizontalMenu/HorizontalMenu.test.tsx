@@ -5,9 +5,26 @@ import { HorizontalMenu } from './HorizontalMenu';
 
 const mockItems = ['item 1', 'item 2', 'item 3'];
 
+window.HTMLMenuElement.prototype.scrollBy = jest.fn(() => {});
+
+jest.mock('../../../utils/helpers.ts', () => ({
+  ...jest.requireActual('../../../utils/helpers.ts'),
+  extendArray: () => mockItems,
+}));
+
 describe('HorizontalMenu', () => {
   it('should render menu list', () => {
-    render(<HorizontalMenu>{mockItems}</HorizontalMenu>);
+    render(
+      <HorizontalMenu
+        mediaBreakpoints={{
+          sm: { minWidth: 640, offset: 'center' },
+          md: { minWidth: 768, offset: 50 },
+          lg: { minWidth: 1024, offset: 100 },
+        }}
+      >
+        {mockItems}
+      </HorizontalMenu>,
+    );
 
     const menu = screen.getByRole('list');
 
@@ -15,23 +32,41 @@ describe('HorizontalMenu', () => {
   });
 
   it('should render button for at least every children', () => {
-    render(<HorizontalMenu>{mockItems}</HorizontalMenu>);
+    const itemsNumber = mockItems.length;
 
-    mockItems.forEach((item) => {
-      const button = screen.getByText(item);
+    render(
+      <HorizontalMenu
+        mediaBreakpoints={{
+          sm: { minWidth: 640, offset: 'center' },
+          md: { minWidth: 768, offset: 50 },
+          lg: { minWidth: 1024, offset: 100 },
+        }}
+      >
+        {mockItems}
+      </HorizontalMenu>,
+    );
 
-      expect(button).toBeInTheDocument();
-    });
+    const buttons = screen.getAllByRole('button');
+
+    expect(buttons.length).toBeGreaterThanOrEqual(itemsNumber);
   });
 
-  it('should call clickHandler when any button is clicked', async () => {
+  it('should call onClick when some button is clicked', async () => {
     const user = userEvent.setup();
     const clickHandler = jest.fn();
 
-    const elem = render(
-      <HorizontalMenu onClick={clickHandler}>{mockItems}</HorizontalMenu>,
+    render(
+      <HorizontalMenu
+        mediaBreakpoints={{
+          sm: { minWidth: 640, offset: 'center' },
+          md: { minWidth: 768, offset: 50 },
+          lg: { minWidth: 1024, offset: 100 },
+        }}
+        onClick={clickHandler}
+      >
+        {mockItems}
+      </HorizontalMenu>,
     );
-    elem.baseElement.scrollBy = jest.fn(() => {});
 
     const buttons = screen.getAllByRole('button');
 

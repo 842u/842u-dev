@@ -1,5 +1,5 @@
 import { AvaliableTools, ProjectSettings } from '@/types';
-import { createProject } from '@/utils/createProject';
+import { createProject } from '@/utils/helpers';
 
 const projectSettings: ProjectSettings = {
   name: 'Project 5',
