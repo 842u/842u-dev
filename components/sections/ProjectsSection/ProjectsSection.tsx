@@ -27,9 +27,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
       aria-label="projects overview"
       className="min-h-screen px-4 md:px-16 lg:px-36"
     >
+      <h2 className="my-10 text-right text-4xl md:text-5xl">projects</h2>
       <div className="flex flex-col items-center justify-center gap-8">
-        <h2 className="self-end text-4xl md:text-5xl">projects</h2>
-
         <HorizontalMenu
           mediaBreakpoints={{
             sm: { minWidth: 640, offset: 'center' },
