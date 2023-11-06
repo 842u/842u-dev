@@ -36,3 +36,16 @@ export type ProjectSettings = {
   description: string;
   tools: AvaliableTools[];
 };
+
+export type ItemOffset = number | 'center';
+
+type Breakpoint = {
+  minWidth: number;
+  offset: ItemOffset;
+};
+
+export type MediaBreakpoints = {
+  sm: Breakpoint;
+  md: Breakpoint;
+  lg: Breakpoint;
+};

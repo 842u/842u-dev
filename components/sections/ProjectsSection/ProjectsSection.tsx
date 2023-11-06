@@ -13,7 +13,7 @@ type ProjectsSectionProps = {
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [currentProject, setCurrentProject] = useState(projects[0]);
 
-  const menuItemClickHandler = (event: React.SyntheticEvent<EventTarget>) => {
+  const menuItemClickHandler = (event: React.MouseEvent) => {
     const clickedProject = projects.find(
       (project) =>
         project.name === (event.target as HTMLButtonElement).innerText,
@@ -31,8 +31,12 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         <h2 className="self-end text-4xl md:text-5xl">projects</h2>
 
         <HorizontalMenu
-          currentItem={currentProject.name}
-          onClickItem={menuItemClickHandler}
+          mediaBreakpoints={{
+            sm: { minWidth: 640, offset: 'center' },
+            md: { minWidth: 768, offset: 100 },
+            lg: { minWidth: 1024, offset: 100 },
+          }}
+          onClick={menuItemClickHandler}
         >
           {projects.map((project) => project.name)}
         </HorizontalMenu>

@@ -4,6 +4,13 @@ import { allProjects } from '@/projects/allProjects';
 
 import { ProjectsSection } from './ProjectsSection';
 
+window.HTMLMenuElement.prototype.scrollBy = jest.fn(() => {});
+
+jest.mock('../../../utils/helpers.ts', () => ({
+  ...jest.requireActual('../../../utils/helpers.ts'),
+  extendArray: () => allProjects.map((project) => project.name),
+}));
+
 describe('ProjectsSection', () => {
   it('should render heading with section title', () => {
     render(<ProjectsSection projects={allProjects} />);

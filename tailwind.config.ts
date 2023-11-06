@@ -26,11 +26,27 @@ const config: Config = {
     plugin(
       ({
         addVariant,
+        addUtilities,
       }: {
         addVariant: (firstArgument: string, secondArgument: string) => void;
+        addUtilities: (firstArgument: object) => void;
       }) => {
         addVariant('operational', '&.operational');
         addVariant('group-operational', ':merge(.group).operational &');
+        addUtilities({
+          '.no-scrollbar': {
+            /* IE and Edge */
+            '-ms-overflow-style': 'none',
+
+            /* Firefox */
+            'scrollbar-width': 'none',
+
+            /* Safari and Chrome */
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+          },
+        });
       },
     ),
   ],
