@@ -26,7 +26,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
   return (
     <Section ariaLabel="projects overview" title="projects">
-      <div className="flex flex-col items-center justify-center gap-8">
+      <div className="flex flex-col items-start justify-center gap-8">
         <HorizontalMenu
           mediaBreakpoints={{
             sm: { minWidth: 640, offset: 'center' },

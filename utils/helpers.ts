@@ -47,18 +47,24 @@ export function scrollToElement(
 ) {
   if (typeof offset === 'number') {
     const itemXPosition = item?.getBoundingClientRect().x || 0;
-    const itemLeftOffset =
-      itemXPosition - (offset || 0) - container.getBoundingClientRect().x;
+    const containerXPosition = container?.getBoundingClientRect().x || 0;
+    const itemLeftOffset = itemXPosition - (offset || 0) - containerXPosition;
 
     container.scrollBy({
       behavior,
       left: itemLeftOffset,
     });
   } else if (offset === 'center') {
-    item.scrollIntoView({
+    const itemXPosition = item?.getBoundingClientRect().x || 0;
+    const itemWidth = item?.getBoundingClientRect().width || 0;
+
+    const containerWidth = container?.getBoundingClientRect().width || 0;
+    const containerXPosition = container?.getBoundingClientRect().x || 0;
+
+    container.scrollBy({
       behavior,
-      block: 'nearest',
-      inline: 'center',
+      left:
+        itemXPosition - containerWidth / 2 + itemWidth / 2 - containerXPosition,
     });
   }
 }
