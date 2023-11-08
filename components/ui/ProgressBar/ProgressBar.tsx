@@ -20,9 +20,11 @@ export function ProgressBar({
         />
       </div>
 
-      <div className="flex justify-between py-2 text-sm">
+      <div className="flex justify-between py-2 text-sm md:text-lg lg:text-base">
         <p>{startLabel}</p>
+        <div aria-hidden className="h-6 w-[2px] dark:bg-light" />
         <p>{middleLabel}</p>
+        <div aria-hidden className="h-6 w-[2px] dark:bg-light" />
         <p>{endLabel}</p>
       </div>
     </div>
