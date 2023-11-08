@@ -1,4 +1,5 @@
-import { ReactIcon } from '@/components/icons/ReactIcon';
+import { mySkills } from '@/data/skills';
+import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { Section } from '../Section';
 
@@ -36,15 +37,20 @@ function ProgressBar({
 export function TechSection() {
   return (
     <Section ariaLabel="technologies overview" title="technologies">
-      <div className="flex flex-col items-center justify-center">
-        <ReactIcon className="my-4 w-1/3" />
-        <ProgressBar
-          endLabel="Advanced"
-          middleLabel="Intermediate"
-          percentageValue={35}
-          startLabel="Begginer"
-        />
-      </div>
+      {mySkills.map((skill) => {
+        const ToolIcon = toolIconMapping[skill.name];
+        return (
+          <div className="flex flex-col items-center justify-center">
+            <ToolIcon className="my-4 w-1/4" />
+            <ProgressBar
+              endLabel="Advanced"
+              middleLabel="Intermediate"
+              percentageValue={skill.progress}
+              startLabel="Begginer"
+            />
+          </div>
+        );
+      })}
     </Section>
   );
 }
