@@ -1,3 +1,7 @@
+import { ReactIcon } from '@/components/icons/ReactIcon';
+
+import { Section } from '../Section';
+
 type ProgressBarProps = {
   percentageValue: number;
 };
@@ -5,14 +9,14 @@ type ProgressBarProps = {
 function ProgressBar({ percentageValue }: ProgressBarProps) {
   return (
     <div className="w-full overflow-hidden">
-      <div className="relative h-6 bg-light-darker dark:bg-dark-lighter">
+      <div className="relative h-4 bg-light-darker dark:bg-dark-lighter">
         <div
-          className="relative h-6 w-10 -translate-x-1/2 bg-dark dark:bg-light"
+          className="relative h-4 w-10 -translate-x-1/2 bg-dark dark:bg-light"
           style={{ left: `${percentageValue}%` }}
         />
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between text-sm">
         <p>Begginer</p>
         <p>Intermediate</p>
         <p>Advanced</p>
@@ -23,14 +27,11 @@ function ProgressBar({ percentageValue }: ProgressBarProps) {
 
 export function TechSection() {
   return (
-    <section
-      aria-label="technology stack"
-      className="min-h-screen px-4 md:px-16 lg:px-36"
-    >
-      <h2 className="my-10 text-right text-4xl md:text-5xl">Technologies</h2>
+    <Section ariaLabel="technologies overview" title="technologies">
       <div className="flex flex-col items-center justify-center">
-        <ProgressBar percentageValue={40} />
+        <ReactIcon className="my-4 w-1/3" />
+        <ProgressBar percentageValue={35} />
       </div>
-    </section>
+    </Section>
   );
 }
