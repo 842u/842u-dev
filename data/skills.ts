@@ -1,6 +1,6 @@
 import { AvaliableTools } from '@/types';
 
-type Skill = {
+export type Skill = {
   name: AvaliableTools;
   progress: number;
 };
