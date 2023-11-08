@@ -4,9 +4,17 @@ import { Section } from '../Section';
 
 type ProgressBarProps = {
   percentageValue: number;
+  startLabel?: string;
+  middleLabel?: string;
+  endLabel?: string;
 };
 
-function ProgressBar({ percentageValue }: ProgressBarProps) {
+function ProgressBar({
+  percentageValue,
+  startLabel,
+  middleLabel,
+  endLabel,
+}: ProgressBarProps) {
   return (
     <div className="w-full overflow-hidden">
       <div className="relative h-4 bg-light-darker dark:bg-dark-lighter">
@@ -16,10 +24,10 @@ function ProgressBar({ percentageValue }: ProgressBarProps) {
         />
       </div>
 
-      <div className="flex justify-between text-sm">
-        <p>Begginer</p>
-        <p>Intermediate</p>
-        <p>Advanced</p>
+      <div className="flex justify-between py-2 text-sm">
+        <p>{startLabel}</p>
+        <p>{middleLabel}</p>
+        <p>{endLabel}</p>
       </div>
     </div>
   );
@@ -30,7 +38,12 @@ export function TechSection() {
     <Section ariaLabel="technologies overview" title="technologies">
       <div className="flex flex-col items-center justify-center">
         <ReactIcon className="my-4 w-1/3" />
-        <ProgressBar percentageValue={35} />
+        <ProgressBar
+          endLabel="Advanced"
+          middleLabel="Intermediate"
+          percentageValue={35}
+          startLabel="Begginer"
+        />
       </div>
     </Section>
   );
