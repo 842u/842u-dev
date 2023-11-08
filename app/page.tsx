@@ -1,6 +1,6 @@
 import { HeroSection } from '@/components/sections/HeroSection/HeroSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection/ProjectsSection';
-import { TechSection } from '@/components/sections/TechSection/TechSection';
+import { ExperienceSection } from '@/components/sections/TechSection/ExperienceSection';
 import { allProjects } from '@/data/projects/allProjects';
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <ProjectsSection projects={allProjects} />
-      <TechSection />
+      <ExperienceSection />
     </main>
   );
 }

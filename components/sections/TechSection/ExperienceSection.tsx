@@ -4,7 +4,7 @@ import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { Section } from '../Section';
 
-export function TechSection() {
+export function ExperienceSection() {
   return (
     <Section ariaLabel="technologies overview" title="technologies">
       <div className="md:flex md:flex-wrap md:justify-evenly md:gap-10">
