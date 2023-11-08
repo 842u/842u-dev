@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { mockProjects } from '@/projects/mockProjects';
+import { mockProjects } from '@/data/projects/mockProjects';
 
 import { ProjectCard } from './ProjectCard';
 
