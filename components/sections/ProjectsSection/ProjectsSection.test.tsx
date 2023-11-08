@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { allProjects } from '@/projects/allProjects';
+import { allProjects } from '@/data/projects/allProjects';
 
 import { ProjectsSection } from './ProjectsSection';
 
