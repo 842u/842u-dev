@@ -11,7 +11,7 @@ type ExperienceSectionProps = {
 export function ExperienceSection({ skills }: ExperienceSectionProps) {
   return (
     <Section ariaLabel="technologies overview" title="experience">
-      <p className="text-justify md:text-xl lg:max-w-[50vw]">
+      <p className="md:text-xl lg:max-w-[50vw]">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
         adipisci fuga exercitationem delectus facilis eos quos vel molestiae
         recusandae atque quaerat, quod consequatur vitae quo quibusdam velit ex
