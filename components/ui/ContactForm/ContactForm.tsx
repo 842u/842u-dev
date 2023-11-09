@@ -13,7 +13,11 @@ type FormValues = {
   message: string;
 };
 
-export function ContactForm() {
+type ContactFormProps = {
+  className?: string;
+};
+
+export function ContactForm({ className }: ContactFormProps) {
   const {
     register,
     handleSubmit,
@@ -37,9 +41,12 @@ export function ContactForm() {
   };
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={`flex flex-col ${className}`}
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <input
-        className={`mt-10 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark ${
+        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${
           isSubmitted
             ? errors.name?.message
               ? 'border-error dark:border-error'
@@ -60,12 +67,12 @@ export function ContactForm() {
         placeholder="Enter your name ..."
         type="text"
       />
-      <p className="whitespace-pre-wrap text-right">
+      <p className="whitespace-pre-wrap text-right md:text-xl">
         {errors.name?.message || ' '}
       </p>
 
       <input
-        className={`mt-10 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark ${
+        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${
           isSubmitted
             ? errors.email?.message
               ? 'border-error dark:border-error'
@@ -90,12 +97,12 @@ export function ContactForm() {
         placeholder="Enter your e-mail ..."
         type="email"
       />
-      <p className="whitespace-pre-wrap text-right">
+      <p className="whitespace-pre-wrap text-right md:text-xl">
         {errors.email?.message || ' '}
       </p>
 
       <textarea
-        className={`mt-10 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark ${
+        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${
           isSubmitted
             ? errors.message?.message
               ? 'border-error dark:border-error'
@@ -114,8 +121,9 @@ export function ContactForm() {
           },
         })}
         placeholder="Enter your message ..."
+        rows={4}
       />
-      <p className="whitespace-pre-wrap text-right">
+      <p className="whitespace-pre-wrap text-right md:text-xl">
         {errors.message?.message || ' '}
       </p>
 
