@@ -2,6 +2,7 @@
 
 'use client';
 
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { Section } from '../Section';
@@ -16,19 +17,29 @@ export function ContactSection() {
   const {
     register,
     handleSubmit,
-    getFieldState,
-    formState: { errors, isSubmitted },
-  } = useForm<FormValues>();
+    reset,
+    formState: { errors, isSubmitted, isSubmitSuccessful, isValid },
+  } = useForm<FormValues>({
+    defaultValues: {
+      name: '',
+      email: '',
+      message: '',
+    },
+  });
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+  useEffect(() => {
+    reset();
+  }, [isSubmitSuccessful]);
 
-  console.log(getFieldState('name'));
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
 
   return (
     <Section title="contact">
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
         <input
-          className={`border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
+          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
             isSubmitted
               ? errors.name?.message
                 ? 'border-error'
@@ -49,10 +60,12 @@ export function ContactSection() {
           placeholder="Enter your name ..."
           type="text"
         />
-        <p className="text-right">{errors.name?.message}</p>
+        <p className="whitespace-pre-wrap text-right">
+          {errors.name?.message || ' '}
+        </p>
 
         <input
-          className={`border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
+          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
             isSubmitted
               ? errors.email?.message
                 ? 'border-error'
@@ -77,10 +90,12 @@ export function ContactSection() {
           placeholder="Enter your e-mail ..."
           type="email"
         />
-        <p className="text-right">{errors.email?.message}</p>
+        <p className="whitespace-pre-wrap text-right">
+          {errors.email?.message || ' '}
+        </p>
 
         <textarea
-          className={`border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
+          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
             isSubmitted
               ? errors.message?.message
                 ? 'border-error'
@@ -100,8 +115,17 @@ export function ContactSection() {
           })}
           placeholder="Enter your message ..."
         />
-        <p className="text-right">{errors.message?.message}</p>
-        <button type="submit">Send</button>
+        <p className="whitespace-pre-wrap text-right">
+          {errors.message?.message || ' '}
+        </p>
+
+        <button
+          className="disabled:text-light-darker"
+          disabled={isSubmitted && !isValid}
+          type="submit"
+        >
+          Send
+        </button>
       </form>
     </Section>
   );
