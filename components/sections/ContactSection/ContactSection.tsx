@@ -5,6 +5,8 @@
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { Button } from '@/components/ui/Button/Button';
+
 import { Section } from '../Section';
 
 type FormValues = {
@@ -32,6 +34,7 @@ export function ContactSection() {
   }, [isSubmitSuccessful]);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    // eslint-disable-next-line
     console.log(data);
   };
 
@@ -39,12 +42,12 @@ export function ContactSection() {
     <Section title="contact">
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
         <input
-          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
+          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark ${
             isSubmitted
               ? errors.name?.message
-                ? 'border-error'
-                : 'border-success'
-              : 'border-dark'
+                ? 'border-error dark:border-error'
+                : 'border-success dark:border-success'
+              : 'border-dark dark:border-light'
           }`}
           {...register('name', {
             required: 'This field is required.',
@@ -65,12 +68,12 @@ export function ContactSection() {
         </p>
 
         <input
-          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
+          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark ${
             isSubmitted
               ? errors.email?.message
-                ? 'border-error'
-                : 'border-success'
-              : 'border-dark'
+                ? 'border-error dark:border-error'
+                : 'border-success dark:border-success'
+              : 'border-dark dark:border-light'
           }`}
           {...register('email', {
             required: 'This field is required.',
@@ -95,12 +98,12 @@ export function ContactSection() {
         </p>
 
         <textarea
-          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter ${
+          className={`mt-6 border-b-2 bg-light text-2xl placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark ${
             isSubmitted
               ? errors.message?.message
-                ? 'border-error'
-                : 'border-success'
-              : 'border-dark'
+                ? 'border-error dark:border-error'
+                : 'border-success dark:border-success'
+              : 'border-dark dark:border-light'
           }`}
           {...register('message', {
             required: 'This field is required.',
@@ -119,13 +122,9 @@ export function ContactSection() {
           {errors.message?.message || ' '}
         </p>
 
-        <button
-          className="disabled:text-light-darker"
-          disabled={isSubmitted && !isValid}
-          type="submit"
-        >
+        <Button disabled={isSubmitted && !isValid} type="submit">
           Send
-        </button>
+        </Button>
       </form>
     </Section>
   );
