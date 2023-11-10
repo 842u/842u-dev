@@ -38,7 +38,7 @@ jobs:
         run: npm install --global @unlighthouse/cli
 
       - name: Run Unlighthouse Audit
-        run: unlighthouse-ci --site https://842u.dev --build-static
+        run: unlighthouse-ci --site https://www.842u.dev --build-static
 
       - name: Push To Static Audit Repo
         uses: s0/git-publish-subdir-action@develop
