@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Insights
-      url: https://personal-site-insights.vercel.app
+      url: https://insights.842u.dev
 
     steps:
       - uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
         run: npm install --global @unlighthouse/cli
 
       - name: Run Unlighthouse Audit
-        run: unlighthouse-ci --site https://personal-site-842u.vercel.app --build-static
+        run: unlighthouse-ci --site https://842u.dev --build-static
 
       - name: Push To Static Audit Repo
         uses: s0/git-publish-subdir-action@develop
@@ -57,4 +57,4 @@ jobs:
         with:
           args: |
             New AUDIT for {{ EVENT_PAYLOAD.repository.full_name }}
-            https://personal-site-insights.vercel.app
+            https://insights.842u.dev
