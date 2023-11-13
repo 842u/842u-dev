@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Production
-      url: https://personal-site-842u.vercel.app
+      url: https://842u.dev
 
     steps:
       - uses: actions/checkout@v3
@@ -57,7 +57,7 @@ jobs:
         with:
           args: |
             New PRODUCTION for {{ EVENT_PAYLOAD.repository.full_name }}
-            https://personal-site-842u.vercel.app
+            https://842u.dev
 
   create-unlighthouse-audit:
     needs: vercel-deploy-production

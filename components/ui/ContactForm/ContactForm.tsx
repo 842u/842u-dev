@@ -2,28 +2,42 @@
 
 'use client';
 
-import { useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { PulseLoader } from 'react-spinners';
+
+import { ContactFormValues } from '@/types';
+import {
+  emailInputValidationRules,
+  messageInputValidationRules,
+  nameInputValidationRules,
+} from '@/utils/validation';
 
 import { Button } from '../Button';
-
-type FormValues = {
-  name: string;
-  email: string;
-  message: string;
-};
 
 type ContactFormProps = {
   className?: string;
 };
 
 export function ContactForm({ className }: ContactFormProps) {
+  const responeMessageRef = useRef<HTMLParagraphElement>(null);
+  const { theme } = useTheme();
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitted, isSubmitSuccessful, isValid },
-  } = useForm<FormValues>({
+    setError,
+    resetField,
+    formState: {
+      errors,
+      isSubmitted,
+      isSubmitSuccessful,
+      isValid,
+      isSubmitting,
+    },
+  } = useForm<ContactFormValues>({
     defaultValues: {
       name: '',
       email: '',
@@ -35,9 +49,34 @@ export function ContactForm({ className }: ContactFormProps) {
     reset();
   }, [isSubmitSuccessful]);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    // eslint-disable-next-line
-    console.log(data);
+  const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
+    const formData = JSON.stringify(data);
+
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: formData,
+    });
+
+    const responseData = await response.json();
+
+    if (!response.ok && responseData.inputIdentifier) {
+      resetField(responseData.inputIdentifier);
+      setError(
+        responseData.inputIdentifier,
+        {
+          type: 'custom',
+          message: responseData.message,
+        },
+        { shouldFocus: true },
+      );
+    } else if (!response.ok) {
+      responeMessageRef.current!.innerText = responseData.message;
+    }
+
+    responeMessageRef.current!.innerText = responseData.message;
   };
 
   return (
@@ -53,17 +92,7 @@ export function ContactForm({ className }: ContactFormProps) {
               : 'border-success dark:border-success'
             : 'border-dark dark:border-light'
         }`}
-        {...register('name', {
-          required: 'This field is required.',
-          minLength: {
-            value: 3,
-            message: 'Minimum length is 3.',
-          },
-          maxLength: {
-            value: 50,
-            message: 'Maximum length is 50.',
-          },
-        })}
+        {...register('name', nameInputValidationRules)}
         placeholder="Enter your name ..."
         type="text"
       />
@@ -79,21 +108,7 @@ export function ContactForm({ className }: ContactFormProps) {
               : 'border-success dark:border-success'
             : 'border-dark dark:border-light'
         }`}
-        {...register('email', {
-          required: 'This field is required.',
-          minLength: {
-            value: 3,
-            message: 'Minimum length is 3.',
-          },
-          maxLength: {
-            value: 254,
-            message: 'Maximum length is 254.',
-          },
-          pattern: {
-            value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-            message: 'Enter valid e-mail adress.',
-          },
-        })}
+        {...register('email', emailInputValidationRules)}
         placeholder="Enter your e-mail ..."
         type="email"
       />
@@ -109,17 +124,7 @@ export function ContactForm({ className }: ContactFormProps) {
               : 'border-success dark:border-success'
             : 'border-dark dark:border-light'
         }`}
-        {...register('message', {
-          required: 'This field is required.',
-          minLength: {
-            value: 10,
-            message: 'Minimum length is 10.',
-          },
-          maxLength: {
-            value: 3000,
-            message: 'Maximum length is 3000.',
-          },
-        })}
+        {...register('message', messageInputValidationRules)}
         placeholder="Enter your message ..."
         rows={4}
       />
@@ -132,8 +137,18 @@ export function ContactForm({ className }: ContactFormProps) {
         disabled={isSubmitted && !isValid}
         type="submit"
       >
-        Send
+        {isSubmitting ? (
+          <PulseLoader loading color={theme === 'light' ? '#222' : '#faebd7'} />
+        ) : (
+          'Send'
+        )}
       </Button>
+      <p
+        ref={responeMessageRef}
+        className="my-10 whitespace-pre-wrap md:text-xl"
+      >
+        {' '}
+      </p>
     </form>
   );
 }
