@@ -119,18 +119,3 @@ export function calculateSectorMultiplier(
 
   return multiplier;
 }
-
-export function setFormInputBorder(
-  isSubmitted: boolean,
-  errorMessage: string | undefined,
-) {
-  if (isSubmitted && errorMessage) {
-    return 'border-error dark:border-error';
-  }
-
-  if (isSubmitted && !errorMessage) {
-    return 'border-success dark:border-success';
-  }
-
-  return 'border-dark dark:border-light';
-}

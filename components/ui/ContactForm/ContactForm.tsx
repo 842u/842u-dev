@@ -7,7 +7,6 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { SubmitLoader } from '@/components/decorative/SubmitLoader';
 import { ContactFormValues } from '@/types';
-import { setFormInputBorder } from '@/utils/helpers';
 import {
   emailInputValidationRules,
   messageInputValidationRules,
@@ -77,6 +76,21 @@ export function ContactForm({ className }: ContactFormProps) {
 
     responeMessageElementRef.current!.innerText = responseData.message;
   };
+
+  function setFormInputBorder(
+    formIsSubmitted: boolean,
+    errorMessage: string | undefined,
+  ) {
+    if (formIsSubmitted && errorMessage) {
+      return 'border-error dark:border-error';
+    }
+
+    if (formIsSubmitted && !errorMessage) {
+      return 'border-success dark:border-success';
+    }
+
+    return 'border-dark dark:border-light';
+  }
 
   return (
     <form
