@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-import { GlobalThemeProvider } from '../../providers/GlobalThemeProvider';
 import { HamburgerButton } from './HamburgerButton/HamburgerButton';
 import { NavMenu } from './NavMenu/NavMenu';
 import ThemeButton from './ThemeButton/ThemeButton';
@@ -74,9 +73,7 @@ export function NavBar() {
         />
 
         <div className="z-40 aspect-square w-20 md:visible md:w-16">
-          <GlobalThemeProvider>
-            <ThemeButton className="md:visible" isActive={mobileIsActive} />
-          </GlobalThemeProvider>
+          <ThemeButton className="md:visible" isActive={mobileIsActive} />
         </div>
 
         <NavMenu isActive={mobileIsActive} items={navItems} />

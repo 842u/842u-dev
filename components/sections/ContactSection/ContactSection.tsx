@@ -4,7 +4,7 @@ import { Section } from '../Section';
 
 export function ContactSection() {
   return (
-    <Section title="contact">
+    <Section ariaLabel="contact options" title="contact">
       <p className="md:text-2xl lg:max-w-[50vw]">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet,
         excepturi.

@@ -2,6 +2,7 @@ import './globals.css';
 
 import type { Metadata } from 'next';
 
+import { GlobalThemeProvider } from '@/components/providers/GlobalThemeProvider';
 import { NavBar } from '@/components/ui/NavBar/NavBar';
 
 export const metadata: Metadata = {
@@ -17,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-light text-dark transition-colors dark:bg-dark dark:text-light">
-        <NavBar />
-        {children}
+        <GlobalThemeProvider>
+          <NavBar />
+          {children}
+        </GlobalThemeProvider>
       </body>
     </html>
   );

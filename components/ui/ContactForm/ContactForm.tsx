@@ -2,12 +2,12 @@
 
 'use client';
 
-import { useTheme } from 'next-themes';
 import { useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { PulseLoader } from 'react-spinners';
 
+import { SubmitLoader } from '@/components/decorative/SubmitLoader';
 import { ContactFormValues } from '@/types';
+import { setFormInputBorder } from '@/utils/helpers';
 import {
   emailInputValidationRules,
   messageInputValidationRules,
@@ -21,8 +21,7 @@ type ContactFormProps = {
 };
 
 export function ContactForm({ className }: ContactFormProps) {
-  const responeMessageRef = useRef<HTMLParagraphElement>(null);
-  const { theme } = useTheme();
+  const responeMessageElementRef = useRef<HTMLParagraphElement>(null);
 
   const {
     register,
@@ -73,10 +72,10 @@ export function ContactForm({ className }: ContactFormProps) {
         { shouldFocus: true },
       );
     } else if (!response.ok) {
-      responeMessageRef.current!.innerText = responseData.message;
+      responeMessageElementRef.current!.innerText = responseData.message;
     }
 
-    responeMessageRef.current!.innerText = responseData.message;
+    responeMessageElementRef.current!.innerText = responseData.message;
   };
 
   return (
@@ -85,13 +84,10 @@ export function ContactForm({ className }: ContactFormProps) {
       onSubmit={handleSubmit(onSubmit)}
     >
       <input
-        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${
-          isSubmitted
-            ? errors.name?.message
-              ? 'border-error dark:border-error'
-              : 'border-success dark:border-success'
-            : 'border-dark dark:border-light'
-        }`}
+        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${setFormInputBorder(
+          isSubmitted,
+          errors.name?.message,
+        )}`}
         {...register('name', nameInputValidationRules)}
         placeholder="Enter your name ..."
         type="text"
@@ -101,13 +97,10 @@ export function ContactForm({ className }: ContactFormProps) {
       </p>
 
       <input
-        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${
-          isSubmitted
-            ? errors.email?.message
-              ? 'border-error dark:border-error'
-              : 'border-success dark:border-success'
-            : 'border-dark dark:border-light'
-        }`}
+        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${setFormInputBorder(
+          isSubmitted,
+          errors.email?.message,
+        )}`}
         {...register('email', emailInputValidationRules)}
         placeholder="Enter your e-mail ..."
         type="email"
@@ -117,13 +110,10 @@ export function ContactForm({ className }: ContactFormProps) {
       </p>
 
       <textarea
-        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${
-          isSubmitted
-            ? errors.message?.message
-              ? 'border-error dark:border-error'
-              : 'border-success dark:border-success'
-            : 'border-dark dark:border-light'
-        }`}
+        className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${setFormInputBorder(
+          isSubmitted,
+          errors.message?.message,
+        )}`}
         {...register('message', messageInputValidationRules)}
         placeholder="Enter your message ..."
         rows={4}
@@ -134,17 +124,13 @@ export function ContactForm({ className }: ContactFormProps) {
 
       <Button
         className="mt-14"
-        disabled={isSubmitted && !isValid}
+        disabled={(isSubmitted && !isValid) || isSubmitting}
         type="submit"
       >
-        {isSubmitting ? (
-          <PulseLoader loading color={theme === 'light' ? '#222' : '#faebd7'} />
-        ) : (
-          'Send'
-        )}
+        <SubmitLoader isSubmitting={isSubmitting} text="Send" />
       </Button>
       <p
-        ref={responeMessageRef}
+        ref={responeMessageElementRef}
         className="my-10 whitespace-pre-wrap md:text-xl"
       >
         {' '}
