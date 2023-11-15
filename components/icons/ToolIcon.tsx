@@ -29,7 +29,6 @@ export function ToolIcon({
       <svg
         className="fill-dark transition-colors dark:fill-light"
         viewBox={viewBox}
-        // viewBox="0 0 128 128"
       >
         {children}
       </svg>
