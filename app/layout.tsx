@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 import { GlobalThemeProvider } from '@/components/providers/GlobalThemeProvider';
+import { Footer } from '@/components/ui/Footer/Footer';
 import { NavBar } from '@/components/ui/NavBar/NavBar';
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
         <GlobalThemeProvider>
           <NavBar />
           {children}
+          <Footer />
         </GlobalThemeProvider>
       </body>
     </html>

@@ -2,7 +2,12 @@ import { SpecificToolIconProps, ToolIcon } from './ToolIcon';
 
 export function ESlintIcon({ className }: SpecificToolIconProps) {
   return (
-    <ToolIcon className={className} href="https://eslint.org/" title="ESlint">
+    <ToolIcon
+      className={className}
+      href="https://eslint.org/"
+      title="ESlint"
+      viewBox="0 0 128 128"
+    >
       <path
         className="fill-dark-lighter dark:fill-light-darker"
         d="M39.5 49.2L63 35.6c.6-.3 1.3-.3 1.9 0l23.6 13.6c.6.3 1 1 1 1.6V78c0 .7-.4 1.3-1 1.7L65 93.3c-.6.3-1.3.3-1.9 0L39.5 79.7c-.6-.3-1-1-1-1.7V50.8c0-.6.4-1.3 1-1.6"

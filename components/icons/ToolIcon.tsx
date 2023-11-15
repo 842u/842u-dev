@@ -2,16 +2,19 @@ type ToolIconProps = {
   className?: string;
   href: string;
   title: string;
+  viewBox: string;
   children: React.ReactNode;
 };
 
 export type SpecificToolIconProps = {
   className?: string;
+  href?: string;
 };
 
 export function ToolIcon({
   href,
   title,
+  viewBox,
   children,
   className = 'w-9',
 }: ToolIconProps) {
@@ -25,7 +28,7 @@ export function ToolIcon({
     >
       <svg
         className="fill-dark transition-colors dark:fill-light"
-        viewBox="0 0 128 128"
+        viewBox={viewBox}
       >
         {children}
       </svg>
