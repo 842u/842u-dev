@@ -3,6 +3,7 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 type ThemeButtonProps = {
   isActive?: boolean;
@@ -23,9 +24,12 @@ function ThemeButton({ className, isActive }: ThemeButtonProps) {
   return (
     <button
       aria-label="color theme"
-      className={`${
-        isActive ? 'operational' : ''
-      } ${className} invisible flex aspect-square w-full flex-col items-center justify-center p-2 opacity-0 transition-opacity operational:visible operational:opacity-100 md:visible md:opacity-100`}
+      className={twMerge(
+        `${
+          isActive ? 'operational' : ''
+        } invisible flex aspect-square w-full flex-col items-center justify-center p-2 opacity-0 transition-opacity operational:visible operational:opacity-100 md:visible md:opacity-100`,
+        className,
+      )}
       type="button"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >

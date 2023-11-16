@@ -32,8 +32,8 @@ describe('Footer', () => {
   });
 
   it('should render webpage author name', () => {
-    const firstName = 'Kamil';
-    const lastName = 'Bażanow';
+    const firstName = /kamil/i;
+    const lastName = /bażanow/i;
 
     render(<Footer />);
     const firstNameText = screen.getByText(firstName);

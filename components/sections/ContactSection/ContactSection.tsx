@@ -1,14 +1,15 @@
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm';
+import { SectionParagraph } from '@/components/ui/SectionParagraph';
 
 import { Section } from '../Section';
 
 export function ContactSection() {
   return (
-    <Section ariaLabel="contact options" title="contact">
-      <p className="md:text-2xl lg:max-w-[50vw]">
+    <Section ariaLabel="contact options" title="Contact">
+      <SectionParagraph>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet,
         excepturi.
-      </p>
+      </SectionParagraph>
       <ContactForm className="lg:w-1/2" />
     </Section>
   );

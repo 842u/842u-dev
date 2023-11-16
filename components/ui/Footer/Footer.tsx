@@ -17,8 +17,8 @@ export function Footer() {
           <MailIcon className="h-full" href="mailto:contact@842u.dev" />
         </div>
         <p className="divide-x-2 text-xl lg:m-0 lg:text-base">
-          <span className="pr-2">Kamil</span>
-          <span className="pl-2">Bażanow</span>
+          <span className="pr-2">kamil</span>
+          <span className="pl-2">bażanow</span>
         </p>
       </address>
     </footer>
