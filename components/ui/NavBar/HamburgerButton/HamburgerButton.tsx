@@ -1,3 +1,5 @@
+import { twMerge } from 'tailwind-merge';
+
 type HamburgerButtonProps = {
   className?: string;
   isActive?: boolean;
@@ -12,9 +14,10 @@ export function HamburgerButton({
   return (
     <button
       aria-label="menu"
-      className={`${className} ${
-        isActive ? 'operational' : ''
-      } group aspect-square w-20 p-3`}
+      className={twMerge(
+        `${isActive ? 'operational' : ''} group aspect-square w-20 p-3`,
+        className,
+      )}
       type="button"
       onClick={onClick}
     >

@@ -4,6 +4,7 @@
 
 import { useEffect, useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { twMerge } from 'tailwind-merge';
 
 import { SubmitLoader } from '@/components/decorative/SubmitLoader';
 import { ContactFormValues } from '@/types';
@@ -94,7 +95,7 @@ export function ContactForm({ className }: ContactFormProps) {
 
   return (
     <form
-      className={`flex flex-col ${className}`}
+      className={twMerge(`flex flex-col`, className)}
       onSubmit={handleSubmit(onSubmit)}
     >
       <label className="invisible absolute" htmlFor="nameInput">

@@ -1,3 +1,5 @@
+import { twMerge } from 'tailwind-merge';
+
 type ToolIconProps = {
   className?: string;
   href: string;
@@ -20,7 +22,7 @@ export function ToolIcon({
 }: ToolIconProps) {
   return (
     <a
-      className={`block aspect-square ${className}`}
+      className={twMerge(`block aspect-square`, className)}
       href={href}
       rel="noreferrer"
       target="_blank"
