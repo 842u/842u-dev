@@ -1,16 +1,24 @@
+import { twMerge } from 'tailwind-merge';
+
 type SectionProps = {
   title?: string;
   ariaLabel?: string;
+  className?: string;
   children?: React.ReactNode;
 };
 
-export function Section({ title, ariaLabel, children }: SectionProps) {
+export function Section({
+  title,
+  ariaLabel,
+  className,
+  children,
+}: SectionProps) {
   return (
     <section
       aria-label={ariaLabel}
-      className="mx-4 my-8 md:mx-16 md:my-36 lg:mx-36"
+      className={twMerge('mx-4 my-8 md:mx-16 md:my-36 lg:mx-36', className)}
     >
-      <h2 className="text-right text-4xl md:text-5xl">{title}</h2>
+      {title && <h2 className="text-right text-4xl md:text-5xl">{title}</h2>}
       {children}
     </section>
   );

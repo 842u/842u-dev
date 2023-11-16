@@ -1,11 +1,13 @@
 import { LinkButton } from '@/components/ui/LinkButton';
 import { SectionParagraph } from '@/components/ui/SectionParagraph';
 
+import { Section } from '../Section';
+
 export function HeroSection() {
   return (
-    <section
+    <Section
       aria-label="person overview"
-      className="flex min-h-screen flex-col justify-center px-4 md:px-16 lg:px-36"
+      className="my-0 flex min-h-screen flex-col justify-center md:my-0 lg:my-0"
     >
       <h1 className="divide-x-2  text-5xl  md:text-7xl lg:text-5xl">
         <span className="pr-2">kamil</span>
@@ -22,6 +24,6 @@ export function HeroSection() {
       </SectionParagraph>
 
       <LinkButton href="/about">About me</LinkButton>
-    </section>
+    </Section>
   );
 }
