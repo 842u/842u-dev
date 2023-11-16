@@ -28,7 +28,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <h3 className="my-2 text-2xl md:text-3xl">{project.name}</h3>
 
-        <SectionParagraph>{project.description}</SectionParagraph>
+        <SectionParagraph className="my-0 md:my-0">
+          {project.description}
+        </SectionParagraph>
       </div>
 
       <div className="my-8 flex flex-col lg:max-w-md lg:flex-grow">
