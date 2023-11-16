@@ -13,9 +13,11 @@ jest.mock('../../../utils/helpers.ts', () => ({
 
 describe('ProjectsSection', () => {
   it('should render heading with section title', () => {
+    const title = /projects/i;
+
     render(<ProjectsSection projects={allProjects} />);
 
-    const heading = screen.getByRole('heading', { name: 'projects' });
+    const heading = screen.getByRole('heading', { name: title });
 
     expect(heading).toBeInTheDocument();
   });
