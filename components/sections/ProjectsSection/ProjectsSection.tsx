@@ -26,18 +26,16 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
   return (
     <Section ariaLabel="projects overview" title="Projects">
-      <div className="flex flex-col items-start justify-center gap-8">
-        <HorizontalMenu
-          mediaBreakpoints={{
-            sm: { minWidth: 640, offset: 'center' },
-            md: { minWidth: 768, offset: 100 },
-            lg: { minWidth: 1024, offset: 100 },
-          }}
-          onClick={menuItemClickHandler}
-        >
-          {projects.map((project) => project.name)}
-        </HorizontalMenu>
-      </div>
+      <HorizontalMenu
+        mediaBreakpoints={{
+          sm: { minWidth: 640, offset: 'center' },
+          md: { minWidth: 768, offset: 100 },
+          lg: { minWidth: 1024, offset: 100 },
+        }}
+        onClick={menuItemClickHandler}
+      >
+        {projects.map((project) => project.name)}
+      </HorizontalMenu>
 
       <ProjectCard project={currentProject} />
     </Section>
