@@ -4,6 +4,7 @@ import { Project } from '@/types';
 import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { LinkButton } from '../LinkButton';
+import { SectionParagraph } from '../SectionParagraph';
 
 type ProjectCardProps = {
   project: Project;
@@ -27,7 +28,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
         <h3 className="my-2 text-2xl md:text-3xl">{project.name}</h3>
 
-        <p className="text-lg md:text-2xl">{project.description}</p>
+        <SectionParagraph>{project.description}</SectionParagraph>
       </div>
 
       <div className="my-8 flex flex-col lg:max-w-md lg:flex-grow">
@@ -41,7 +42,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
-          See more...
+          See more
         </LinkButton>
       </div>
     </div>

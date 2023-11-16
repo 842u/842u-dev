@@ -25,7 +25,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   };
 
   return (
-    <Section ariaLabel="projects overview" title="projects">
+    <Section ariaLabel="projects overview" title="Projects">
       <div className="flex flex-col items-start justify-center gap-8">
         <HorizontalMenu
           mediaBreakpoints={{

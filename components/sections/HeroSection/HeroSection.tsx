@@ -1,4 +1,5 @@
 import { LinkButton } from '@/components/ui/LinkButton';
+import { SectionParagraph } from '@/components/ui/SectionParagraph';
 
 export function HeroSection() {
   return (
@@ -11,19 +12,16 @@ export function HeroSection() {
         <span className="pl-2">bażanow</span>
       </h1>
 
-      <p
-        className="py-12 text-justify text-lg md:py-24 md:text-2xl lg:max-w-[50vw] lg:text-xl"
-        data-testid="hero-description"
-      >
+      <SectionParagraph data-testid="hero-description">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam ea
         dignissimos, iste quidem ducimus quis facere voluptatibus quasi cum quod
         repudiandae, atque et tenetur id ex tempora nobis pariatur aliquid
         placeat? Ipsa dolore eos assumenda numquam nostrum quibusdam velit alias
         consequatur, quisquam minima dignissimos consequuntur deleniti quo
         itaque fugit quia?
-      </p>
+      </SectionParagraph>
 
-      <LinkButton href="/about">about me</LinkButton>
+      <LinkButton href="/about">About me</LinkButton>
     </section>
   );
 }

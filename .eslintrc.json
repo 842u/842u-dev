@@ -21,24 +21,35 @@
   },
   "plugins": ["@typescript-eslint", "react", "simple-import-sort"],
   "rules": {
-    "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error",
-    "import/prefer-default-export": "off",
-    "import/extensions": "off",
-    "react/require-default-props": "off",
     "@typescript-eslint/no-var-requires": "off",
     "consistent-return": "off",
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "assert": "either"
+      }
+    ],
     "react/jsx-sort-props": [
       "error",
       {
         "callbacksLast": true,
-        "shorthandFirst": true,
-        "shorthandLast": false,
         "ignoreCase": true,
         "noSortAlphabetically": false,
-        "reservedFirst": true
+        "reservedFirst": true,
+        "shorthandFirst": true,
+        "shorthandLast": false
       }
-    ]
+    ],
+    "react/require-default-props": "off",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error"
   }
 }

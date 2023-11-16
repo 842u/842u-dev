@@ -1,4 +1,5 @@
 import { ProgressBar } from '@/components/ui/ProgressBar/ProgressBar';
+import { SectionParagraph } from '@/components/ui/SectionParagraph';
 import { Skill } from '@/data/skills';
 import { toolIconMapping } from '@/utils/toolIconMapping';
 
@@ -10,15 +11,15 @@ type ExperienceSectionProps = {
 
 export function ExperienceSection({ skills }: ExperienceSectionProps) {
   return (
-    <Section ariaLabel="technologies overview" title="experience">
-      <p className="md:text-xl lg:max-w-[50vw]">
+    <Section ariaLabel="technologies overview" title="Experience">
+      <SectionParagraph>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
         adipisci fuga exercitationem delectus facilis eos quos vel molestiae
         recusandae atque quaerat, quod consequatur vitae quo quibusdam velit ex
         nihil, corrupti quisquam harum sint odio? Rerum, magni voluptatem ipsam
         architecto provident nisi impedit sint laudantium animi obcaecati,
         itaque alias aperiam saepe!
-      </p>
+      </SectionParagraph>
       <div className="my-12 md:flex md:flex-wrap md:justify-evenly md:gap-10">
         {skills.map((skill) => {
           const ToolIcon = toolIconMapping[skill.name];

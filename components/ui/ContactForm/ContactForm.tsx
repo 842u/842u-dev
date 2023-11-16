@@ -97,12 +97,16 @@ export function ContactForm({ className }: ContactFormProps) {
       className={`flex flex-col ${className}`}
       onSubmit={handleSubmit(onSubmit)}
     >
+      <label className="invisible absolute" htmlFor="nameInput">
+        Name
+      </label>
       <input
         className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${setFormInputBorder(
           isSubmitted,
           errors.name?.message,
         )}`}
         {...register('name', nameInputValidationRules)}
+        id="nameInput"
         placeholder="Enter your name ..."
         type="text"
       />
@@ -110,12 +114,16 @@ export function ContactForm({ className }: ContactFormProps) {
         {errors.name?.message || ' '}
       </p>
 
+      <label className="invisible absolute" htmlFor="emailInput">
+        Email
+      </label>
       <input
         className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${setFormInputBorder(
           isSubmitted,
           errors.email?.message,
         )}`}
         {...register('email', emailInputValidationRules)}
+        id="emailInput"
         placeholder="Enter your e-mail ..."
         type="email"
       />
@@ -123,12 +131,16 @@ export function ContactForm({ className }: ContactFormProps) {
         {errors.email?.message || ' '}
       </p>
 
+      <label className="invisible absolute" htmlFor="messageInput">
+        Message
+      </label>
       <textarea
         className={`mt-10 border-b-2 bg-light text-2xl transition-[background-color] placeholder:text-2xl placeholder:text-dark-lighter dark:bg-dark md:text-3xl ${setFormInputBorder(
           isSubmitted,
           errors.message?.message,
         )}`}
         {...register('message', messageInputValidationRules)}
+        id="messageInput"
         placeholder="Enter your message ..."
         rows={4}
       />
