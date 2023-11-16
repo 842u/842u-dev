@@ -9,7 +9,7 @@
  * animationSpeed => bigger number = slower animation
  */
 
-type CMR2AnimatedTextProps = {
+type CMR2SVGProps = {
   text: string;
   animationSpeed: number;
   characterSpacing: number;
@@ -20,7 +20,7 @@ type CMR2AnimatedTextProps = {
   className?: string;
 };
 
-export function CMR2AnimatedText({
+export function CMR2SVG({
   text,
   animationSpeed,
   characterRotation,
@@ -29,7 +29,7 @@ export function CMR2AnimatedText({
   className,
   pathShape,
   textRepetition = 1,
-}: CMR2AnimatedTextProps) {
+}: CMR2SVGProps) {
   const textArray = text.repeat(textRepetition).split('');
 
   return (
