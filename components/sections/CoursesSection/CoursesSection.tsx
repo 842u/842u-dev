@@ -18,7 +18,9 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
 
   const menuItemClickHandler = (event: React.MouseEvent) => {
     const clickedItem = courses.find(
-      (course) => course.name === (event.target as HTMLButtonElement).innerText,
+      (course) =>
+        course.name.toLowerCase() ===
+        (event.target as HTMLButtonElement).innerText,
     );
 
     setCurrentCourse(clickedItem || courses[0]);
@@ -33,7 +35,7 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
         Culpa, molestias.
       </SectionParagraph>
       <HorizontalMenu onClick={menuItemClickHandler}>
-        {courses.map((course) => course.name)}
+        {courses.map((course) => course.name.toLowerCase())}
       </HorizontalMenu>
     </Section>
   );

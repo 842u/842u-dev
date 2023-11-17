@@ -70,7 +70,7 @@ export function HorizontalMenu({
         const isActive = activeItemIndex === index;
 
         return (
-          <li key={index} className="inline-block">
+          <li key={index} className="inline-block px-3">
             <button
               className={`${
                 isActive ? 'operational' : ''
