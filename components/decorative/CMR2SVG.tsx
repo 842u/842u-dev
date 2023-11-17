@@ -1,6 +1,6 @@
-'use client';
-
 /* eslint react/no-array-index-key:0 */
+
+'use client';
 
 /*
  * Component that simulates Collin McRae Rally 2.0 main menu icons.
@@ -34,22 +34,24 @@ export function CMR2SVG({
 
   return (
     <svg className={className} viewBox={viewBox}>
-      <path d={pathShape} fill="none" id="pathId" />
+      <path className="overflow-hidden" d={pathShape} fill="none" id="pathId" />
 
-      {textArray.map((character, index) => (
-        <text key={`${character}${index}`} className="select-none">
-          {character}
-          <animateMotion
-            begin={`${characterSpacing * index}s`}
-            calcMode="paced"
-            dur={`${animationSpeed}s`}
-            repeatCount="indefinite"
-            rotate={characterRotation}
-          >
-            <mpath href="#pathId" />
-          </animateMotion>
-        </text>
-      ))}
+      <g>
+        {textArray.map((character, index) => (
+          <text className="fill-dark-lighter dark:fill-light-darker">
+            {character}
+            <animateMotion
+              begin={`${characterSpacing * index}s`}
+              calcMode="paced"
+              dur={`${animationSpeed}s`}
+              repeatCount="indefinite"
+              rotate={characterRotation}
+            >
+              <mpath href="#pathId" />
+            </animateMotion>
+          </text>
+        ))}
+      </g>
     </svg>
   );
 }
