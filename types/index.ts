@@ -22,6 +22,12 @@ export type Tool = {
   name: AvaliableTools;
 };
 
+export type Course = {
+  name: string;
+  image: string;
+  url: string;
+};
+
 export type Project = {
   name: string;
   image: string;
