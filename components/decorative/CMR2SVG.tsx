@@ -1,17 +1,14 @@
-'use client';
-
 /* eslint react/no-array-index-key:0 */
 
 /*
  * Component that simulates Collin McRae Rally 2.0 main menu icons.
  * https://www.youtube.com/watch?v=EgmbAs_qmY8&ab_channel=Boo.E.Eng
- * Pass <path> "d" parameter as pathShape prop.
- * animationSpeed => bigger number = slower animation
+ * Pass single <path> "d" parameter as pathShape prop.
  */
 
 type CMR2SVGProps = {
   text: string;
-  animationSpeed: number;
+  animationDuration: number;
   characterSpacing: number;
   characterRotation: '0' | 'auto' | 'auto-reverse';
   viewBox: string;
@@ -22,7 +19,7 @@ type CMR2SVGProps = {
 
 export function CMR2SVG({
   text,
-  animationSpeed,
+  animationDuration,
   characterRotation,
   characterSpacing,
   viewBox,
@@ -36,20 +33,22 @@ export function CMR2SVG({
     <svg className={className} viewBox={viewBox}>
       <path d={pathShape} fill="none" id="pathId" />
 
-      {textArray.map((character, index) => (
-        <text key={`${character}${index}`} className="select-none">
-          {character}
-          <animateMotion
-            begin={`${characterSpacing * index}s`}
-            calcMode="paced"
-            dur={`${animationSpeed}s`}
-            repeatCount="indefinite"
-            rotate={characterRotation}
-          >
-            <mpath href="#pathId" />
-          </animateMotion>
-        </text>
-      ))}
+      <g>
+        {textArray.map((character, index) => (
+          <text key={`${character}${index}`} className="select-none">
+            {character}
+            <animateMotion
+              begin={`${characterSpacing * index}s`}
+              calcMode="paced"
+              dur={`${animationDuration}s`}
+              repeatCount="indefinite"
+              rotate={characterRotation}
+            >
+              <mpath href="#pathId" />
+            </animateMotion>
+          </text>
+        ))}
+      </g>
     </svg>
   );
 }
