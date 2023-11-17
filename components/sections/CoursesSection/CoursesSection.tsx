@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { CourseCard } from '@/components/ui/CourseCard/CourseCard';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { SectionParagraph } from '@/components/ui/SectionParagraph';
 import { Course } from '@/types';
@@ -13,7 +14,6 @@ type CoursesSectionProps = {
 };
 
 export function CoursesSection({ courses }: CoursesSectionProps) {
-  // eslint-disable-next-line
   const [currentCourse, setCurrentCourse] = useState(courses[0]);
 
   const menuItemClickHandler = (event: React.MouseEvent) => {
@@ -34,9 +34,10 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
         a eaque eius voluptatum dicta distinctio laboriosam necessitatibus iure!
         Culpa, molestias.
       </SectionParagraph>
-      <HorizontalMenu onClick={menuItemClickHandler}>
+      <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
         {courses.map((course) => course.name.toLowerCase())}
       </HorizontalMenu>
+      <CourseCard course={currentCourse} />
     </Section>
   );
 }

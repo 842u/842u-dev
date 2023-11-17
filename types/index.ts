@@ -26,6 +26,8 @@ export type Course = {
   name: string;
   image: string;
   url: string;
+  date: Date;
+  hoursLength: number;
 };
 
 export type Project = {
