@@ -10,16 +10,11 @@ type CourseCardProps = {
 
 export function CourseCard({ course }: CourseCardProps) {
   return (
-    <div
-      className="gap-10 lg:flex lg:justify-between"
-      data-testid="project-card"
-    >
+    <div className="gap-10 lg:flex lg:justify-between">
       <Image
-        alt={`${course.name} overview image`}
+        alt={`${course.name} certificate`}
         className="my-8 aspect-auto brightness-90 grayscale transition-[filter] hover:brightness-100 lg:flex lg:w-1/2"
-        height={1190}
         src={course.image}
-        width={1600}
       />
 
       <div className="my-8 flex flex-col lg:max-w-md lg:flex-grow">
