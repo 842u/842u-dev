@@ -1,6 +1,6 @@
-import { GitHubIcon } from '@/components/icons/GitHubIcon';
-import { LinkedinIcon } from '@/components/icons/LinkedinIcon';
-import { MailIcon } from '@/components/icons/MailIcon';
+import { GitHubIcon } from '@/components/decorative/icons/GitHubIcon';
+import { LinkedinIcon } from '@/components/decorative/icons/LinkedinIcon';
+import { MailIcon } from '@/components/decorative/icons/MailIcon';
 
 export function Footer() {
   return (
