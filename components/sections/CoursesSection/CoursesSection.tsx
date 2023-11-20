@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { CourseCard } from '@/components/ui/CourseCard/CourseCard';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
@@ -14,16 +14,17 @@ type CoursesSectionProps = {
 };
 
 export function CoursesSection({ courses }: CoursesSectionProps) {
-  const [currentCourse, setCurrentCourse] = useState(courses[0]);
+  const coursesRef = useRef(courses);
+  const [currentCourseIndex, setCurrentCourseIndex] = useState(0);
 
   const menuItemClickHandler = (event: React.MouseEvent) => {
-    const clickedItem = courses.find(
+    const clickedItem = coursesRef.current.find(
       (course) =>
         course.name.toLowerCase() ===
         (event.target as HTMLButtonElement).innerText,
     );
 
-    setCurrentCourse(clickedItem || courses[0]);
+    setCurrentCourseIndex(coursesRef.current.indexOf(clickedItem!));
   };
 
   return (
@@ -35,9 +36,9 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
         Culpa, molestias.
       </SectionParagraph>
       <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
-        {courses.map((course) => course.name.toLowerCase())}
+        {coursesRef.current.map((course) => course.name.toLowerCase())}
       </HorizontalMenu>
-      <CourseCard course={currentCourse} />
+      <CourseCard course={coursesRef.current[currentCourseIndex]} />
     </Section>
   );
 }
