@@ -1,18 +1,19 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 
-import { CMR2SVGProps } from '@/components/decorative/CMR2SVG';
+// import CMR2SVG, { CMR2SVGProps } from '@/components/decorative/CMR2SVG';
+import { CMR2SVG } from '@/components/decorative/CMR2SVG';
 import { CoursesSection } from '@/components/sections/CoursesSection/CoursesSection';
 import { Section } from '@/components/sections/Section';
 import { SectionParagraph } from '@/components/ui/SectionParagraph';
 import { allCourses } from '@/data/courses/allCourses';
 import { alienatedSVGPath } from '@/data/svgPaths';
 
-const CMR2SVG = dynamic<CMR2SVGProps>(
-  () => import('../../components/decorative/CMR2SVG'),
-  {
-    ssr: false,
-  },
-);
+// const CMR2SVG = dynamic<CMR2SVGProps>(
+//   () => import('../../components/decorative/CMR2SVG'),
+//   {
+//     ssr: false,
+//   },
+// );
 
 export default function AboutPage() {
   return (

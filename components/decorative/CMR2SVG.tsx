@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 /* eslint react/no-array-index-key:0 */
 
@@ -8,7 +8,7 @@
  * Pass single <path> "d" parameter as pathShape prop.
  */
 
-export type CMR2SVGProps = {
+type CMR2SVGProps = {
   text: string;
   animationDuration: number;
   characterSpacing: number;
@@ -19,7 +19,7 @@ export type CMR2SVGProps = {
   className?: string;
 };
 
-export default function CMR2SVG({
+export function CMR2SVG({
   text,
   animationDuration,
   characterRotation,
