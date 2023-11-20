@@ -18,7 +18,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const menuItemClickHandler = (event: React.MouseEvent) => {
     const clickedProject = projects.find(
       (project) =>
-        project.name === (event.target as HTMLButtonElement).innerText,
+        project.name.toLowerCase() ===
+        (event.target as HTMLButtonElement).innerText,
     );
 
     setCurrentProject(clickedProject || projects[0]);
@@ -26,16 +27,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
 
   return (
     <Section ariaLabel="projects overview" title="Projects">
-      <HorizontalMenu
-        className="my-10"
-        mediaBreakpoints={{
-          sm: { minWidth: 640, offset: 'center' },
-          md: { minWidth: 768, offset: 100 },
-          lg: { minWidth: 1024, offset: 100 },
-        }}
-        onClick={menuItemClickHandler}
-      >
-        {projects.map((project) => project.name)}
+      <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
+        {projects.map((project) => project.name.toLowerCase())}
       </HorizontalMenu>
 
       <ProjectCard project={currentProject} />

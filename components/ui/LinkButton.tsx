@@ -5,12 +5,14 @@ import { SelectionArrow } from '@/components/decorative/SelectionArrow';
 
 type LinkButtonProps = {
   href: string;
+  target?: string;
   children?: React.ReactNode;
   className?: string;
 };
 
 export function LinkButton({
   href,
+  target,
   children,
   className = '',
 }: LinkButtonProps) {
@@ -21,6 +23,7 @@ export function LinkButton({
         className,
       )}
       href={href}
+      target={target}
     >
       <div className="my-4 flex items-center gap-6 md:w-fit">
         <SelectionArrow />

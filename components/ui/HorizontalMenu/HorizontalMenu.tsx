@@ -7,17 +7,23 @@ import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
 import { MediaBreakpoints } from '@/types';
 import { getContainerElementsArray, scrollToElement } from '@/utils/helpers';
 
+const defaultMediaBreakpoints: MediaBreakpoints = {
+  sm: { minWidth: 640, offset: 'center' },
+  md: { minWidth: 768, offset: 100 },
+  lg: { minWidth: 1024, offset: 100 },
+};
+
 type HorizontalMenuProps = {
   children: string[];
   onClick?: (event: React.MouseEvent) => void;
-  mediaBreakpoints: MediaBreakpoints;
+  mediaBreakpoints?: MediaBreakpoints;
   className?: string;
 };
 
 export function HorizontalMenu({
   children,
   onClick,
-  mediaBreakpoints,
+  mediaBreakpoints = defaultMediaBreakpoints,
   className,
 }: HorizontalMenuProps) {
   const menuElementRef = useRef<HTMLMenuElement | null>(null);
@@ -64,7 +70,7 @@ export function HorizontalMenu({
         const isActive = activeItemIndex === index;
 
         return (
-          <li key={index} className="inline-block">
+          <li key={index} className="inline-block px-3">
             <button
               className={`${
                 isActive ? 'operational' : ''

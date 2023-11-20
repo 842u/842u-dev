@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export enum AvaliableTools {
   TailwindCSS = 'TailwindCSS',
   NextJS = 'NextJS',
@@ -20,6 +22,14 @@ export enum AvaliableTools {
 
 export type Tool = {
   name: AvaliableTools;
+};
+
+export type Course = {
+  name: string;
+  image: StaticImageData;
+  url: string;
+  date: Date;
+  hoursLength: number;
 };
 
 export type Project = {
