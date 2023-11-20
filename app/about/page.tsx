@@ -1,8 +1,10 @@
 import { CMR2SVG } from '@/components/decorative/CMR2SVG';
 import { CoursesSection } from '@/components/sections/CoursesSection/CoursesSection';
+import { ExperienceSection } from '@/components/sections/ExperienceSection/ExperienceSection';
 import { Section } from '@/components/sections/Section';
 import { SectionParagraph } from '@/components/ui/SectionParagraph';
 import { allCourses } from '@/data/courses/allCourses';
+import { mySkills } from '@/data/skills';
 import { alienatedSVGPath } from '@/data/svgPaths';
 
 export default function AboutPage() {
@@ -46,6 +48,7 @@ export default function AboutPage() {
           viewBox="0 0 200 200"
         />
       </Section>
+      <ExperienceSection skills={mySkills} />
       <CoursesSection courses={allCourses} />
     </main>
   );
