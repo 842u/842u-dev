@@ -11,7 +11,7 @@ type ExperienceSectionProps = {
 
 export function ExperienceSection({ skills }: ExperienceSectionProps) {
   return (
-    <Section ariaLabel="technologies overview" title="Experience">
+    <Section ariaLabel="skills overview" title="Experience">
       <SectionParagraph>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
         adipisci fuga exercitationem delectus facilis eos quos vel molestiae

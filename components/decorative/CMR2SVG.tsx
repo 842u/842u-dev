@@ -1,5 +1,3 @@
-'use client';
-
 /* eslint react/no-array-index-key:0 */
 
 /*
