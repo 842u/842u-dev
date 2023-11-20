@@ -8,7 +8,7 @@
  * Pass single <path> "d" parameter as pathShape prop.
  */
 
-type CMR2SVGProps = {
+export type CMR2SVGProps = {
   text: string;
   animationDuration: number;
   characterSpacing: number;
@@ -19,7 +19,7 @@ type CMR2SVGProps = {
   className?: string;
 };
 
-export function CMR2SVG({
+export default function CMR2SVG({
   text,
   animationDuration,
   characterRotation,
