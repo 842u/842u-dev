@@ -13,7 +13,9 @@ export function CourseCard({ course }: CourseCardProps) {
     <div className="gap-10 lg:flex lg:justify-between">
       <Image
         alt={`${course.name} certificate`}
-        className="my-8 aspect-auto brightness-90 grayscale transition-[filter] hover:brightness-100 lg:flex lg:w-1/2"
+        className="my-8 aspect-auto brightness-90 grayscale transition-[filter] hover:brightness-100 hover:grayscale-0 lg:flex lg:w-1/2"
+        placeholder="blur"
+        sizes="(min-width: 768px) 100vw, 50vw)"
         src={course.image}
       />
 
