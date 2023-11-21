@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { HorizontalMenu } from './HorizontalMenu';
+import { defaultMediaBreakpoints, HorizontalMenu } from './HorizontalMenu';
 
 const mockItems = ['item 1', 'item 2', 'item 3'];
 
@@ -15,13 +15,7 @@ jest.mock('../../../utils/helpers.ts', () => ({
 describe('HorizontalMenu', () => {
   it('should render menu list', () => {
     render(
-      <HorizontalMenu
-        mediaBreakpoints={{
-          sm: { minWidth: 640, offset: 'center' },
-          md: { minWidth: 768, offset: 50 },
-          lg: { minWidth: 1024, offset: 100 },
-        }}
-      >
+      <HorizontalMenu mediaBreakpoints={defaultMediaBreakpoints}>
         {mockItems}
       </HorizontalMenu>,
     );
@@ -35,13 +29,7 @@ describe('HorizontalMenu', () => {
     const itemsNumber = mockItems.length;
 
     render(
-      <HorizontalMenu
-        mediaBreakpoints={{
-          sm: { minWidth: 640, offset: 'center' },
-          md: { minWidth: 768, offset: 50 },
-          lg: { minWidth: 1024, offset: 100 },
-        }}
-      >
+      <HorizontalMenu mediaBreakpoints={defaultMediaBreakpoints}>
         {mockItems}
       </HorizontalMenu>,
     );
@@ -57,11 +45,7 @@ describe('HorizontalMenu', () => {
 
     render(
       <HorizontalMenu
-        mediaBreakpoints={{
-          sm: { minWidth: 640, offset: 'center' },
-          md: { minWidth: 768, offset: 50 },
-          lg: { minWidth: 1024, offset: 100 },
-        }}
+        mediaBreakpoints={defaultMediaBreakpoints}
         onClick={clickHandler}
       >
         {mockItems}
