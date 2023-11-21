@@ -1,52 +1,62 @@
 'use client';
 
-import { useState } from 'react';
+import { gsap } from 'gsap';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { useEffect, useRef, useState } from 'react';
 
-import { CMR2SVG } from '@/components/decorative/CMR2SVG';
-import { Section } from '@/components/sections/Section';
-import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
-import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
-import { allProjects } from '@/data/projects/allProjects';
 import { bazuDevSVGPath } from '@/data/svgPaths';
-import { Project } from '@/types';
 
-type AllProjectsSectionProps = {
-  projects: Project[];
-};
+gsap.registerPlugin(MotionPathPlugin);
 
-function AllProjectsSection({ projects }: AllProjectsSectionProps) {
-  const [currentProject, setCurrentProject] = useState(projects[0]);
+function AllProjectsSection() {
+  const [initialized, setInitialized] = useState(false);
+  const svgRef = useRef<SVGSVGElement>(null);
 
-  const menuItemClickHandler = (event: React.MouseEvent) => {
-    const clickedProject = projects.find(
-      (project) =>
-        project.name.toLowerCase() ===
-        (event.target as HTMLButtonElement).innerText,
-    );
+  const myText = ' 842u dev ';
+  const textArray = myText.repeat(50).split('');
 
-    setCurrentProject(clickedProject || projects[0]);
-  };
+  useEffect(() => {
+    textArray.forEach((character, index) => {
+      const idString = `idx${character}${index}`.replace(' ', '');
+
+      const textElement = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'text',
+      );
+
+      textElement.textContent = character;
+      textElement.id = idString;
+
+      svgRef.current?.appendChild(textElement);
+    });
+
+    setInitialized(true);
+  }, []);
+
+  useEffect(() => {
+    if (initialized) {
+      textArray.forEach((character, index) => {
+        const idString = `#idx${character}${index}`.replace(' ', '');
+
+        gsap.to(idString, {
+          duration: 35,
+          delay: index * 0.07,
+          motionPath: bazuDevSVGPath,
+          repeat: -1,
+          ease: 'none',
+        });
+      });
+    }
+  }, [initialized]);
 
   return (
-    <div className="min-h-screen">
-      <Section ariaLabel="all projects" title="Projects">
-        <CMR2SVG
-          animationDuration={30}
-          characterRotation="0"
-          characterSpacing={0.08}
-          className="fill-light-darker text-[3px] dark:text-dark-lighter md:block"
-          pathShape={bazuDevSVGPath}
-          text="842u.dev "
-          textRepetition={42}
-          viewBox="0 0 292 57"
-        />
-        <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
-          {projects.map((project) => project.name)}
-        </HorizontalMenu>
-      </Section>
-      <Section>
-        <ProjectCard project={currentProject} />
-      </Section>
+    <div className="flex h-screen w-screen flex-col items-center justify-center">
+      <section className="w-full">
+        <svg className="fill-light" viewBox="0 0 292 57">
+          <g ref={svgRef} className="text-[3px]" />
+          <path className="invisible" d={bazuDevSVGPath} id="path" />
+        </svg>
+      </section>
     </div>
   );
 }
@@ -54,7 +64,7 @@ function AllProjectsSection({ projects }: AllProjectsSectionProps) {
 export default function ProjectsPage() {
   return (
     <main>
-      <AllProjectsSection projects={allProjects} />
+      <AllProjectsSection />
     </main>
   );
 }

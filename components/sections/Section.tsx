@@ -5,6 +5,7 @@ type SectionProps = {
   ariaLabel?: string;
   className?: string;
   children?: React.ReactNode;
+  ref?: React.MutableRefObject<HTMLElement>;
 };
 
 export function Section({
@@ -12,9 +13,11 @@ export function Section({
   ariaLabel,
   className,
   children,
+  ref,
 }: SectionProps) {
   return (
     <section
+      ref={ref}
       aria-label={ariaLabel}
       className={twMerge('mx-4 my-8 md:mx-16 md:my-36 lg:mx-36', className)}
     >
