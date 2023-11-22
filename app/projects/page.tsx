@@ -31,14 +31,14 @@ function AllProjectsSection({ projects }: AllProjectsSectionProps) {
     <div className="min-h-screen">
       <Section ariaLabel="all projects" title="Projects">
         <CMR2SVG
-          animationDuration={30}
+          animationDuration={20}
           characterRotation="0"
-          characterSpacing={0.08}
-          className="fill-light-darker text-[3px] dark:text-dark-lighter md:block"
+          characterSpacing={0.1}
+          className="fill-light-darker text-[10px] dark:text-dark-lighter md:block"
           pathShape={bazuDevSVGPath}
           text="842u.dev "
-          textRepetition={42}
-          viewBox="0 0 292 57"
+          textRepetition={23}
+          viewBox="0 0 960 243"
         />
         <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
           {projects.map((project) => project.name)}
