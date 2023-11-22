@@ -13,6 +13,7 @@ type CMR2SVGProps = {
   characterRotation: '0' | 'auto' | 'auto-reverse';
   viewBox: string;
   pathShape: string;
+  pathId: string;
   textRepetition?: number;
   className?: string;
 };
@@ -25,13 +26,14 @@ export function CMR2SVG({
   viewBox,
   className,
   pathShape,
+  pathId,
   textRepetition = 1,
 }: CMR2SVGProps) {
   const textArray = text.repeat(textRepetition).split('');
 
   return (
     <svg className={className} viewBox={viewBox}>
-      <path d={pathShape} fill="none" id="pathId" />
+      <path d={pathShape} fill="none" id={pathId} />
 
       <g>
         {textArray.map((character, index) => (
@@ -44,7 +46,7 @@ export function CMR2SVG({
               repeatCount="indefinite"
               rotate={characterRotation}
             >
-              <mpath href="#pathId" />
+              <mpath href={`#${pathId}`} />
             </animateMotion>
           </text>
         ))}
