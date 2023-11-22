@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 import { defaultMediaBreakpoints } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 
@@ -19,14 +19,35 @@ const simplePath = {
 };
 
 export default function BazuDevSVG() {
-  const windowWidth = useRef(0);
+  const [mediaBreakpoint, setMediaBreakpoint] = useState('');
 
   function windowResizeHandler(event: Event) {
     const windowTarget = event.target as Window;
-    windowWidth.current = windowTarget.innerWidth;
+
+    if (windowTarget.innerWidth >= defaultMediaBreakpoints.lg.minWidth) {
+      setMediaBreakpoint('lg');
+    } else if (
+      windowTarget.innerWidth <= defaultMediaBreakpoints.lg.minWidth &&
+      windowTarget.innerWidth >= defaultMediaBreakpoints.md.minWidth
+    ) {
+      setMediaBreakpoint('md');
+    } else if (windowTarget.innerWidth <= defaultMediaBreakpoints.sm.minWidth) {
+      setMediaBreakpoint('sm');
+    }
   }
 
   useEffect(() => {
+    if (window.innerWidth >= defaultMediaBreakpoints.lg.minWidth) {
+      setMediaBreakpoint('lg');
+    } else if (
+      window.innerWidth <= defaultMediaBreakpoints.lg.minWidth &&
+      window.innerWidth >= defaultMediaBreakpoints.md.minWidth
+    ) {
+      setMediaBreakpoint('md');
+    } else if (window.innerWidth <= defaultMediaBreakpoints.sm.minWidth) {
+      setMediaBreakpoint('sm');
+    }
+
     window.addEventListener('resize', windowResizeHandler);
   }, []);
 
@@ -34,7 +55,7 @@ export default function BazuDevSVG() {
 
   return (
     <>
-      {windowWidth.current >= defaultMediaBreakpoints.lg.minWidth ? (
+      {mediaBreakpoint === 'lg' ? (
         <CMR2SVG
           animationDuration={30}
           characterRotation="0"
@@ -47,8 +68,7 @@ export default function BazuDevSVG() {
           viewBox={complexPath.viewBox}
         />
       ) : null}
-      {windowWidth.current <= defaultMediaBreakpoints.md.minWidth &&
-      windowWidth.current >= defaultMediaBreakpoints.sm.minWidth ? (
+      {mediaBreakpoint === 'md' ? (
         <CMR2SVG
           animationDuration={15}
           characterRotation="0"
@@ -61,7 +81,7 @@ export default function BazuDevSVG() {
           viewBox={simplePath.viewBox}
         />
       ) : null}
-      {windowWidth.current <= defaultMediaBreakpoints.sm.minWidth ? (
+      {mediaBreakpoint === 'sm' ? (
         <CMR2SVG
           animationDuration={13}
           characterRotation="0"
