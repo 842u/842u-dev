@@ -47,7 +47,8 @@ export default function BazuDevSVG() {
           viewBox={complexPath.viewBox}
         />
       ) : null}
-      {windowWidth.current >= defaultMediaBreakpoints.md.minWidth ? (
+      {windowWidth.current <= defaultMediaBreakpoints.md.minWidth &&
+      windowWidth.current >= defaultMediaBreakpoints.sm.minWidth ? (
         <CMR2SVG
           animationDuration={15}
           characterRotation="0"
@@ -60,7 +61,7 @@ export default function BazuDevSVG() {
           viewBox={simplePath.viewBox}
         />
       ) : null}
-      {windowWidth.current >= defaultMediaBreakpoints.sm.minWidth ? (
+      {windowWidth.current <= defaultMediaBreakpoints.sm.minWidth ? (
         <CMR2SVG
           animationDuration={13}
           characterRotation="0"
