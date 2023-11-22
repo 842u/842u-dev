@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+
+import { defaultMediaBreakpoints } from '@/components/ui/HorizontalMenu/HorizontalMenu';
+
 import { CMR2SVG } from './CMR2SVG';
 
 const complexPath = {
@@ -15,43 +19,60 @@ const simplePath = {
 };
 
 export default function BazuDevSVG() {
+  const windowWidth = useRef(0);
+
+  function windowResizeHandler(event: Event) {
+    const windowTarget = event.target as Window;
+    windowWidth.current = windowTarget.innerWidth;
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', windowResizeHandler);
+  }, []);
+
   const text = '842u.dev ';
 
   return (
     <>
-      <CMR2SVG
-        animationDuration={30}
-        characterRotation="0"
-        characterSpacing={0.08}
-        className="hidden fill-light-darker text-[3px] dark:text-dark-lighter md:hidden lg:block"
-        pathId={complexPath.pathId}
-        pathShape={complexPath.path}
-        text={text}
-        textRepetition={42}
-        viewBox={complexPath.viewBox}
-      />
-      <CMR2SVG
-        animationDuration={15}
-        characterRotation="0"
-        characterSpacing={0.1}
-        className="hidden fill-light-darker text-2xl dark:text-dark-lighter md:block lg:hidden"
-        pathId={`${simplePath.pathId}md`}
-        pathShape={simplePath.path}
-        text={text}
-        textRepetition={17}
-        viewBox={simplePath.viewBox}
-      />
-      <CMR2SVG
-        animationDuration={13}
-        characterRotation="0"
-        characterSpacing={0.1}
-        className="fill-light-darker text-3xl dark:text-dark-lighter md:hidden lg:hidden"
-        pathId={`${simplePath.pathId}sm`}
-        pathShape={simplePath.path}
-        text={text}
-        textRepetition={15}
-        viewBox={simplePath.viewBox}
-      />
+      {windowWidth.current >= defaultMediaBreakpoints.lg.minWidth ? (
+        <CMR2SVG
+          animationDuration={30}
+          characterRotation="0"
+          characterSpacing={0.08}
+          className="hidden fill-light-darker text-[3px] dark:text-dark-lighter md:hidden lg:block"
+          pathId={complexPath.pathId}
+          pathShape={complexPath.path}
+          text={text}
+          textRepetition={42}
+          viewBox={complexPath.viewBox}
+        />
+      ) : null}
+      {windowWidth.current >= defaultMediaBreakpoints.md.minWidth ? (
+        <CMR2SVG
+          animationDuration={15}
+          characterRotation="0"
+          characterSpacing={0.1}
+          className="hidden fill-light-darker text-2xl dark:text-dark-lighter md:block lg:hidden"
+          pathId={`${simplePath.pathId}md`}
+          pathShape={simplePath.path}
+          text={text}
+          textRepetition={17}
+          viewBox={simplePath.viewBox}
+        />
+      ) : null}
+      {windowWidth.current >= defaultMediaBreakpoints.sm.minWidth ? (
+        <CMR2SVG
+          animationDuration={13}
+          characterRotation="0"
+          characterSpacing={0.1}
+          className="fill-light-darker text-3xl dark:text-dark-lighter md:hidden lg:hidden"
+          pathId={`${simplePath.pathId}sm`}
+          pathShape={simplePath.path}
+          text={text}
+          textRepetition={15}
+          viewBox={simplePath.viewBox}
+        />
+      ) : null}
     </>
   );
 }
