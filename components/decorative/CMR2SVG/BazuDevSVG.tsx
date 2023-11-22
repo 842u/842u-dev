@@ -13,30 +13,15 @@ const complexPath = {
 };
 
 const simplePath = {
-  viewBox: '0 0 960 243',
-  path: 'M106.3 129c-7-9.3-38.5-13-38.5-13s29-5.2 34.2-13c4.9-7.3 4.3-17.5 4.3-17.5s-1.8-17.8-12-26.5C83.8 50.2 65 50.5 65 50.5s-19.4.7-30 10c-9.9 8.6-11 25.8-11 25.8s1 12.7 6.8 20.5C36 113.8 65 116 65 116s-32 3.6-38.3 11.5c-7.5 9.5-8.4 23.5-8.4 23.5S18 171.6 29 181.8C41.7 193.4 65.8 195 65.8 195s24.1-2.3 35.2-12.5c12.3-11.3 11.5-30.8 11.5-30.8s.1-14-6.3-22.7ZM242 90.7s1.6-20.8 13.5-31.2c11.2-9.8 32.8-9.3 32.8-9.3s22.6.5 32.7 9.3c11.8 10.3 11.3 29 11.3 29s-.7 16.3-7 24.3c-19.7 24.6-86.8 80.2-86.8 80.2h94m-129.3-.5L203 49.7l-80 109.5h99.8m133.4-70.7L356 163s0 16.5 9 24.5c8.8 7.8 26.8 7.3 26.8 7.3s12.2-.7 19.7-4.8c8.7-4.8 12.8-13.3 12.8-13.3L422.6 89l2 104.3M528.5 173v20.3h20L548 173h-19.5ZM701.8 49.7l2 88.5s0-20-3.3-33.4c-2.2-8.8-7.2-12.7-10-14-7.4-3.7-18-3.8-18-3.8s-21-.4-32.3 13.3c-10.8 13-11.7 40.2-11.7 40.2s1.3 27.9 11.8 40.5c11.9 14.4 33.2 13.8 33.2 13.8s12.5-1.2 17.8-3.8c3.3-1.7 7.7-4.3 9.7-13.3 3-13.5 2.8-34.7 2.8-34.7l-.8 49.8m39.3-49s93.5 0 93.5.2c0 .1 2-29-9.5-43-12-14.4-37.3-13.8-37.3-13.8s-25.6-1-36.5 11.5c-13.5 15.6-13 45.5-13 45.5s1.1 25.8 14.8 39.6c11 11.2 35.2 11 35.2 11s21.4-1.2 33.3-10.3c10.6-8.2 12-24.3 12-24.3m12-71.2 46.7 103.8 47-103.3',
+  viewBox: '0 0 589 151',
+  path: 'M41.5 70.5s13.2.3 18.9-3.9c6.3-4.7 5.2-14.1 5.2-14.1S66 40.2 60 34.9c-6.7-5.7-20-4.4-20-4.4s-13.7-.4-19.9 4.6C13.6 40.7 14.4 52 14.4 52s-.8 10 5.6 14.8c6.2 4.5 19.8 3.6 19.8 3.6s16.8-.8 24 5c7.4 5.9 5.2 18.2 5.2 18.2s.6 14-5.7 19.7c-7.9 7-22.9 6-22.9 6s-15 1.9-22.5-5c-7.3-6.5-6.9-21.7-6.9-21.7s-.5-12 6.5-17.7c6.7-5.4 20.9-4.5 20.9-4.5m99.4 23.1H76.7L121.5 30l-.8 88.9M150.3 56s-.7-14.4 6.8-21.2c6.7-6.1 21.7-4.6 21.7-4.6s14.1-.5 21 5.6c6.9 5.9 6.4 18.4 6.4 18.4s2.3 9.3-7.7 20.3c-17.2 19-50.8 44.3-50.8 44.3l59 .2m14.5-65v43.6s-1 11 4.8 16.8c5 5 16.7 4.8 16.7 4.8s6.7 1.1 11.4-1.3c5.4-2.8 8.9-9.2 8.9-9.2m5.5 10.2-.5-65m60 53.1v12h11v-12h-11Zm104.6-45s-2.2-4.9-6.6-7c-4.1-2.2-10.4-1.5-10.4-1.5s-14.8-.6-21 6.9c-7.2 8.8-6 26-6 26s-.8 17.1 6.2 25.6c6.7 8 21 7.4 21 7.4s6.8.3 11.1-1.8c4.6-2.2 6.7-6.7 6.7-6.7m5.7 8-.5-88.9m30 50h47.8s-.5-14-8.1-21c-6.9-6.4-20.8-5.7-20.8-5.7s-15.2-.9-23 7.8c-7 8-6.8 25.7-6.8 25.7s-.8 16.5 6.9 24.8c7.4 8 23.3 8 23.3 8s13.1.5 20.5-5.3c6.7-5.2 7.6-16.8 7.6-16.8M530 53.9l22.9 65.1 24.5-65',
   pathId: 'simple',
 };
 
 export default function BazuDevSVG() {
   const [mediaBreakpoint, setMediaBreakpoint] = useState('');
 
-  function windowResizeHandler(event: Event) {
-    const windowTarget = event.target as Window;
-
-    if (windowTarget.innerWidth >= defaultMediaBreakpoints.lg.minWidth) {
-      setMediaBreakpoint('lg');
-    } else if (
-      windowTarget.innerWidth <= defaultMediaBreakpoints.lg.minWidth &&
-      windowTarget.innerWidth >= defaultMediaBreakpoints.md.minWidth
-    ) {
-      setMediaBreakpoint('md');
-    } else if (windowTarget.innerWidth <= defaultMediaBreakpoints.sm.minWidth) {
-      setMediaBreakpoint('sm');
-    }
-  }
-
-  useEffect(() => {
+  function windowResizeHandler() {
     if (window.innerWidth >= defaultMediaBreakpoints.lg.minWidth) {
       setMediaBreakpoint('lg');
     } else if (
@@ -47,14 +32,49 @@ export default function BazuDevSVG() {
     } else if (window.innerWidth <= defaultMediaBreakpoints.sm.minWidth) {
       setMediaBreakpoint('sm');
     }
+  }
+
+  useEffect(() => {
+    windowResizeHandler();
 
     window.addEventListener('resize', windowResizeHandler);
+
+    return () => {
+      window.removeEventListener('resize', windowResizeHandler);
+    };
   }, []);
 
   const text = '842u.dev ';
 
   return (
-    <>
+    <div className="aspect-[589/151] lg:aspect-[292/57]">
+      {mediaBreakpoint === 'sm' ? (
+        <CMR2SVG
+          animationDuration={10}
+          characterRotation="0"
+          characterSpacing={0.1}
+          className="fill-light-darker text-base dark:text-dark-lighter md:hidden lg:hidden"
+          pathId={`${simplePath.pathId}sm`}
+          pathShape={simplePath.path}
+          text={text}
+          textRepetition={12}
+          viewBox={simplePath.viewBox}
+        />
+      ) : null}
+
+      {mediaBreakpoint === 'md' ? (
+        <CMR2SVG
+          animationDuration={10}
+          characterRotation="0"
+          characterSpacing={0.08}
+          className="hidden fill-light-darker text-xs dark:text-dark-lighter md:block lg:hidden"
+          pathId={`${simplePath.pathId}md`}
+          pathShape={simplePath.path}
+          text={text}
+          textRepetition={14}
+          viewBox={simplePath.viewBox}
+        />
+      ) : null}
       {mediaBreakpoint === 'lg' ? (
         <CMR2SVG
           animationDuration={30}
@@ -68,32 +88,6 @@ export default function BazuDevSVG() {
           viewBox={complexPath.viewBox}
         />
       ) : null}
-      {mediaBreakpoint === 'md' ? (
-        <CMR2SVG
-          animationDuration={15}
-          characterRotation="0"
-          characterSpacing={0.1}
-          className="hidden fill-light-darker text-2xl dark:text-dark-lighter md:block lg:hidden"
-          pathId={`${simplePath.pathId}md`}
-          pathShape={simplePath.path}
-          text={text}
-          textRepetition={17}
-          viewBox={simplePath.viewBox}
-        />
-      ) : null}
-      {mediaBreakpoint === 'sm' ? (
-        <CMR2SVG
-          animationDuration={13}
-          characterRotation="0"
-          characterSpacing={0.1}
-          className="fill-light-darker text-3xl dark:text-dark-lighter md:hidden lg:hidden"
-          pathId={`${simplePath.pathId}sm`}
-          pathShape={simplePath.path}
-          text={text}
-          textRepetition={15}
-          viewBox={simplePath.viewBox}
-        />
-      ) : null}
-    </>
+    </div>
   );
 }
