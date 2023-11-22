@@ -49,15 +49,19 @@ export type ProjectSettings = {
 
 export type ItemOffset = number | 'center';
 
-type Breakpoint = {
+export enum AvaliableBreakpoints {
+  SM = 'sm',
+  MD = 'md',
+  LG = 'lg',
+}
+export type Breakpoint = {
+  id: AvaliableBreakpoints;
   minWidth: number;
   offset: ItemOffset;
 };
 
 export type MediaBreakpoints = {
-  sm: Breakpoint;
-  md: Breakpoint;
-  lg: Breakpoint;
+  [value in keyof typeof AvaliableBreakpoints]: Breakpoint;
 };
 
 export enum FormInputsIdentifiers {

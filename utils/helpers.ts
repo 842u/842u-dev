@@ -80,22 +80,25 @@ export function getContainerElementsArray(
   return itemsElementsArray;
 }
 
-export function getMediaBreakpointOffset(mediaBreakpoints: MediaBreakpoints) {
-  const screenWidth = window.innerWidth;
-  let breakpointOffset: ItemOffset = 0;
+export function getMediaBreakpointData(mediaBreakpoints: MediaBreakpoints) {
+  const windowWidth = window.innerWidth;
 
-  if (screenWidth < mediaBreakpoints.md.minWidth) {
-    breakpointOffset = mediaBreakpoints.sm.offset;
-  } else if (
-    screenWidth >= mediaBreakpoints.md.minWidth &&
-    screenWidth < mediaBreakpoints.lg.minWidth
-  ) {
-    breakpointOffset = mediaBreakpoints.md.offset;
-  } else if (screenWidth >= mediaBreakpoints.lg.minWidth) {
-    breakpointOffset = mediaBreakpoints.lg.offset;
+  if (windowWidth <= mediaBreakpoints.SM.minWidth) {
+    return mediaBreakpoints.SM;
   }
 
-  return breakpointOffset;
+  if (
+    windowWidth <= mediaBreakpoints.LG.minWidth &&
+    windowWidth >= mediaBreakpoints.MD.minWidth
+  ) {
+    return mediaBreakpoints.MD;
+  }
+
+  if (windowWidth >= mediaBreakpoints.LG.minWidth) {
+    return mediaBreakpoints.LG;
+  }
+
+  return mediaBreakpoints.SM;
 }
 
 export function getSectorElementsWidth(sectorElements: Element[]) {

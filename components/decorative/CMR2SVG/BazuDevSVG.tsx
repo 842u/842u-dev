@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 
 import { defaultMediaBreakpoints } from '@/components/ui/HorizontalMenu/HorizontalMenu';
+import { AvaliableBreakpoints } from '@/types';
+import { getMediaBreakpointData } from '@/utils/helpers';
 
 import { CMR2SVG } from './CMR2SVG';
 
@@ -19,23 +21,18 @@ const simplePath = {
 };
 
 export default function BazuDevSVG() {
-  const [mediaBreakpoint, setMediaBreakpoint] = useState('');
+  const [mediaBreakpointId, setMediaBreakpointId] = useState('');
 
   function windowResizeHandler() {
-    if (window.innerWidth >= defaultMediaBreakpoints.lg.minWidth) {
-      setMediaBreakpoint('lg');
-    } else if (
-      window.innerWidth <= defaultMediaBreakpoints.lg.minWidth &&
-      window.innerWidth >= defaultMediaBreakpoints.md.minWidth
-    ) {
-      setMediaBreakpoint('md');
-    } else if (window.innerWidth <= defaultMediaBreakpoints.sm.minWidth) {
-      setMediaBreakpoint('sm');
-    }
+    const { id } = getMediaBreakpointData(defaultMediaBreakpoints);
+
+    setMediaBreakpointId(id);
   }
 
   useEffect(() => {
-    windowResizeHandler();
+    const { id } = getMediaBreakpointData(defaultMediaBreakpoints);
+
+    setMediaBreakpointId(id);
 
     window.addEventListener('resize', windowResizeHandler);
 
@@ -48,7 +45,7 @@ export default function BazuDevSVG() {
 
   return (
     <div className="aspect-[589/151]">
-      {mediaBreakpoint === 'sm' ? (
+      {mediaBreakpointId === AvaliableBreakpoints.SM ? (
         <CMR2SVG
           animationDuration={10}
           characterRotation="0"
@@ -57,12 +54,12 @@ export default function BazuDevSVG() {
           pathId={`${simplePath.pathId}sm`}
           pathShape={simplePath.path}
           text={text}
-          textRepetition={12}
+          textRepetition={11}
           viewBox={simplePath.viewBox}
         />
       ) : null}
 
-      {mediaBreakpoint === 'md' ? (
+      {mediaBreakpointId === AvaliableBreakpoints.MD ? (
         <CMR2SVG
           animationDuration={10}
           characterRotation="0"
@@ -75,7 +72,7 @@ export default function BazuDevSVG() {
           viewBox={simplePath.viewBox}
         />
       ) : null}
-      {mediaBreakpoint === 'lg' ? (
+      {mediaBreakpointId === AvaliableBreakpoints.LG ? (
         <CMR2SVG
           animationDuration={35}
           characterRotation="0"

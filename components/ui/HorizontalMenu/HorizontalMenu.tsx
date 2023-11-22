@@ -4,13 +4,13 @@ import React, { useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
-import { MediaBreakpoints } from '@/types';
+import { AvaliableBreakpoints, MediaBreakpoints } from '@/types';
 import { getContainerElementsArray, scrollToElement } from '@/utils/helpers';
 
 export const defaultMediaBreakpoints: MediaBreakpoints = {
-  sm: { minWidth: 640, offset: 'center' },
-  md: { minWidth: 768, offset: 100 },
-  lg: { minWidth: 1024, offset: 100 },
+  SM: { id: AvaliableBreakpoints.SM, minWidth: 640, offset: 'center' },
+  MD: { id: AvaliableBreakpoints.MD, minWidth: 768, offset: 100 },
+  LG: { id: AvaliableBreakpoints.LG, minWidth: 1024, offset: 100 },
 };
 
 type HorizontalMenuProps = {
