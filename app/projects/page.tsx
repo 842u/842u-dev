@@ -1,6 +1,5 @@
 'use client';
 
-// import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
 import BazuDevSVG from '@/components/decorative/CMR2SVG/BazuDevSVG';
@@ -9,10 +8,6 @@ import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
 import { allProjects } from '@/data/projects/allProjects';
 import { Project } from '@/types';
-
-// const BazuDevSVG = dynamic(
-//   () => import('@/components/decorative/CMR2SVG/BazuDevSVG'),
-// );
 
 type AllProjectsSectionProps = {
   projects: Project[];

@@ -7,8 +7,8 @@ import { defaultMediaBreakpoints } from '@/components/ui/HorizontalMenu/Horizont
 import { CMR2SVG } from './CMR2SVG';
 
 const complexPath = {
-  viewBox: '0 0 292 57',
-  path: `M11 27.1c-2.3-.8-4-2-5-3.6a9.8 9.8 0 0 1-1.7-5.7c0-3.3 1.2-6.1 3.5-8.4C10 7.1 13.2 6 17 6c3.8 0 7 1.2 9.3 3.5 2.4 2.3 3.5 5.1 3.5 8.4 0 2.2-.5 4-1.6 5.6a9.3 9.3 0 0 1-4.9 3.6c2.7.9 4.8 2.3 6.2 4.3 1.4 2 2.1 4.4 2.1 7.1 0 3.8-1.3 7-4 9.6A14.6 14.6 0 0 1 17.1 52c-4.4 0-7.9-1.3-10.6-3.9a13 13 0 0 1-4-9.7c0-3 .7-5.3 2.2-7.3a11 11 0 0 1 6.2-4Zm-1.1-9.5c0 2.1.7 4 2 5.3a7 7 0 0 0 5.3 2.1 7 7 0 0 0 7.1-7.1c0-2.1-.7-3.9-2-5.3a7 7 0 0 0-5.2-2.1 7 7 0 0 0-7.2 7ZM8 38.4c0 1.6.4 3 1.1 4.5a7.8 7.8 0 0 0 3.3 3.4c1.5.8 3 1.2 4.7 1.2a8.6 8.6 0 0 0 9-9c0-2.5-.9-4.7-2.6-6.4a9 9 0 0 0-6.6-2.6 9 9 0 0 0-6.4 2.5A8.7 8.7 0 0 0 8 38.4ZM54 51V40H34.8v-5L55 6h4.4v29h6v5h-6v11H54Zm0-16V14.8L40 35h14Zm45.1 10.8V51H70c0-1.3.1-2.6.6-3.8.8-2 2-4 3.6-6s4-4.2 7.1-6.8c4.8-4 8.1-7.1 9.8-9.5 1.7-2.3 2.5-4.5 2.5-6.6 0-2.2-.7-4-2.3-5.6a8.3 8.3 0 0 0-6-2.2c-2.6 0-4.7.8-6.3 2.5a10 10 0 0 0-2.4 7l-5.6-.6c.4-4.4 1.8-7.7 4.3-10S81.1 6 85.3 6a14 14 0 0 1 10.1 3.6c2.5 2.3 3.8 5.3 3.8 8.8a14 14 0 0 1-1.1 5.3c-.8 1.8-2 3.6-3.7 5.5A90.2 90.2 0 0 1 86 37a93.6 93.6 0 0 0-6.3 5.6c-.9 1-1.7 2-2.3 3h21.8Zm28 5.2v-5.5c-2.5 3.7-6 5.5-10.3 5.5a13 13 0 0 1-5.3-1 8.8 8.8 0 0 1-3.6-2.8c-.8-1.2-1.4-2.5-1.7-4.1a28 28 0 0 1-.3-5.1V18h5.4v17.9c0 2.8.1 4.8.3 5.7a5.8 5.8 0 0 0 2.2 3.4 7 7 0 0 0 4.1 1.3c1.7 0 3.2-.5 4.6-1.3a7 7 0 0 0 3-3.4c.7-1.5 1-3.6 1-6.3V18h5.4v33h-4.8Zm31.4 0v-6h6.2v6h-6.2Zm53.3 0v-4c-2 2.6-5 4-9 4-2.5 0-4.9-.7-7-2a13.7 13.7 0 0 1-5-5.9 22.3 22.3 0 0 1-.2-17.2 12.5 12.5 0 0 1 12-7.9 10.8 10.8 0 0 1 8.9 4.6V6h5.4v45h-5Zm-17.2-16.5c0 4 .9 7 2.6 9a8 8 0 0 0 6.2 3 8 8 0 0 0 6-2.8c1.7-2 2.5-4.9 2.5-8.8 0-4.2-.8-7.4-2.5-9.4s-3.8-3-6.3-3c-2.4 0-4.4 1-6 2.9-1.7 2-2.5 5-2.5 9.1ZM247 40l5.6.7c-.9 3.3-2.5 5.8-5 7.6a14.9 14.9 0 0 1-9.1 2.7c-4.7 0-8.4-1.4-11.2-4.3a16.5 16.5 0 0 1-4.1-12c0-5.3 1.4-9.4 4.1-12.3 2.8-3 6.4-4.4 10.9-4.4 4.3 0 7.8 1.4 10.5 4.3 2.7 3 4.1 7 4.1 12.3V36h-24c.2 3.4 1.2 6 3 7.8a9 9 0 0 0 6.7 2.7c2 0 3.7-.5 5.1-1.5 1.5-1 2.6-2.7 3.4-5Zm-17.9-8.5h18c-.3-2.6-1-4.6-2.1-6-1.7-2-4-3-6.8-3-2.5 0-4.6.8-6.3 2.4a9.6 9.6 0 0 0-2.8 6.6ZM268 51l-12.2-33h5.8l6.8 19.9c.8 2.1 1.5 4.4 2.1 6.7l2-6.3 7.2-20.3h5.6L273 51h-5Z`,
+  viewBox: '0 0 589 151',
+  path: `M26 69.2a20 20 0 0 1-10.1-7 18 18 0 0 1-3.3-10.8 21 21 0 0 1 7-16A26.1 26.1 0 0 1 38 29c7.7 0 14 2.2 18.7 6.6 4.7 4.4 7 9.8 7 16.1 0 4-1 7.6-3.2 10.6-2.1 3-5.4 5.3-9.8 7 5.5 1.7 9.6 4.6 12.5 8.5 2.8 4 4.2 8.7 4.2 14.3 0 7.6-2.7 14-8 19.1a29.2 29.2 0 0 1-21.2 7.8 29 29 0 0 1-21.2-7.8 26 26 0 0 1-8-19.5c0-5.8 1.4-10.6 4.3-14.5a22 22 0 0 1 12.5-8Zm-2.3-18c0 4 1.4 7.3 4.1 10C30.5 63.6 34 65 38.3 65c4.2 0 7.7-1.3 10.4-3.8a13 13 0 0 0 4-9.5 13 13 0 0 0-4.2-9.7 14 14 0 0 0-10.3-4c-4.2 0-7.6 1.3-10.4 3.9a12.3 12.3 0 0 0-4 9.2Zm-3.5 40.6c0 3.1.8 6.2 2.2 9 1.5 3 3.7 5.2 6.6 6.8 3 1.6 6 2.4 9.4 2.4a17.2 17.2 0 0 0 18-17.8A18 18 0 0 0 38 74a17.3 17.3 0 0 0-17.8 17.8Zm92.9 26.2V97H74.6V87L115 29h8.9v58h12v10h-12v21h-11Zm0-31V46.6L85.3 87h27.8Zm91.3 20.8V118h-58.7c0-2.6.4-5.1 1.3-7.5 1.5-4 4-8 7.2-11.8 3.3-3.8 8-8.3 14.3-13.3 9.6-8 16.1-14.2 19.5-18.9 3.4-4.6 5.1-9 5.1-13 0-4.4-1.5-8-4.6-11-3.1-3-7.1-4.5-12.1-4.5-5.3 0-9.5 1.6-12.6 4.8A18.1 18.1 0 0 0 159 56l-11.2-1.2a28 28 0 0 1 8.7-19.2c5-4.4 11.7-6.6 20.1-6.6 8.6 0 15.3 2.4 20.2 7 5 4.8 7.5 10.7 7.5 17.7 0 3.5-.7 7-2.2 10.5a39 39 0 0 1-7.2 10.8c-3.4 3.8-9 9-16.8 15.6-6.5 5.5-10.8 9.3-12.6 11.2-1.9 2-3.4 4-4.6 6h43.5Zm57 10.2v-10c-5 7.3-11.9 11-20.5 11-3.8 0-7.3-.7-10.6-2.2a17.5 17.5 0 0 1-7.4-5.5 21.2 21.2 0 0 1-3.3-8.1c-.4-2.1-.7-5.5-.7-10.2V53h11v35.8c0 5.7.2 9.5.6 11.5.7 2.9 2.1 5.1 4.4 6.8 2.2 1.6 5 2.4 8.2 2.4a18 18 0 0 0 9.2-2.5 14 14 0 0 0 6-6.9c1.3-2.9 1.9-7 1.9-12.6V53H271v65h-9.8Zm63.9 0v-12h12.4v12h-12.4Zm106.6 0v-8.1c-4 6-10 9.1-18 9.1-5.1 0-9.8-1.4-14.1-4.2a27.8 27.8 0 0 1-10-11.8 45.4 45.4 0 0 1-.3-34.8 25.3 25.3 0 0 1 34.3-13.7c3 1.7 5.5 3.9 7.4 6.6V29H442v89h-10.1Zm-34.5-32.5c0 8.2 1.8 14.4 5.2 18.4a16 16 0 0 0 12.3 6.1c4.8 0 8.8-2 12.2-5.8 3.3-3.9 5-9.8 5-17.8 0-8.7-1.7-15.2-5.1-19.2a15.6 15.6 0 0 0-24.7-.3c-3.2 4-4.9 10.1-4.9 18.6ZM503.2 97l11.3 1.4a27.1 27.1 0 0 1-10 15.2 29.5 29.5 0 0 1-18.3 5.4c-9.4 0-16.9-2.9-22.4-8.7a33.8 33.8 0 0 1-8.3-24.3 35 35 0 0 1 8.4-25c5.6-6 12.8-9 21.7-9 8.6 0 15.6 2.9 21 8.7 5.5 5.8 8.2 14 8.2 24.4V88h-48a25 25 0 0 0 6 16.3c3.6 3.8 8 5.7 13.4 5.7 4 0 7.4-1 10.3-3 2.8-2.2 5-5.5 6.7-10Zm-35.8-18h36c-.6-5.3-2-9.2-4.2-11.9a17 17 0 0 0-13.5-6.1 17 17 0 0 0-12.6 5 19.1 19.1 0 0 0-5.7 13Zm78.6 39-24.4-65H533l13.8 39c1.5 4.2 2.9 8.6 4.1 13.2 1-3.5 2.3-7.6 4-12.4L569.4 53h11.3l-24.4 65H546Z`,
   pathId: 'complex',
 };
 
@@ -47,13 +47,13 @@ export default function BazuDevSVG() {
   const text = '842u.dev ';
 
   return (
-    <div className="aspect-[589/151] lg:aspect-[292/57]">
+    <div className="aspect-[589/151]">
       {mediaBreakpoint === 'sm' ? (
         <CMR2SVG
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.1}
-          className="fill-light-darker text-base dark:text-dark-lighter md:hidden lg:hidden"
+          className="fill-light-darker text-base dark:text-dark-lighter"
           pathId={`${simplePath.pathId}sm`}
           pathShape={simplePath.path}
           text={text}
@@ -67,7 +67,7 @@ export default function BazuDevSVG() {
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.08}
-          className="hidden fill-light-darker text-xs dark:text-dark-lighter md:block lg:hidden"
+          className="fill-light-darker text-xs dark:text-dark-lighter"
           pathId={`${simplePath.pathId}md`}
           pathShape={simplePath.path}
           text={text}
@@ -77,17 +77,41 @@ export default function BazuDevSVG() {
       ) : null}
       {mediaBreakpoint === 'lg' ? (
         <CMR2SVG
-          animationDuration={30}
+          animationDuration={35}
           characterRotation="0"
           characterSpacing={0.08}
-          className="hidden fill-light-darker text-[3px] dark:text-dark-lighter md:hidden lg:block"
+          className="hidden fill-light-darker text-[5px] dark:text-dark-lighter md:hidden lg:block"
           pathId={complexPath.pathId}
           pathShape={complexPath.path}
           text={text}
-          textRepetition={42}
+          textRepetition={49}
           viewBox={complexPath.viewBox}
         />
       ) : null}
     </div>
   );
 }
+
+/* <CMR2SVG
+          animationDuration={35}
+          characterRotation="0"
+          characterSpacing={0.08}
+          className="hidden fill-light-darker text-[5px] dark:text-dark-lighter md:hidden lg:block"
+          pathId={complexPath.pathId}
+          pathShape={complexPath.path}
+          text={text}
+          textRepetition={49}
+          viewBox={complexPath.viewBox}
+        />
+
+<CMR2SVG
+          animationDuration={15}
+          characterRotation="0"
+          characterSpacing={0.06}
+          className="fill-light-darker text-[5px] dark:text-dark-lighter"
+          pathId={`${simplePath.pathId}md`}
+          pathShape={simplePath.path}
+          text={text}
+          textRepetition={28}
+          viewBox={simplePath.viewBox}
+        /> */
