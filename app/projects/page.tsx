@@ -28,14 +28,19 @@ function AllProjectsSection({ projects }: AllProjectsSectionProps) {
 
   return (
     <div className="min-h-screen">
-      <Section ariaLabel="all projects" title="Projects">
+      <Section
+        ariaLabel="all projects"
+        className="my-0 flex min-h-screen flex-col justify-between md:my-0 lg:my-0"
+      >
+        <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
         <BazuDevSVG />
 
         <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
           {projects.map((project) => project.name)}
         </HorizontalMenu>
       </Section>
-      <Section>
+
+      <Section className="mt-0 md:mt-0 lg:mt-0">
         <ProjectCard project={currentProject} />
       </Section>
     </div>

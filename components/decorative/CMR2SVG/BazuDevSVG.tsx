@@ -44,29 +44,16 @@ export default function BazuDevSVG() {
   }, []);
 
   return (
-    <div className="aspect-[589/151]">
-      {mediaBreakpointId === AvaliableBreakpoints.SM ? (
-        <CMR2SVG
-          instantStart
-          animationDuration={10}
-          characterRotation="0"
-          characterSpacing={0.1}
-          className="fill-dark-lighter text-base dark:fill-light-darker"
-          pathId={`${simplePath.pathId}sm`}
-          pathShape={simplePath.path}
-          text={text}
-          textRepetition={11}
-          viewBox={simplePath.viewBox}
-        />
-      ) : null}
-      {mediaBreakpointId === AvaliableBreakpoints.MD ? (
+    <div aria-hidden className="aspect-[589/151]">
+      {mediaBreakpointId === AvaliableBreakpoints.SM ||
+      mediaBreakpointId === AvaliableBreakpoints.MD ? (
         <CMR2SVG
           instantStart
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.08}
           className="fill-dark-lighter text-xs dark:fill-light-darker"
-          pathId={`${simplePath.pathId}md`}
+          pathId={`${simplePath.pathId}sm`}
           pathShape={simplePath.path}
           text={text}
           textRepetition={14}
