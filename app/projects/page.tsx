@@ -36,7 +36,7 @@ function AllProjectsSection({ projects }: AllProjectsSectionProps) {
         <BazuDevSVG />
 
         <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
-          {projects.map((project) => project.name)}
+          {projects.map((project) => project.name.toLowerCase())}
         </HorizontalMenu>
       </Section>
 
