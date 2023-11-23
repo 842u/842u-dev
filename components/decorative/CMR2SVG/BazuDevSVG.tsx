@@ -51,7 +51,7 @@ export default function BazuDevSVG() {
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.1}
-          className="fill-light-darker text-base dark:text-dark-lighter"
+          className="fill-dark-lighter text-base dark:fill-light-darker"
           pathId={`${simplePath.pathId}sm`}
           pathShape={simplePath.path}
           text={text}
@@ -65,7 +65,7 @@ export default function BazuDevSVG() {
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.08}
-          className="fill-light-darker text-xs dark:text-dark-lighter"
+          className="fill-dark-lighter text-xs dark:fill-light-darker"
           pathId={`${simplePath.pathId}md`}
           pathShape={simplePath.path}
           text={text}
@@ -79,7 +79,7 @@ export default function BazuDevSVG() {
           animationDuration={35}
           characterRotation="0"
           characterSpacing={0.08}
-          className="hidden fill-light-darker text-[5px] dark:text-dark-lighter md:hidden lg:block"
+          className="fill-dark-lighter text-[5px] dark:fill-light-darker"
           pathId={complexPath.pathId}
           pathShape={complexPath.path}
           text={text}
