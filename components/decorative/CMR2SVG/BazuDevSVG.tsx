@@ -23,6 +23,8 @@ const simplePath = {
 export default function BazuDevSVG() {
   const [mediaBreakpointId, setMediaBreakpointId] = useState('');
 
+  const text = '842u.dev ';
+
   function windowResizeHandler() {
     const { id } = getMediaBreakpointData(defaultMediaBreakpoints);
 
@@ -30,23 +32,22 @@ export default function BazuDevSVG() {
   }
 
   useEffect(() => {
+    window.addEventListener('resize', windowResizeHandler);
+
     const { id } = getMediaBreakpointData(defaultMediaBreakpoints);
 
     setMediaBreakpointId(id);
-
-    window.addEventListener('resize', windowResizeHandler);
 
     return () => {
       window.removeEventListener('resize', windowResizeHandler);
     };
   }, []);
 
-  const text = '842u.dev ';
-
   return (
     <div className="aspect-[589/151]">
       {mediaBreakpointId === AvaliableBreakpoints.SM ? (
         <CMR2SVG
+          instantStart
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.1}
@@ -61,6 +62,7 @@ export default function BazuDevSVG() {
 
       {mediaBreakpointId === AvaliableBreakpoints.MD ? (
         <CMR2SVG
+          instantStart
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.08}
@@ -74,6 +76,7 @@ export default function BazuDevSVG() {
       ) : null}
       {mediaBreakpointId === AvaliableBreakpoints.LG ? (
         <CMR2SVG
+          instantStart
           animationDuration={35}
           characterRotation="0"
           characterSpacing={0.08}
@@ -88,27 +91,3 @@ export default function BazuDevSVG() {
     </div>
   );
 }
-
-/* <CMR2SVG
-          animationDuration={35}
-          characterRotation="0"
-          characterSpacing={0.08}
-          className="hidden fill-light-darker text-[5px] dark:text-dark-lighter md:hidden lg:block"
-          pathId={complexPath.pathId}
-          pathShape={complexPath.path}
-          text={text}
-          textRepetition={49}
-          viewBox={complexPath.viewBox}
-        />
-
-<CMR2SVG
-          animationDuration={15}
-          characterRotation="0"
-          characterSpacing={0.06}
-          className="fill-light-darker text-[5px] dark:text-dark-lighter"
-          pathId={`${simplePath.pathId}md`}
-          pathShape={simplePath.path}
-          text={text}
-          textRepetition={28}
-          viewBox={simplePath.viewBox}
-        /> */

@@ -15,6 +15,7 @@ type CMR2SVGProps = {
   pathShape: string;
   pathId: string;
   textRepetition?: number;
+  instantStart?: boolean;
   className?: string;
 };
 
@@ -28,6 +29,7 @@ export function CMR2SVG({
   pathShape,
   pathId,
   textRepetition = 1,
+  instantStart = false,
 }: CMR2SVGProps) {
   const textArray = text.repeat(textRepetition).split('');
 
@@ -36,20 +38,28 @@ export function CMR2SVG({
       <path d={pathShape} fill="none" id={pathId} />
 
       <g>
-        {textArray.map((character, index) => (
-          <text key={`${character}${index}`} className="select-none">
-            {character}
-            <animateMotion
-              begin={`${characterSpacing * index}s`}
-              calcMode="paced"
-              dur={`${animationDuration}s`}
-              repeatCount="indefinite"
-              rotate={characterRotation}
-            >
-              <mpath href={`#${pathId}`} />
-            </animateMotion>
-          </text>
-        ))}
+        {textArray.map((character, index) => {
+          let beginTime = animationDuration - index * characterSpacing;
+
+          if (instantStart) {
+            beginTime = animationDuration / 35 - index * characterSpacing;
+          }
+
+          return (
+            <text key={`${character}${index}`} className="select-none">
+              {character}
+              <animateMotion
+                begin={`${beginTime}s`}
+                calcMode="paced"
+                dur={`${animationDuration}s`}
+                repeatCount="indefinite"
+                rotate={characterRotation}
+              >
+                <mpath href={`#${pathId}`} />
+              </animateMotion>
+            </text>
+          );
+        })}
       </g>
     </svg>
   );

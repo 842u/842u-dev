@@ -54,6 +54,7 @@ export enum AvaliableBreakpoints {
   MD = 'md',
   LG = 'lg',
 }
+
 export type Breakpoint = {
   id: AvaliableBreakpoints;
   minWidth: number;
