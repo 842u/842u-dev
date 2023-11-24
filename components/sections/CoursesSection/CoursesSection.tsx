@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 
+import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { CourseCard } from '@/components/ui/CourseCard/CourseCard';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
-import { SectionParagraph } from '@/components/ui/SectionParagraph';
 import { Course } from '@/types';
 
 import { Section } from '../Section';

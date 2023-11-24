@@ -1,5 +1,5 @@
+import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm';
-import { SectionParagraph } from '@/components/ui/SectionParagraph';
 
 import { Section } from '../Section';
 

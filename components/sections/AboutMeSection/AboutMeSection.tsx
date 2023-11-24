@@ -1,5 +1,5 @@
 import { CMR2SVG } from '@/components/decorative/CMR2SVG/CMR2SVG';
-import { SectionParagraph } from '@/components/ui/SectionParagraph';
+import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { alienatedSVGPath } from '@/data/svgPaths';
 
 import { Section } from '../Section';

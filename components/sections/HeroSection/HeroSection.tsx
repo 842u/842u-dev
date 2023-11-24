@@ -1,5 +1,5 @@
+import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { LinkButton } from '@/components/ui/LinkButton';
-import { SectionParagraph } from '@/components/ui/SectionParagraph';
 
 import { Section } from '../Section';
 

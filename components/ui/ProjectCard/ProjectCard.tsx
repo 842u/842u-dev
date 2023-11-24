@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { Project } from '@/types';
 import { toolIconMapping } from '@/utils/toolIconMapping';
 
+import { SectionParagraph } from '../../sections/SectionParagraph';
 import { LinkButton } from '../LinkButton';
-import { SectionParagraph } from '../SectionParagraph';
 
 type ProjectCardProps = {
   project: Project;
