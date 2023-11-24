@@ -1,5 +1,5 @@
-import { CMR2SVG } from '@/components/decorative/CMR2SVG';
-import { SectionParagraph } from '@/components/ui/SectionParagraph';
+import { CMR2SVG } from '@/components/decorative/CMR2SVG/CMR2SVG';
+import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { alienatedSVGPath } from '@/data/svgPaths';
 
 import { Section } from '../Section';
@@ -22,6 +22,7 @@ export function AboutMeSection() {
               characterRotation="0"
               characterSpacing={0.08}
               className="hidden fill-light-darker text-[5px] dark:text-dark-lighter md:block md:w-1/2 lg:hidden"
+              pathId="alienatedPath"
               pathShape={alienatedSVGPath}
               text="kamil bażanow "
               textRepetition={9}
@@ -39,6 +40,7 @@ export function AboutMeSection() {
           characterRotation="0"
           characterSpacing={0.08}
           className="w-full fill-light-darker text-[5px] dark:text-dark-lighter md:hidden lg:block lg:w-1/3"
+          pathId="alienatedPath"
           pathShape={alienatedSVGPath}
           text="kamil bażanow "
           textRepetition={9}

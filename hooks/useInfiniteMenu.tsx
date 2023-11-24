@@ -11,7 +11,7 @@ import {
   calculateSectorMultiplier,
   extendArray,
   getContainerElementsArray,
-  getMediaBreakpointOffset,
+  getMediaBreakpointData,
   getSectorElementsWidth,
   scrollToElement,
 } from '@/utils/helpers';
@@ -39,7 +39,9 @@ export function useInfiniteMenu(
    * bugs and optimize items number.
    */
   function windowResizeHandler() {
-    activeItemOffset.current = getMediaBreakpointOffset(mediaBreakpoints);
+    const { offset } = getMediaBreakpointData(mediaBreakpoints);
+
+    activeItemOffset.current = offset;
 
     const multiplier = calculateSectorMultiplier(
       menuElementRef.current!,
@@ -73,7 +75,9 @@ export function useInfiniteMenu(
   useEffect(() => {
     window.addEventListener('resize', windowResizeHandler);
 
-    activeItemOffset.current = getMediaBreakpointOffset(mediaBreakpoints);
+    const { offset } = getMediaBreakpointData(mediaBreakpoints);
+
+    activeItemOffset.current = offset;
 
     const itemsElements = getContainerElementsArray(
       menuElementRef.current!,

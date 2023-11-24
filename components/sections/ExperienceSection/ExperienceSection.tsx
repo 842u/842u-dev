@@ -1,5 +1,5 @@
+import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { ProgressBar } from '@/components/ui/ProgressBar/ProgressBar';
-import { SectionParagraph } from '@/components/ui/SectionParagraph';
 import { Skill } from '@/data/skills';
 import { toolIconMapping } from '@/utils/toolIconMapping';
 

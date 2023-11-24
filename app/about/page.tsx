@@ -2,8 +2,8 @@ import { AboutMeSection } from '@/components/sections/AboutMeSection/AboutMeSect
 import { CoursesSection } from '@/components/sections/CoursesSection/CoursesSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection/ExperienceSection';
 import { Section } from '@/components/sections/Section';
+import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { LinkButton } from '@/components/ui/LinkButton';
-import { SectionParagraph } from '@/components/ui/SectionParagraph';
 import { allCourses } from '@/data/courses/allCourses';
 import { mySkills } from '@/data/skills';
 
