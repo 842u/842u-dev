@@ -41,7 +41,7 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
       </Section>
 
       <Section className="mt-0 md:mt-0 lg:mt-0">
-        <ProjectCard project={currentProject} />
+        <ProjectCard headingTag="h2" project={currentProject} />
       </Section>
     </div>
   );

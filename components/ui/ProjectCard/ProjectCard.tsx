@@ -4,13 +4,15 @@ import { Project } from '@/types';
 import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { SectionParagraph } from '../../sections/SectionParagraph';
+import { Heading, HeadingTag } from '../Heading/Heading';
 import { LinkButton } from '../LinkButton';
 
 type ProjectCardProps = {
   project: Project;
+  headingTag?: HeadingTag;
 };
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, headingTag = 'h3' }: ProjectCardProps) {
   return (
     <div
       className="gap-10 lg:flex lg:justify-between"
@@ -26,7 +28,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
 
-        <h3 className="my-8 text-2xl md:text-3xl">{project.name}</h3>
+        <Heading className="my-8 text-2xl md:text-3xl" headingTag={headingTag}>
+          {project.name}
+        </Heading>
 
         <SectionParagraph className="my-0 md:my-0">
           {project.description}
@@ -34,7 +38,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="my-8 flex flex-col lg:my-0 lg:max-w-md lg:flex-grow">
-        <h3 className="text-2xl md:text-3xl">Built with:</h3>
+        <Heading className="text-2xl md:text-3xl" headingTag={headingTag}>
+          Built with:
+        </Heading>
 
         <div className="my-8 flex flex-wrap justify-evenly gap-10 md:my-16 lg:gap-14">
           {project.tools.map((tool) => {
