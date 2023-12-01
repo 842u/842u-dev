@@ -1,3 +1,6 @@
+import { notFound } from 'next/navigation';
+
+import { ProjectReadmeSection } from '@/components/sections/ProjectReadmeSection/ProjectReadmeSection';
 import { Section } from '@/components/sections/Section';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
 import { allProjects } from '@/data/projects/allProjects';
@@ -9,19 +12,25 @@ export async function generateStaticParams() {
   return allProjects.map((project) => ({ slug: project.slug }));
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+export default async function ProjectPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const project = allProjects.find(
     (specificProject) => specificProject.slug === params.slug,
   );
 
+  if (!project) {
+    notFound();
+  }
+
   return (
-    project && (
+    <main>
       <Section ariaLabel="project brief overview">
-        <h1 className="my-8 mt-24 text-right text-4xl md:text-5xl">
-          {project.name}
-        </h1>
-        <ProjectCard project={project} />
+        <ProjectCard headingTag="h1" project={project} />
       </Section>
-    )
+      <ProjectReadmeSection project={project} />
+    </main>
   );
 }

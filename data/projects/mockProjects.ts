@@ -1,7 +1,7 @@
-import { AvaliableTools, ProjectSettings } from '@/types';
+import { AvaliableTools, ProjectData } from '@/types';
 import { createProject } from '@/utils/helpers';
 
-const mockProjectsSettings: ProjectSettings[] = [
+const data: ProjectData[] = [
   {
     name: 'mock project 1',
     image: '/mockImage.svg',
@@ -16,6 +16,6 @@ const mockProjectsSettings: ProjectSettings[] = [
   },
 ];
 
-export const mockProjects = mockProjectsSettings.map((projectSettings) =>
-  createProject(projectSettings),
+export const mockProjects = data.map((projectData) =>
+  createProject(projectData),
 );

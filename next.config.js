@@ -47,14 +47,14 @@ module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       eslint: {
-        dirs: ['app', 'components', 'projects', 'types'],
+        dirs: ['app', 'components', 'projects', 'types', 'utils'],
       },
     };
   }
 
   return {
     eslint: {
-      dirs: ['app', 'components', 'projects', 'types'],
+      dirs: ['app', 'components', 'projects', 'types', 'utils'],
     },
     async headers() {
       return [
