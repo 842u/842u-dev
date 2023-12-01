@@ -28,7 +28,7 @@ export default async function ProjectPage({
   return (
     <main>
       <Section ariaLabel="project brief overview" className="mt-20">
-        <ProjectCard headingTag="h1" project={project} />
+        <ProjectCard withRepoLink headingTag="h1" project={project} />
       </Section>
       <ProjectReadmeSection project={project} />
     </main>

@@ -37,6 +37,7 @@ export type ProjectData = {
   image: string;
   description: string;
   tools: AvaliableTools[];
+  repository?: string;
   remoteReadme?: string;
 };
 

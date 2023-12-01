@@ -11,6 +11,7 @@ const data: ProjectData = {
     AvaliableTools.ESLint,
   ],
   remoteReadme: 'https://raw.githubusercontent.com/842u/kor-mur/main/README.md',
+  repository: 'https://github.com/842u/kor-mur',
 };
 
 export const project2 = createProject(data);

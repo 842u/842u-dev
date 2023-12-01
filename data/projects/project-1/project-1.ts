@@ -15,9 +15,9 @@ const data: ProjectData = {
     AvaliableTools.Sanity,
     AvaliableTools.Git,
   ],
+  repository: 'https://github.com/842u/842u-dev',
+  remoteReadme:
+    'https://raw.githubusercontent.com/842u/842u-dev/main/README.md',
 };
 
-export const project1 = createProject(
-  data,
-  './data/projects/project-1/README.mdx',
-);
+export const project1 = createProject(data);
