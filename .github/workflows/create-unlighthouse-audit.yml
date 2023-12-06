@@ -37,6 +37,10 @@ jobs:
         if: steps.npm-global-cache.outputs.cache-hit != 'true'
         run: npm install --global @unlighthouse/cli
 
+      - name: Install Puppeteer
+        if: steps.npm-global-cache.outputs.cache-hit != 'true'
+        run: npm install --global puppeteer
+
       - name: Run Unlighthouse Audit
         run: unlighthouse-ci --site https://www.842u.dev --samples 5 --build-static
 
