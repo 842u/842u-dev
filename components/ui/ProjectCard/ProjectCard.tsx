@@ -10,9 +10,16 @@ import { LinkButton } from '../LinkButton';
 type ProjectCardProps = {
   project: Project;
   headingTag?: HeadingTag;
+  withRepoLink?: boolean;
 };
 
-export function ProjectCard({ project, headingTag = 'h3' }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  headingTag = 'h3',
+  withRepoLink = false,
+}: ProjectCardProps) {
+  const { name, image, slug, description, tools, repository } = project;
+
   return (
     <div
       className="gap-10 lg:flex lg:justify-between"
@@ -22,18 +29,18 @@ export function ProjectCard({ project, headingTag = 'h3' }: ProjectCardProps) {
         <div className="relative aspect-square w-full lg:aspect-video">
           <Image
             fill
-            alt={`${project.name} overview image`}
+            alt={`${name} overview image`}
             className="object-cover"
-            src={project.image}
+            src={image}
           />
         </div>
 
         <Heading className="my-8 text-2xl md:text-3xl" headingTag={headingTag}>
-          {project.name}
+          {name}
         </Heading>
 
         <SectionParagraph className="my-0 md:my-0">
-          {project.description}
+          {description}
         </SectionParagraph>
       </div>
 
@@ -43,15 +50,21 @@ export function ProjectCard({ project, headingTag = 'h3' }: ProjectCardProps) {
         </Heading>
 
         <div className="my-8 flex flex-wrap justify-evenly gap-10 md:my-16 lg:gap-14">
-          {project.tools.map((tool) => {
+          {tools.map((tool) => {
             const ToolIcon = toolIconMapping[tool];
             return <ToolIcon key={tool} className="w-14 md:w-20 lg:w-14" />;
           })}
         </div>
 
-        <LinkButton className="lg:w-full" href={`/projects/${project.slug}`}>
-          See more
-        </LinkButton>
+        {withRepoLink && repository ? (
+          <LinkButton className="lg:w-full" href={repository} target="_blank">
+            See repository
+          </LinkButton>
+        ) : (
+          <LinkButton className="lg:w-full" href={`/projects/${slug}`}>
+            See more
+          </LinkButton>
+        )}
       </div>
     </div>
   );

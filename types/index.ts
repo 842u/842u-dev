@@ -32,19 +32,18 @@ export type Course = {
   hoursLength: number;
 };
 
-export type Project = {
+export type ProjectData = {
   name: string;
   image: string;
   description: string;
-  slug: string;
   tools: AvaliableTools[];
+  repository?: string;
+  remoteReadme?: string;
 };
 
-export type ProjectSettings = {
-  name: string;
-  image: string;
-  description: string;
-  tools: AvaliableTools[];
+export type Project = ProjectData & {
+  slug: string;
+  localReadme?: string;
 };
 
 export type ItemOffset = number | 'center';

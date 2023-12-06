@@ -3,6 +3,7 @@
 import type { Config } from 'tailwindcss';
 
 const plugin = require('tailwindcss/plugin');
+const typographyPlugin = require('@tailwindcss/typography');
 
 const config: Config = {
   darkMode: 'class',
@@ -23,6 +24,7 @@ const config: Config = {
     },
   },
   plugins: [
+    typographyPlugin,
     plugin(
       ({
         addVariant,

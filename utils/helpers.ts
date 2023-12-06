@@ -1,9 +1,4 @@
-import {
-  ItemOffset,
-  MediaBreakpoints,
-  Project,
-  ProjectSettings,
-} from '@/types';
+import { ItemOffset, MediaBreakpoints, Project, ProjectData } from '@/types';
 
 export function createSlug(text: string) {
   const segments = text
@@ -31,12 +26,13 @@ export function extendArray<T>(array: T[], multiplier: number): T[] {
   return extendedArray;
 }
 
-export function createProject(projectSettings: ProjectSettings): Project {
-  const { name, description, image, tools } = projectSettings;
+export function createProject(
+  data: ProjectData,
+  localReadme?: string,
+): Project {
+  const slug = createSlug(data.name);
 
-  const slug = createSlug(name);
-
-  return { name, description, image, slug, tools };
+  return { ...data, slug, localReadme };
 }
 
 export function scrollToElement(
