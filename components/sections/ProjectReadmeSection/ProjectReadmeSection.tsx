@@ -1,5 +1,6 @@
 import fs from 'fs';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { compileMDX } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
 
 import { Project } from '@/types';
 
@@ -31,19 +32,29 @@ type ProjectReadmeSectionProps = {
 export async function ProjectReadmeSection({
   project,
 }: ProjectReadmeSectionProps) {
-  let readme = '';
-  let readmeError: JSX.Element | undefined;
+  let source = '';
+  let sourceReadError: JSX.Element | undefined;
 
   try {
-    readme = await getProjectReadme(project);
+    source = await getProjectReadme(project);
   } catch (error: unknown) {
     if (error instanceof Error) {
-      readmeError = <p>{error.message}</p>;
+      sourceReadError = <p>{error.message}</p>;
     }
   }
+
+  const { content } = await compileMDX({
+    source,
+    options: {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+    },
+  });
+
   return (
     <Section ariaLabel="project more info" className="prose">
-      {readmeError || <MDXRemote source={readme} />}
+      {sourceReadError || content}
     </Section>
   );
 }
