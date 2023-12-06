@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "13.4.19",
+    "@tailwindcss/typography": "0.5.10",
     "@testing-library/cypress": "9.0.0",
     "@testing-library/jest-dom": "6.0.1",
     "@testing-library/react": "14.0.0",

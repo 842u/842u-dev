@@ -42,7 +42,7 @@ export async function ProjectReadmeSection({
     }
   }
   return (
-    <Section ariaLabel="project more info">
+    <Section ariaLabel="project more info" className="prose">
       {readmeError || <MDXRemote source={readme} />}
     </Section>
   );
