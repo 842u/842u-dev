@@ -33,15 +33,13 @@ export function NavBar() {
   const [mobileIsActive, setMobileIsActive] = useState(false);
 
   const scrollHandler = () => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY) {
-        setScrollShow(false);
-      } else {
-        setScrollShow(true);
-      }
-
-      setLastScrollY(window.scrollY);
+    if (window.scrollY > lastScrollY) {
+      setScrollShow(false);
+    } else {
+      setScrollShow(true);
     }
+
+    setLastScrollY(window.scrollY);
   };
 
   const hamburgerButtonHandler = () => {
@@ -50,13 +48,11 @@ export function NavBar() {
   };
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('scroll', scrollHandler);
 
-      return () => {
-        window.removeEventListener('scroll', scrollHandler);
-      };
-    }
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+    };
   }, [lastScrollY]);
 
   return (
