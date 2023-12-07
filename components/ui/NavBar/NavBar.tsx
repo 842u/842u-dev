@@ -69,7 +69,7 @@ export function NavBar() {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 h-20 w-screen backdrop-blur-md transition-all md:px-10 ${
+      className={`fixed left-0 top-0 z-50 h-20 w-screen backdrop-blur-[6px] transition-transform md:px-10 ${
         !scrollShow && !mobileIsActive ? 'translate-y-[-100%]' : 'translate-y-0'
       }`}
     >
@@ -86,6 +86,16 @@ export function NavBar() {
 
         <NavMenu isActive={mobileIsActive} items={navItems} />
       </nav>
+      {/* eslint-disable-next-line */}
+      <div
+        aria-hidden
+        className="fixed left-0 hidden h-3 w-full lg:block"
+        onMouseOver={() => {
+          if (!scrollShow) {
+            setScrollShow(true);
+          }
+        }}
+      />
     </header>
   );
 }
