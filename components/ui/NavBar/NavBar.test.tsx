@@ -18,6 +18,12 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+jest.mock('next/navigation', () => ({
+  usePathname() {
+    return '';
+  },
+}));
+
 describe('NavBar', () => {
   it('should render <header> element', () => {
     render(<NavBar />);

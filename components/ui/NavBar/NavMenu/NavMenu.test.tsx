@@ -3,6 +3,12 @@ import { render, screen } from '@testing-library/react';
 import { NavMenu } from './NavMenu';
 import { NavItem } from './NavMenuItem/NavMenuItem';
 
+jest.mock('next/navigation', () => ({
+  usePathname() {
+    return '';
+  },
+}));
+
 const mockItems: NavItem[] = [
   {
     name: 'firstMock',
@@ -20,7 +26,7 @@ const mockItems: NavItem[] = [
 
 describe('NavMenu', () => {
   it('should render list', () => {
-    render(<NavMenu />);
+    render(<NavMenu items={mockItems} />);
 
     const list = screen.getByRole('list');
 
@@ -38,7 +44,7 @@ describe('NavMenu', () => {
   it('should have .operational class while isActive', () => {
     const active = true;
 
-    render(<NavMenu isActive={active} />);
+    render(<NavMenu isActive={active} items={mockItems} />);
 
     const list = screen.getByRole('list');
 
@@ -48,7 +54,7 @@ describe('NavMenu', () => {
   it('should not have .operational class while !isActive', () => {
     const active = false;
 
-    render(<NavMenu isActive={active} />);
+    render(<NavMenu isActive={active} items={mockItems} />);
 
     const list = screen.getByRole('list');
 
