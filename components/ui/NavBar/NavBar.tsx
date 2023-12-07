@@ -42,10 +42,22 @@ export function NavBar() {
     setLastScrollY(window.scrollY);
   };
 
+  const windowResizeHandler = () => {
+    setMobileIsActive(false);
+  };
+
   const hamburgerButtonHandler = () => {
     setMobileIsActive((activeState) => !activeState);
     setScrollShow(true);
   };
+
+  useEffect(() => {
+    window.addEventListener('resize', windowResizeHandler);
+
+    return () => {
+      window.removeEventListener('resize', windowResizeHandler);
+    };
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler);
