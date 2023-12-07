@@ -61,7 +61,7 @@ export function NavBar() {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 h-20 w-screen backdrop-blur-md transition-all ${
+      className={`fixed left-0 top-0 z-50 h-20 w-screen backdrop-blur-md transition-all md:px-10 ${
         !scrollShow && !mobileIsActive ? 'translate-y-[-100%]' : 'translate-y-0'
       }`}
     >
@@ -72,7 +72,7 @@ export function NavBar() {
           onClick={hamburgerButtonHandler}
         />
 
-        <div className="z-40 aspect-square w-20 md:visible md:w-16">
+        <div className="z-40 aspect-square w-20 p-2 md:visible md:w-16">
           <ThemeButton className="md:visible" isActive={mobileIsActive} />
         </div>
 
