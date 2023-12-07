@@ -21,7 +21,7 @@ const navItems = [
   },
   {
     name: 'contact',
-    href: '#contact',
+    href: '/#contact',
   },
 ];
 
