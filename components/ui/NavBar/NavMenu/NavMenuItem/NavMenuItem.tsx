@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { MouseEventHandler } from 'react';
 
 import { SelectionArrow } from '@/components/decorative/SelectionArrow';
 
@@ -13,9 +14,10 @@ export type NavItem = {
 type NavMenuItemProps = {
   children: React.ReactNode;
   href: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
-export function NavMenuItem({ children, href }: NavMenuItemProps) {
+export function NavMenuItem({ children, href, onClick }: NavMenuItemProps) {
   const pathname = usePathname();
 
   const isActive =
@@ -28,6 +30,7 @@ export function NavMenuItem({ children, href }: NavMenuItemProps) {
           isActive ? 'operational' : ''
         } my-3 block operational:text-dark operational:dark:text-light md:my-0 md:h-full`}
         href={href}
+        onClick={onClick}
       >
         <div className="flex h-full w-full items-center gap-6">
           <SelectionArrow className="md:hidden" />

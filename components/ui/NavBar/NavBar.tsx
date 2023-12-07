@@ -51,6 +51,10 @@ export function NavBar() {
     setScrollShow(true);
   };
 
+  const itemClickHandler = () => {
+    setMobileIsActive(false);
+  };
+
   useEffect(() => {
     window.addEventListener('resize', windowResizeHandler);
 
@@ -84,7 +88,11 @@ export function NavBar() {
           <ThemeButton className="md:visible" isActive={mobileIsActive} />
         </div>
 
-        <NavMenu isActive={mobileIsActive} items={navItems} />
+        <NavMenu
+          isActive={mobileIsActive}
+          items={navItems}
+          onItemClick={itemClickHandler}
+        />
       </nav>
       {/* eslint-disable-next-line */}
       <div
