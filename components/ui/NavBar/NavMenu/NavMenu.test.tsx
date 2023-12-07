@@ -3,6 +3,12 @@ import { render, screen } from '@testing-library/react';
 import { NavMenu } from './NavMenu';
 import { NavItem } from './NavMenuItem/NavMenuItem';
 
+jest.mock('next/navigation', () => ({
+  usePathname() {
+    return '';
+  },
+}));
+
 const mockItems: NavItem[] = [
   {
     name: 'firstMock',
