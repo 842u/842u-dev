@@ -54,7 +54,7 @@ export async function ProjectReadmeSection({
 
   return (
     <Section ariaLabel="project more info">
-      <article className="lg:max-w prose max-w-full overflow-hidden text-dark-lighter md:prose-lg lg:prose prose-headings:text-dark prose-a:text-dark prose-thead:border-dark prose-tr:border-dark-lighter dark:text-light-darker dark:prose-headings:text-light dark:prose-a:text-light dark:prose-thead:border-light dark:prose-tr:border-light-darker">
+      <article className="prose max-w-full overflow-hidden text-dark-lighter md:prose-lg lg:prose-base prose-headings:text-dark prose-a:inline-block prose-a:text-dark prose-code:text-dark prose-pre:bg-light-darker prose-thead:border-dark prose-tr:border-dark-lighter prose-img:m-0 dark:text-light-darker dark:prose-headings:text-light dark:prose-a:text-light dark:prose-code:text-light dark:prose-pre:bg-dark-lighter dark:prose-thead:border-light dark:prose-tr:border-light-darker lg:max-w-2xl">
         {sourceReadError || content}
       </article>
     </Section>
