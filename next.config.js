@@ -7,7 +7,8 @@ const ContentSecurityPolicy = `
     connect-src 'self';
     script-src 'self' 'unsafe-inline';
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data:;
+    img-src 'self' data: https:;
+    media-src 'self' https://github-production-user-asset-6210df.s3.amazonaws.com/ https://github.com/842u/;
     font-src 'self';
   `;
 
