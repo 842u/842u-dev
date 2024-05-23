@@ -22,6 +22,17 @@ const config: Config = {
       success: 'var(--color-success)',
       error: 'var(--color-error)',
     },
+    extend: {
+      keyframes: {
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.2' },
+        },
+      },
+      animation: {
+        blink: 'blink 0.7s ease-in-out infinite',
+      },
+    },
   },
   plugins: [
     typographyPlugin,
