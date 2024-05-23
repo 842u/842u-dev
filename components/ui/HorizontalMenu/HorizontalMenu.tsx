@@ -74,7 +74,7 @@ export function HorizontalMenu({
             <button
               className={`${
                 isActive ? 'operational' : ''
-              } px-2 operational:text-dark operational:dark:text-light`}
+              } px-2 hover:animate-blink operational:text-dark operational:dark:text-light`}
               type="button"
               onClick={buttonClickHandler}
             >

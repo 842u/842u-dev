@@ -84,7 +84,7 @@ export function NavBar() {
           onClick={hamburgerButtonHandler}
         />
 
-        <div className="z-40 aspect-square w-20 p-2 md:visible md:w-16">
+        <div className="z-40 aspect-square w-20 p-2 md:visible md:w-16 lg:w-12">
           <ThemeButton className="md:visible" isActive={mobileIsActive} />
         </div>
 
@@ -97,7 +97,7 @@ export function NavBar() {
       {/* eslint-disable-next-line */}
       <div
         aria-hidden
-        className="fixed left-0 hidden h-3 w-full lg:block"
+        className="fixed left-0 hidden h-4 w-full lg:block"
         onMouseOver={() => {
           if (!scrollShow) {
             setScrollShow(true);

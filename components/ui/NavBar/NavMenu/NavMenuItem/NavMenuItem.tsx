@@ -28,7 +28,7 @@ export function NavMenuItem({ children, href, onClick }: NavMenuItemProps) {
       <Link
         className={`${
           isActive ? 'operational' : ''
-        } my-3 block operational:text-dark operational:dark:text-light md:my-0 md:h-full`}
+        } my-3 block hover:animate-blink operational:text-dark operational:dark:text-light md:my-0 md:h-full`}
         href={href}
         onClick={onClick}
       >
