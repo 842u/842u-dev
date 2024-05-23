@@ -97,7 +97,7 @@ export function NavBar() {
       {/* eslint-disable-next-line */}
       <div
         aria-hidden
-        className="fixed left-0 hidden h-3 w-full lg:block"
+        className="fixed left-0 hidden h-4 w-full lg:block"
         onMouseOver={() => {
           if (!scrollShow) {
             setScrollShow(true);
