@@ -19,7 +19,7 @@ export function LinkButton({
   return (
     <Link
       className={twMerge(
-        `inline-block w-full text-3xl before:block before:h-0.5 before:w-full before:bg-dark after:block after:h-0.5 after:w-full after:bg-dark dark:before:bg-light dark:after:bg-light md:w-64 md:min-w-fit md:text-4xl`,
+        `inline-block w-full text-3xl before:block before:h-0.5 before:w-full before:bg-dark after:block after:h-0.5 after:w-full after:bg-dark hover:animate-blink dark:before:bg-light dark:after:bg-light md:w-64 md:min-w-fit md:text-4xl`,
         className,
       )}
       href={href}
