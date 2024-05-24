@@ -21,6 +21,6 @@
   padding: 0;
 }
 
-:focus {
+:focus-visible {
   @apply animate-blink outline-none;
 }
