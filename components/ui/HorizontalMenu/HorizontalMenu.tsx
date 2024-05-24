@@ -69,12 +69,17 @@ export function HorizontalMenu({
       {items.map((item, index) => {
         const isActive = activeItemIndex === index;
 
+        const isFocusable =
+          index >= activeItemIndex &&
+          index < activeItemIndex + children.length * 3;
+
         return (
           <li key={index} className="inline-block px-3">
             <button
               className={`${
                 isActive ? 'operational' : ''
               } px-2 hover:animate-blink operational:text-dark operational:dark:text-light`}
+              tabIndex={isFocusable ? 0 : -1}
               type="button"
               onClick={buttonClickHandler}
             >

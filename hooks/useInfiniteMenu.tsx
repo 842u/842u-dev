@@ -23,6 +23,8 @@ export function useInfiniteMenu(
 ) {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [items, setItems] = useState([...children]);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const sectorWidth = useRef(0);
   const activeItemOffset = useRef<ItemOffset>(0);
@@ -34,10 +36,13 @@ export function useInfiniteMenu(
     activeItemIndex -
     Math.floor(activeItemIndex / children.length) * children.length;
 
+  const minSwipeDistance = 50;
+
   /*
    * Dynamicly set items array acording to menu element width to prevent scroll
    * bugs and optimize items number.
    */
+
   function windowResizeHandler() {
     const { offset } = getMediaBreakpointData(mediaBreakpoints);
 
@@ -72,6 +77,44 @@ export function useInfiniteMenu(
     }
   }
 
+  const touchStartHandler = (event: TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(event.targetTouches[0].clientX);
+  };
+
+  const touchMoveHandler = (event: TouchEvent) => {
+    setTouchEnd(event.targetTouches[0].clientX);
+  };
+
+  const touchEndHandler = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    const listItems = menuElementRef.current?.getElementsByTagName('li');
+
+    if (isRightSwipe) {
+      setActiveItemIndex(activeItemIndex - 1);
+
+      scrollToElement(
+        menuElementRef.current!,
+        listItems?.[activeItemIndex - 1] as HTMLLIElement,
+        'smooth',
+        activeItemOffset.current,
+      );
+    } else if (isLeftSwipe) {
+      setActiveItemIndex(activeItemIndex + 1);
+
+      scrollToElement(
+        menuElementRef.current!,
+        listItems?.[activeItemIndex + 1] as HTMLLIElement,
+        'smooth',
+        activeItemOffset.current,
+      );
+    }
+  };
+
   useEffect(() => {
     window.addEventListener('resize', windowResizeHandler);
 
@@ -100,14 +143,26 @@ export function useInfiniteMenu(
 
   useEffect(() => {
     menuElementRef.current?.addEventListener('scrollend', scrollEndHandler);
+    menuElementRef.current?.addEventListener('touchstart', touchStartHandler);
+    menuElementRef.current?.addEventListener('touchmove', touchMoveHandler);
+    menuElementRef.current?.addEventListener('touchend', touchEndHandler);
 
     return () => {
       menuElementRef.current?.removeEventListener(
         'scrollend',
         scrollEndHandler,
       );
+      menuElementRef.current?.removeEventListener(
+        'touchstart',
+        touchStartHandler,
+      );
+      menuElementRef.current?.removeEventListener(
+        'touchmove',
+        touchMoveHandler,
+      );
+      menuElementRef.current?.removeEventListener('touchend', touchEndHandler);
     };
-  }, [activeItemIndex]);
+  }, [activeItemIndex, touchEnd, touchStart]);
 
   useEffect(() => {
     const itemsElements = getContainerElementsArray(
