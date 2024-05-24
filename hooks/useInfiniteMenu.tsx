@@ -20,6 +20,8 @@ export function useInfiniteMenu(
   children: React.ReactNode[],
   menuElementRef: React.MutableRefObject<HTMLMenuElement | null>,
   mediaBreakpoints: MediaBreakpoints,
+  onLeftSwipe?: () => void,
+  onRightSwipe?: () => void,
 ) {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [items, setItems] = useState([...children]);
@@ -95,6 +97,8 @@ export function useInfiniteMenu(
     const listItems = menuElementRef.current?.getElementsByTagName('li');
 
     if (isRightSwipe) {
+      if (onRightSwipe) onRightSwipe();
+
       setActiveItemIndex(activeItemIndex - 1);
 
       scrollToElement(
@@ -104,6 +108,8 @@ export function useInfiniteMenu(
         activeItemOffset.current,
       );
     } else if (isLeftSwipe) {
+      if (onLeftSwipe) onLeftSwipe();
+
       setActiveItemIndex(activeItemIndex + 1);
 
       scrollToElement(

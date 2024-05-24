@@ -14,16 +14,31 @@ type AllProjectsSectionProps = {
 };
 
 export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
-  const [currentProject, setCurrentProject] = useState(projects[0]);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
 
   const menuItemClickHandler = (event: React.MouseEvent) => {
-    const clickedProject = projects.find(
+    const clickedProjectIndex = projects.findIndex(
       (project) =>
         project.name.toLowerCase() ===
         (event.target as HTMLButtonElement).innerText,
     );
 
-    setCurrentProject(clickedProject || projects[0]);
+    setCurrentProjectIndex(clickedProjectIndex);
+  };
+
+  const menuSwipeLeftHandler = () => {
+    if (currentProjectIndex + 1 >= projects.length) {
+      setCurrentProjectIndex(0);
+    } else {
+      setCurrentProjectIndex(currentProjectIndex + 1);
+    }
+  };
+  const menuSwipeRightHandler = () => {
+    if (currentProjectIndex - 1 < 0) {
+      setCurrentProjectIndex(projects.length - 1);
+    } else {
+      setCurrentProjectIndex(currentProjectIndex - 1);
+    }
   };
 
   return (
@@ -35,13 +50,18 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
         <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
         <BazuDevSVG />
 
-        <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
+        <HorizontalMenu
+          className="my-10"
+          onClick={menuItemClickHandler}
+          onLeftSwipe={menuSwipeLeftHandler}
+          onRightSwipe={menuSwipeRightHandler}
+        >
           {projects.map((project) => project.name.toLowerCase())}
         </HorizontalMenu>
       </Section>
 
       <Section className="mt-0 md:mt-0 lg:mt-0">
-        <ProjectCard headingTag="h2" project={currentProject} />
+        <ProjectCard headingTag="h2" project={projects[currentProjectIndex]} />
       </Section>
     </div>
   );

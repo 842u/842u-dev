@@ -16,6 +16,8 @@ export const defaultMediaBreakpoints: MediaBreakpoints = {
 type HorizontalMenuProps = {
   children: string[];
   onClick?: (event: React.MouseEvent) => void;
+  onLeftSwipe?: () => void;
+  onRightSwipe?: () => void;
   mediaBreakpoints?: MediaBreakpoints;
   className?: string;
 };
@@ -23,6 +25,8 @@ type HorizontalMenuProps = {
 export function HorizontalMenu({
   children,
   onClick,
+  onLeftSwipe,
+  onRightSwipe,
   mediaBreakpoints = defaultMediaBreakpoints,
   className,
 }: HorizontalMenuProps) {
@@ -33,7 +37,13 @@ export function HorizontalMenu({
     activeItemIndex,
     setActiveItemIndex,
     activeItemContainerOffset,
-  } = useInfiniteMenu(children, menuElementRef, mediaBreakpoints);
+  } = useInfiniteMenu(
+    children,
+    menuElementRef,
+    mediaBreakpoints,
+    onLeftSwipe,
+    onRightSwipe,
+  );
 
   function buttonClickHandler(event: React.MouseEvent) {
     const itemsElements = getContainerElementsArray(
