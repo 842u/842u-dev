@@ -58,11 +58,11 @@ export function ProjectCard({
 
         {withRepoLink && repository ? (
           <LinkButton className="lg:w-full" href={repository} target="_blank">
-            See repository
+            Check repository
           </LinkButton>
         ) : (
           <LinkButton className="lg:w-full" href={`/projects/${slug}`}>
-            See more
+            Explore {project.name}
           </LinkButton>
         )}
       </div>

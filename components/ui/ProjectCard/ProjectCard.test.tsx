@@ -36,7 +36,9 @@ describe('ProjectCard', () => {
   it('should render link to project', () => {
     render(<ProjectCard project={mockProject} />);
 
-    const projectLink = screen.getByRole('link', { name: /see more/i });
+    const regex = new RegExp(`${mockProject.name}`, 'i');
+
+    const projectLink = screen.getByRole('link', { name: regex });
 
     expect(projectLink).toBeInTheDocument();
     expect(projectLink).toHaveAttribute(

@@ -18,7 +18,7 @@ export default function AboutPage() {
           qui atque, nobis ullam deleniti eveniet numquam labore, eos quam
           repudiandae dolores. Eaque id consequatur repellat?
         </SectionParagraph>
-        <LinkButton href="/projects">See more</LinkButton>
+        <LinkButton href="/projects">Explore more projects&nbsp;</LinkButton>
       </Section>
       <CoursesSection courses={allCourses} />
     </main>
