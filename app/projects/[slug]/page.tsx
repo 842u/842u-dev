@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { ProjectReadmeSection } from '@/components/sections/ProjectReadmeSection/ProjectReadmeSection';
@@ -10,6 +11,21 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return allProjects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const project = allProjects.find(
+    (specificProject) => specificProject.slug === params.slug,
+  );
+
+  return {
+    title: `842u | ${project?.name}`,
+    description: `Explore details of ${project?.name} project. ${project?.description}`,
+  };
 }
 
 export default async function ProjectPage({
