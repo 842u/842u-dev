@@ -1,3 +1,4 @@
+import { AlienatedSVG } from '@/components/decorative/CMR2SVG/AlienatedSVG';
 import { CMR2SVG } from '@/components/decorative/CMR2SVG/CMR2SVG';
 import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { alienatedSVGPath } from '@/data/svgPaths';
@@ -35,17 +36,7 @@ export function AboutMeSection() {
             cupiditate amet dignissimos enim rem maxime!
           </SectionParagraph>
         </div>
-        <CMR2SVG
-          animationDuration={10}
-          characterRotation="0"
-          characterSpacing={0.08}
-          className="w-full fill-light-darker text-[5px] dark:text-dark-lighter md:hidden lg:block lg:w-1/3"
-          pathId="alienatedPath"
-          pathShape={alienatedSVGPath}
-          text="kamil bażanow "
-          textRepetition={9}
-          viewBox="0 0 200 200"
-        />
+        <AlienatedSVG className="w-full md:hidden lg:block lg:w-1/3" />
       </Section>
       <Section ariaLabel="more about me">
         <SectionParagraph>
