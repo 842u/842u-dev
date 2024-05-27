@@ -1,8 +1,10 @@
 import { twMerge } from 'tailwind-merge';
 
+import { SvgPathData } from '@/types';
+
 import { CMR2SVG } from './CMR2SVG';
 
-export const pathData = {
+export const pathData: SvgPathData = {
   viewBox: '0 0 200 200',
   path: `M 51.12,129.75
   C 68.34,159.39 99.36,184.91 99.36,184.91
