@@ -51,6 +51,15 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         {projects.map((project) => project.name.toLowerCase())}
       </HorizontalMenu>
 
+      <div aria-hidden className="hidden">
+        {/* hidden links for site crawlers */}
+        {projects.map((project) => (
+          <a key={project.slug} href={`/projects/${project.slug}`}>
+            {project.name}
+          </a>
+        ))}
+      </div>
+
       <ProjectCard project={projects[currentProjectIndex]} />
     </Section>
   );
