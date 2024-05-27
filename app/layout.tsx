@@ -9,6 +9,18 @@ import { NavBar } from '@/components/ui/NavBar/NavBar';
 export const metadata: Metadata = {
   title: '842u dev',
   description: '',
+  applicationName: '842u.dev',
+  creator: 'Kamil Bażanow',
+  keywords: [
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'Git',
+    'frontend',
+    'web',
+    'technology',
+  ],
 };
 
 export default function RootLayout({
