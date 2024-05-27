@@ -91,3 +91,9 @@ export type ValidationRules = Partial<{
     message: string;
   };
 }>;
+
+export type SvgPathData = {
+  viewBox: string;
+  path: string;
+  pathId: string;
+};
