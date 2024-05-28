@@ -29,10 +29,8 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
   return (
     <Section ariaLabel="finished courses" title="Courses">
       <SectionParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium
-        culpa et, cupiditate incidunt, dolorum ex tempora assumenda saepe, autem
-        a eaque eius voluptatum dicta distinctio laboriosam necessitatibus iure!
-        Culpa, molestias.
+        In addition to my practical experience, I have completed several online
+        courses to further enhance my skills and knowledge.
       </SectionParagraph>
       <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
         {courses.map((course) => course.name.toLowerCase())}
