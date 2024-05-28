@@ -12,8 +12,10 @@ export function ContactSection() {
       title="Contact"
     >
       <SectionParagraph>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet,
-        excepturi.
+        I&apos;d love to hear from you! Have a questions or want to chat?
+        <br />
+        <br />
+        Fill out the form below to get in touch.
       </SectionParagraph>
       <ContactForm className="lg:w-1/2" />
     </Section>
