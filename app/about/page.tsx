@@ -21,9 +21,13 @@ export default function AboutPage() {
       <ExperienceSection skills={mySkills} />
       <Section ariaLabel="projects introduction" title="Projects">
         <SectionParagraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam,
-          qui atque, nobis ullam deleniti eveniet numquam labore, eos quam
-          repudiandae dolores. Eaque id consequatur repellat?
+          In my projects, I always try to explore new technologies while also
+          strengthening my existing skills. Each project is an opportunity for
+          me to learn something new and challenge myself.
+          <br />
+          <br />
+          It makes me proud to deliver high-quality work and gives me
+          satisfaction from seeing my projects come to life.
         </SectionParagraph>
         <LinkButton href="/projects">Explore my projects&nbsp;</LinkButton>
       </Section>
