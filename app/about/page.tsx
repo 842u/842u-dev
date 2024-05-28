@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import { AboutMeSection } from '@/components/sections/AboutMeSection/AboutMeSection';
 import { CoursesSection } from '@/components/sections/CoursesSection/CoursesSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection/ExperienceSection';
@@ -6,6 +8,11 @@ import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { LinkButton } from '@/components/ui/LinkButton';
 import { allCourses } from '@/data/courses/allCourses';
 import { mySkills } from '@/data/skills';
+
+export const metadata: Metadata = {
+  title: '842u | Kamil Bażanow',
+  description: '',
+};
 
 export default function AboutPage() {
   return (
