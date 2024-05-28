@@ -19,22 +19,25 @@ export function AboutMeSection() {
             <AlienatedSVG className="hidden md:block md:w-1/2 lg:hidden" />
           </div>
           <SectionParagraph>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. At porro
-            aperiam adipisci provident est nulla, laudantium cumque et dolore
-            cupiditate amet dignissimos enim rem maxime!
+            Hello. My name is Kamil Bażanow. I&apos;m a detail-oriented person
+            with a keen eye for detail. In everything I do, I try to be as
+            accurate, precise and careful as I can, ensuring that every aspect
+            of my work meets the highest standards of accuracy and quality.
+            <br />
+            <br />I thrive in dynamic environments where I can continuously
+            innovate, learn and explore new technologies.
+            <br />
+            <br />
+            As my little experience showed me, it&apos;s hard to build great
+            things alone so I believe in the power of collaboration and feel
+            excited about the opportunity to work with like-minded individuals
+            and organizations to create impactful digital experiences.
           </SectionParagraph>
         </div>
         <AlienatedSVG className="w-full md:hidden lg:block lg:w-1/3" />
       </Section>
       <Section ariaLabel="more about me">
-        <SectionParagraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga, dolores
-          deserunt. Doloremque, fugit architecto magnam, est possimus placeat
-          sunt fugiat libero quia necessitatibus sequi labore obcaecati.
-          Dolorum, illo aut. Sit repudiandae natus aperiam, dolores iure enim
-          adipisci esse quaerat? Tempora, rerum repellat reiciendis odio sint
-          consequuntur voluptatibus nobis sequi error.
-        </SectionParagraph>
+        <SectionParagraph />
       </Section>
     </>
   );
