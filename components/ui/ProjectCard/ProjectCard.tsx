@@ -11,12 +11,14 @@ type ProjectCardProps = {
   project: Project;
   headingTag?: HeadingTag;
   withRepoLink?: boolean;
+  imgPriority?: boolean;
 };
 
 export function ProjectCard({
   project,
   headingTag = 'h3',
   withRepoLink = false,
+  imgPriority = false,
 }: ProjectCardProps) {
   const { name, image, slug, description, tools, repository } = project;
 
@@ -31,6 +33,7 @@ export function ProjectCard({
             fill
             alt={`${name} overview image`}
             className="object-cover"
+            priority={imgPriority}
             src={image}
           />
         </div>
