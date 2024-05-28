@@ -5,6 +5,8 @@ import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { Section } from '../Section';
 
+const learingSince = new Date('March 1, 2022');
+
 type ExperienceSectionProps = {
   skills: Skill[];
 };
@@ -13,12 +15,15 @@ export function ExperienceSection({ skills }: ExperienceSectionProps) {
   return (
     <Section ariaLabel="skills overview" title="Experience">
       <SectionParagraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-        adipisci fuga exercitationem delectus facilis eos quos vel molestiae
-        recusandae atque quaerat, quod consequatur vitae quo quibusdam velit ex
-        nihil, corrupti quisquam harum sint odio? Rerum, magni voluptatem ipsam
-        architecto provident nisi impedit sint laudantium animi obcaecati,
-        itaque alias aperiam saepe!
+        I have been learning web technologies for about{' '}
+        {new Date().getFullYear() - learingSince.getFullYear()} years. During
+        this time, I have gained knowledge not only in frontend technologies but
+        also in various other aspects of the programming ecosystem. This journey
+        has made me realize that I&apos;m just at the beginning, with much more
+        to learn and discover ahead.
+        <br />
+        <br />
+        Here you can check my base technology stack:
       </SectionParagraph>
       <div className="my-12 md:flex md:flex-wrap md:justify-evenly md:gap-10">
         {skills.map((skill) => {
