@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 
+import { BreakLine } from '@/components/decorative/BreakLine';
 import { AboutMeSection } from '@/components/sections/AboutMeSection/AboutMeSection';
 import { CoursesSection } from '@/components/sections/CoursesSection/CoursesSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection/ExperienceSection';
@@ -24,8 +25,7 @@ export default function AboutPage() {
           In my projects, I always try to explore new technologies while also
           strengthening my existing skills. Each project is an opportunity for
           me to learn something new and challenge myself.
-          <br />
-          <br />
+          <BreakLine />
           It makes me proud to deliver high-quality work and gives me
           satisfaction from seeing my projects come to life.
         </SectionParagraph>

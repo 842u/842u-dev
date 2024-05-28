@@ -1,3 +1,4 @@
+import { BreakLine } from '@/components/decorative/BreakLine';
 import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { LinkButton } from '@/components/ui/LinkButton';
 
@@ -19,8 +20,7 @@ export function HeroSection() {
         I&apos;m a web developer specializing in frontend technologies. However,
         I&apos;m not limited to the frontend alone and eager to learn new
         technologies and expand my knowledge across different areas of tech.
-        <br />
-        <br />
+        <BreakLine />
         I&apos;m currently looking for a job where I can collaborate with a team
         of cool, talented individuals to create awesome things together. If
         you&apos;re seeking a passionate developer to join your team, let&apos;s

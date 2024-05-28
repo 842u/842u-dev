@@ -1,3 +1,4 @@
+import { BreakLine } from '@/components/decorative/BreakLine';
 import { AlienatedSVG } from '@/components/decorative/CMR2SVG/AlienatedSVG';
 import { SectionParagraph } from '@/components/sections/SectionParagraph';
 
@@ -23,11 +24,10 @@ export function AboutMeSection() {
             with a keen eye for detail. In everything I do, I try to be as
             accurate, precise and careful as I can, ensuring that every aspect
             of my work meets the highest standards of accuracy and quality.
-            <br />
-            <br />I thrive in dynamic environments where I can continuously
-            innovate, learn and explore new technologies.
-            <br />
-            <br />
+            <BreakLine />
+            I thrive in dynamic environments where I can continuously innovate,
+            learn and explore new technologies.
+            <BreakLine />
             As my little experience showed me, it&apos;s hard to build great
             things alone so I believe in the power of collaboration and feel
             excited about the opportunity to work with like-minded individuals
@@ -41,12 +41,10 @@ export function AboutMeSection() {
           Apart from the fact that web development is currently my main focus,
           I&apos;m also interested in the field of embedded programming and
           electronics.
-          <br />
-          <br />
+          <BreakLine />
           In fact, my journey of learning frontend started from my interest in
           car mechanics and electronics.
-          <br />
-          <br />
+          <BreakLine />
           When I&apos;m not coding, you can find me tinkering or repairing my
           car <span className="text-4xl">🚗🧑🏻‍🔧</span>, or recently taking care of
           my chili plants<span className="text-4xl">🌶️🧑🏻‍🌾</span>.
