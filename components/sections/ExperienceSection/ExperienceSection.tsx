@@ -15,12 +15,20 @@ export function ExperienceSection({ skills }: ExperienceSectionProps) {
   return (
     <Section ariaLabel="skills overview" title="Experience">
       <SectionParagraph>
-        I have been learning web technologies for about{' '}
-        {new Date().getFullYear() - learingSince.getFullYear()} years. During
-        this time, I have gained knowledge not only in frontend technologies but
-        also in various other aspects of the programming ecosystem. This journey
-        has made me realize that I&apos;m just at the beginning, with much more
-        to learn and discover ahead.
+        My first contact with programming was during my time at the University
+        of Technology, where I was introduced to the fundamentals of coding.
+        <br />
+        <br />
+        However, over the past{' '}
+        {new Date().getFullYear() - learingSince.getFullYear()} years, I&apos;ve
+        delved deeper into the world of programming and web technologies,
+        expanding my skills.
+        <br />
+        <br />
+        During this time, I have gained knowledge not only in frontend
+        technologies but also in various other aspects of the programming
+        ecosystem. This journey has made me realize that I&apos;m just at the
+        beginning, with much more to learn and discover ahead.
         <br />
         <br />
         Here you can check my base technology stack:
