@@ -11,7 +11,7 @@ export function AboutMeSection() {
         ariaLabel="brief about me"
         className="my-0 flex min-h-screen flex-col md:my-0 lg:my-0 lg:flex-row lg:items-center lg:justify-between"
       >
-        <div className="flex min-h-screen flex-col justify-center">
+        <div className="flex min-h-screen flex-col justify-center md:mt-16 lg:mt-auto">
           <div className="flex items-end justify-between">
             <h1 className="divide-x-2 text-5xl md:text-7xl lg:text-5xl">
               <span className="pr-2">about</span>
