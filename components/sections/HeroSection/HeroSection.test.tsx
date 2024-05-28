@@ -4,19 +4,18 @@ import { HeroSection } from './HeroSection';
 
 describe('HeroSection', () => {
   it('should render heading with first name and last name', () => {
-    const firstName = /kamil/i;
-    const LastName = /bażanow/i;
+    const text = /kamil bażanow/i;
 
     render(<HeroSection />);
-    const firstNameElement = screen.getByText(firstName);
-    const lastNameElement = screen.getByText(LastName);
 
-    expect(firstNameElement).toBeInTheDocument();
-    expect(lastNameElement).toBeInTheDocument();
+    const heading = screen.getByRole('heading', { name: text });
+
+    expect(heading).toBeInTheDocument();
   });
 
   it('should render paragraph with description', () => {
     render(<HeroSection />);
+
     const paragraph = screen.getByTestId('hero-description');
 
     expect(paragraph).toBeInTheDocument();
@@ -26,6 +25,7 @@ describe('HeroSection', () => {
     const linkText = /about me/i;
 
     render(<HeroSection />);
+
     const link = screen.getByRole('link', { name: linkText });
 
     expect(link).toBeInTheDocument();

@@ -14,7 +14,7 @@ export function SectionParagraph({
   return (
     <p
       className={twMerge(
-        'my-10 text-lg md:my-20 md:text-2xl lg:max-w-[50vw] lg:text-xl',
+        'my-10 text-lg md:my-20 md:text-2xl lg:my-14 lg:max-w-[50vw] lg:text-xl',
         className,
       )}
       data-testid={dataTestId}
