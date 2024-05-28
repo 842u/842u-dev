@@ -1,4 +1,3 @@
-import { BreakLine } from '@/components/decorative/BreakLine';
 import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { ContactForm } from '@/components/ui/ContactForm/ContactForm';
 
@@ -14,8 +13,6 @@ export function ContactSection() {
     >
       <SectionParagraph>
         I&apos;d love to hear from you! Have a questions or want to chat?
-        <BreakLine />
-        Fill out the form below to get in touch.
       </SectionParagraph>
       <ContactForm className="lg:w-1/2" />
     </Section>
