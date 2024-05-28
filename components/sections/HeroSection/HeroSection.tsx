@@ -15,12 +15,16 @@ export function HeroSection() {
       </h1>
 
       <SectionParagraph dataTestId="hero-description">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam ea
-        dignissimos, iste quidem ducimus quis facere voluptatibus quasi cum quod
-        repudiandae, atque et tenetur id ex tempora nobis pariatur aliquid
-        placeat? Ipsa dolore eos assumenda numquam nostrum quibusdam velit alias
-        consequatur, quisquam minima dignissimos consequuntur deleniti quo
-        itaque fugit quia?
+        Hello there 🫡. Nice to see you here! My name is Kamil Bażanow, and
+        I&apos;m a web developer specializing in frontend technologies. However,
+        I&apos;m not limited to the frontend alone and eager to learn new
+        technologies and expand my knowledge across different areas of tech.
+        <br />
+        <br />
+        I&apos;m currently looking for a job where I can collaborate with a team
+        of cool, talented individuals to create awesome things together. If
+        you&apos;re seeking a passionate developer to join your team, let&apos;s
+        connect!
       </SectionParagraph>
 
       <LinkButton href="/about">About me</LinkButton>
