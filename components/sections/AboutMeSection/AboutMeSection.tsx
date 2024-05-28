@@ -37,7 +37,20 @@ export function AboutMeSection() {
         <AlienatedSVG className="w-full md:hidden lg:block lg:w-1/3" />
       </Section>
       <Section ariaLabel="more about me">
-        <SectionParagraph />
+        <SectionParagraph>
+          Apart from the fact that web development is currently my main focus,
+          I&apos;m also interested in the field of embedded programming and
+          electronics.
+          <br />
+          <br />
+          In fact, my journey of learning frontend started from my interest in
+          car mechanics and electronics.
+          <br />
+          <br />
+          When I&apos;m not coding, you can find me tinkering or repairing my
+          car <span className="text-4xl">🚗🧑🏻‍🔧</span>, or recently taking care of
+          my chili plants<span className="text-4xl">🌶️🧑🏻‍🌾</span>.
+        </SectionParagraph>
       </Section>
     </>
   );
