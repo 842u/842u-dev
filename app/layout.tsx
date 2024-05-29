@@ -8,7 +8,8 @@ import { NavBar } from '@/components/ui/NavBar/NavBar';
 
 export const metadata: Metadata = {
   title: '842u dev',
-  description: '',
+  description: `Hello there 🫡. Nice to see you here! My name is Kamil Bażanow, and I'm a web developer specializing in frontend technologies. However, I'm not limited to the frontend alone and eager to learn new technologies and expand my knowledge across different areas of tech.
+  I'm currently looking for a job where I can collaborate with a team of cool, talented individuals to create awesome things together. If you're seeking a passionate developer to join your team, let's connect!`,
   applicationName: '842u.dev',
   creator: 'Kamil Bażanow',
   keywords: [

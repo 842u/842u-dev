@@ -12,7 +12,9 @@ import { mySkills } from '@/data/skills';
 
 export const metadata: Metadata = {
   title: '842u | Kamil Bażanow',
-  description: '',
+  description: `Hello. My name is Kamil Bażanow. I'm a detail-oriented person with a keen eye for detail. In everything I do, I try to be as accurate, precise and careful as I can, ensuring that every aspect of my work meets the highest standards of accuracy and quality.
+  I thrive in dynamic environments where I can continuously innovate, learn and explore new technologies.
+  As my little experience showed me, it's hard to build great things alone so I believe in the power of collaboration and feel excited about the opportunity to work with like-minded individuals and organizations to create impactful digital experiences.`,
 };
 
 export default function AboutPage() {
