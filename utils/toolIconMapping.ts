@@ -1,4 +1,5 @@
 import { CypressIcon } from '@/components/decorative/icons/CypressIcon';
+import { DockerIcon } from '@/components/decorative/icons/DockerIcon';
 import { ESlintIcon } from '@/components/decorative/icons/ESlintIcon';
 import { FigmaIcon } from '@/components/decorative/icons/FigmaIcon';
 import { GitHubIcon } from '@/components/decorative/icons/GitHubIcon';
@@ -8,6 +9,7 @@ import { JavaScriptIcon } from '@/components/decorative/icons/JavaScriptIcon';
 import { JestIcon } from '@/components/decorative/icons/JestIcon';
 import { JiraIcon } from '@/components/decorative/icons/Jira';
 import { NextJSIcon } from '@/components/decorative/icons/NextJSIcon';
+import { RaspberryPiIcon } from '@/components/decorative/icons/RaspberryPiIcon';
 import { ReactIcon } from '@/components/decorative/icons/ReactIcon';
 import { SanityIcon } from '@/components/decorative/icons/SanityIcon';
 import { SassIcon } from '@/components/decorative/icons/SassIcon';
@@ -39,4 +41,6 @@ export const toolIconMapping: Record<
   [AvaliableTools.TailwindCSS]: TailwindCSSIcon,
   [AvaliableTools.TypeScript]: TypeScriptIcon,
   [AvaliableTools.Vercel]: VercelIcon,
+  [AvaliableTools.Docker]: DockerIcon,
+  [AvaliableTools.RaspberryPi]: RaspberryPiIcon,
 };

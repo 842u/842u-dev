@@ -7,6 +7,8 @@ const data: ProjectData = {
   image: '/placeholder-image.jpg',
   description: `This project was built to gain a basic understanding of Docker, NGINX, and the development and deployment processes on private remote machines. It demonstrates basics of Docker images and containers usage and how they can be integrated with CI/CD pipeline.`,
   tools: [
+    AvaliableTools.Docker,
+    AvaliableTools.RaspberryPi,
     AvaliableTools.TypeScript,
     AvaliableTools.React,
     AvaliableTools.NextJS,
