@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import BazuDevSVG from '@/components/decorative/CMR2SVG/BazuDevSVG';
+import MurawskaStudioSVG from '@/components/decorative/CMR2SVG/MurawskaStudioSVG';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
 import { Project } from '@/types';
@@ -47,17 +47,18 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
         ariaLabel="all projects"
         className="my-0 flex min-h-screen flex-col justify-between md:my-0 lg:my-0"
       >
-        <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
-        <BazuDevSVG />
-
-        <HorizontalMenu
-          className="my-10"
-          onClick={menuItemClickHandler}
-          onLeftSwipe={menuSwipeLeftHandler}
-          onRightSwipe={menuSwipeRightHandler}
-        >
-          {projects.map((project) => project.name.toLowerCase())}
-        </HorizontalMenu>
+        <div className="flex h-screen flex-col">
+          <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
+          <MurawskaStudioSVG />
+          <HorizontalMenu
+            className="my-10"
+            onClick={menuItemClickHandler}
+            onLeftSwipe={menuSwipeLeftHandler}
+            onRightSwipe={menuSwipeRightHandler}
+          >
+            {projects.map((project) => project.name.toLowerCase())}
+          </HorizontalMenu>
+        </div>
         <div aria-hidden className="hidden">
           {/* hidden links for site crawlers */}
           {projects.map((project) => (
