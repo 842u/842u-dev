@@ -37,6 +37,7 @@ export type ProjectData = {
   image: string;
   description: string;
   tools: AvaliableTools[];
+  CMR2SVG: JSX.Element;
   repository?: string;
   remoteReadme?: string;
 };

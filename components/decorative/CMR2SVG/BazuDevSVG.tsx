@@ -44,7 +44,7 @@ export default function BazuDevSVG() {
   }, []);
 
   return (
-    <div aria-hidden className="aspect-[589/151]">
+    <div aria-hidden className="mx-auto flex-grow">
       {mediaBreakpointId === AvaliableBreakpoints.SM ||
       mediaBreakpointId === AvaliableBreakpoints.MD ? (
         <CMR2SVG
@@ -52,7 +52,7 @@ export default function BazuDevSVG() {
           animationDuration={10}
           characterRotation="0"
           characterSpacing={0.08}
-          className="fill-dark-lighter text-xs dark:fill-light-darker"
+          className="h-full w-full fill-dark-lighter text-xs dark:fill-light-darker"
           pathId={`${simplePath.pathId}sm`}
           pathShape={simplePath.path}
           text={text}
@@ -66,7 +66,7 @@ export default function BazuDevSVG() {
           animationDuration={35}
           characterRotation="0"
           characterSpacing={0.08}
-          className="fill-dark-lighter text-[5px] dark:fill-light-darker"
+          className="h-full w-full fill-dark-lighter text-[5px] dark:fill-light-darker"
           pathId={complexPath.pathId}
           pathShape={complexPath.path}
           text={text}
