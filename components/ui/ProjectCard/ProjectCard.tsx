@@ -42,7 +42,7 @@ export function ProjectCard({
           {name}
         </Heading>
 
-        <SectionParagraph className="my-0 md:my-0">
+        <SectionParagraph className="my-0 md:my-0 lg:my-0">
           {description}
         </SectionParagraph>
       </div>
