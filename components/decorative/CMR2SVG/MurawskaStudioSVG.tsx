@@ -23,7 +23,7 @@ const simplePath = {
 export default function MurawskaStudioSVG() {
   const [mediaBreakpointId, setMediaBreakpointId] = useState('');
 
-  const text = 'murawska.studio ';
+  const text = 'murawska studio ';
 
   function windowResizeHandler() {
     const { id } = getMediaBreakpointData(defaultMediaBreakpoints);
@@ -49,28 +49,28 @@ export default function MurawskaStudioSVG() {
       mediaBreakpointId === AvaliableBreakpoints.MD ? (
         <CMR2SVG
           instantStart
-          animationDuration={15}
+          animationDuration={35}
           characterRotation="0"
-          characterSpacing={0.05}
-          className="h-full w-full fill-dark-lighter text-[7px] transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
+          characterSpacing={0.09}
+          className="h-full w-full text-[5px]"
           pathId={`${simplePath.pathId}sm`}
           pathShape={simplePath.path}
           text={text}
-          textRepetition={19}
+          textRepetition={25}
           viewBox={simplePath.viewBox}
         />
       ) : null}
       {mediaBreakpointId === AvaliableBreakpoints.LG ? (
         <CMR2SVG
           instantStart
-          animationDuration={55}
+          animationDuration={100}
           characterRotation="0"
-          characterSpacing={0.08}
-          className="h-full w-full fill-dark-lighter text-[4px] transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
+          characterSpacing={0.13}
+          className="h-full w-full text-[3px]"
           pathId={complexPath.pathId}
           pathShape={complexPath.path}
           text={text}
-          textRepetition={43}
+          textRepetition={48}
           viewBox={complexPath.viewBox}
         />
       ) : null}

@@ -51,7 +51,7 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
           <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
           <Link
             aria-label={projects[currentProjectIndex].name}
-            className="flex flex-grow flex-col items-center"
+            className="flex w-full flex-grow flex-col items-center fill-dark-lighter transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
             href={`/projects/${projects[currentProjectIndex].slug}`}
           >
             {projects[currentProjectIndex].CMR2SVG}

@@ -18,7 +18,7 @@ export default function DockerRpiSVG() {
         animationDuration={35}
         characterRotation="0"
         characterSpacing={0.08}
-        className="h-full w-full fill-dark-lighter text-[8px] transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
+        className="h-full w-full text-[8px]"
         pathId={complexPath.pathId}
         pathShape={complexPath.path}
         text={text}
