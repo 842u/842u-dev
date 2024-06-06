@@ -3,9 +3,9 @@ import { AvaliableTools, ProjectData } from '@/types';
 import { createProject } from '@/utils/helpers';
 
 const data: ProjectData = {
-  name: 'docker rpi',
+  name: 'Docker RPi',
   image: '/placeholder-image.jpg',
-  description: ``,
+  description: `This project was built to gain a basic understanding of Docker, NGINX, and the development and deployment processes on private remote machines. It demonstrates basics of Docker images and containers usage and how they can be integrated with CI/CD pipeline.`,
   tools: [
     AvaliableTools.TypeScript,
     AvaliableTools.React,
