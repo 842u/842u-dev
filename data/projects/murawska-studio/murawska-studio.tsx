@@ -1,3 +1,4 @@
+import MurawskaStudioSVG from '@/components/decorative/CMR2SVG/MurawskaStudioSVG';
 import { AvaliableTools, ProjectData } from '@/types';
 import { createProject } from '@/utils/helpers';
 
@@ -14,6 +15,7 @@ const data: ProjectData = {
     AvaliableTools.Git,
     AvaliableTools.GitHub,
   ],
+  CMR2SVG: <MurawskaStudioSVG />,
   repository: 'https://github.com/842u/kor-mur',
   remoteReadme: 'https://raw.githubusercontent.com/842u/kor-mur/main/README.md',
 };

@@ -1,8 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 
-import MurawskaStudioSVG from '@/components/decorative/CMR2SVG/MurawskaStudioSVG';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
 import { Project } from '@/types';
@@ -42,14 +42,20 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
   };
 
   return (
-    <div className="min-h-screen">
+    <div>
       <Section
         ariaLabel="all projects"
-        className="my-0 flex min-h-screen flex-col justify-between md:my-0 lg:my-0"
+        className="my-0 flex min-h-screen flex-col md:my-0 lg:my-0"
       >
-        <div className="flex h-screen flex-col">
+        <div className="flex h-screen max-h-screen flex-col justify-between">
           <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
-          <MurawskaStudioSVG />
+          <Link
+            aria-label={projects[currentProjectIndex].name}
+            className="flex flex-grow flex-col items-center"
+            href={`/projects/${projects[currentProjectIndex].slug}`}
+          >
+            {projects[currentProjectIndex].CMR2SVG}
+          </Link>
           <HorizontalMenu
             className="my-10"
             onClick={menuItemClickHandler}
