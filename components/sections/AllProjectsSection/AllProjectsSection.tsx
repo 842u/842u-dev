@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
@@ -48,7 +49,13 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
       >
         <div className="flex h-screen max-h-screen flex-col justify-between">
           <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
-          {projects[currentProjectIndex].CMR2SVG}
+          <Link
+            aria-label={projects[currentProjectIndex].name}
+            className="flex flex-grow flex-col items-center"
+            href={`/projects/${projects[currentProjectIndex].slug}`}
+          >
+            {projects[currentProjectIndex].CMR2SVG}
+          </Link>
           <HorizontalMenu
             className="my-10"
             onClick={menuItemClickHandler}

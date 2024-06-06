@@ -3,7 +3,7 @@ import { AvaliableTools, ProjectData } from '@/types';
 import { createProject } from '@/utils/helpers';
 
 const data: ProjectData = {
-  name: 'Project 2',
+  name: '842u.dev',
   image: '/placeholder-image.jpg',
   description: `Lorem ipsum dolor sit amet consectetur adipisicing elit Perferendis, vel aspernatur deleniti ipsam tempore molestias impedit aliquid obcaecati! In rerum, odio quibusdam dicta quas voluptas illo iste cumque aliquid quaerat, non harum natus dolor omnis.`,
   tools: [
