@@ -9,12 +9,15 @@ const data: ProjectData = {
   tools: [
     AvaliableTools.TypeScript,
     AvaliableTools.React,
-    AvaliableTools.ESLint,
+    AvaliableTools.NextJS,
+    AvaliableTools.TailwindCSS,
+    AvaliableTools.Git,
+    AvaliableTools.GitHub,
   ],
   CMR2SVG: <BazuDevSVG />,
+  repository: 'https://github.com/842u/842u-dev',
   remoteReadme:
     'https://raw.githubusercontent.com/842u/842u-dev/main/README.md',
-  repository: 'https://github.com/842u/842u-dev',
 };
 
-export const project2 = createProject(data);
+export const bazuDev = createProject(data);

@@ -1,7 +1,7 @@
 import { Project } from '@/types';
 
+import { bazuDev } from './842u-dev/842u-dev';
 import { dockerRpi } from './docker-rpi/docker-rpi';
 import { murawskaStudio } from './murawska-studio/murawska-studio';
-import { project2 } from './project-2/project-2';
 
-export const allProjects: Project[] = [dockerRpi, murawskaStudio, project2];
+export const allProjects: Project[] = [dockerRpi, bazuDev, murawskaStudio];
