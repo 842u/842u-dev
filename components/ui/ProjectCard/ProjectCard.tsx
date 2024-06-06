@@ -23,10 +23,7 @@ export function ProjectCard({
   const { name, image, slug, description, tools, repository } = project;
 
   return (
-    <div
-      className="gap-10 lg:flex lg:justify-between"
-      data-testid="project-card"
-    >
+    <div className="lg:flex lg:justify-evenly" data-testid="project-card">
       <div className="lg:flex lg:w-1/2 lg:min-w-[50%] lg:flex-col">
         <div className="relative aspect-square w-full lg:aspect-video">
           <Image
@@ -42,7 +39,7 @@ export function ProjectCard({
           {name}
         </Heading>
 
-        <SectionParagraph className="my-0 md:my-0">
+        <SectionParagraph className="my-0 md:my-0 lg:my-0">
           {description}
         </SectionParagraph>
       </div>

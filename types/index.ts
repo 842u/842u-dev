@@ -18,6 +18,8 @@ export enum AvaliableTools {
   Sanity = 'Sanity',
   Vercel = 'Vercel',
   SendGrid = 'SendGrid',
+  Docker = 'Docker',
+  RaspberryPi = 'RaspberryPi',
 }
 
 export type Tool = {

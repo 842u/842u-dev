@@ -42,9 +42,9 @@ export function AlienatedSVG({ className }: AlienatedSVGProps) {
   return (
     <CMR2SVG
       instantStart
-      animationDuration={10}
+      animationDuration={15}
       characterRotation="0"
-      characterSpacing={0.08}
+      characterSpacing={0.09}
       className={twMerge(
         'fill-dark-lighter text-[5px] dark:fill-light-darker',
         className,
@@ -52,7 +52,7 @@ export function AlienatedSVG({ className }: AlienatedSVGProps) {
       pathId={pathData.pathId}
       pathShape={pathData.path}
       text="kamil bażanow "
-      textRepetition={9}
+      textRepetition={12}
       viewBox={pathData.viewBox}
     />
   );
