@@ -49,13 +49,15 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
       >
         <div className="flex h-screen max-h-screen flex-col justify-between">
           <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
-          <Link
-            aria-label={projects[currentProjectIndex].name}
-            className="flex w-full flex-grow flex-col items-center fill-dark-lighter transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
-            href={`/projects/${projects[currentProjectIndex].slug}`}
-          >
-            {projects[currentProjectIndex].CMR2SVG}
-          </Link>
+          <div className="flex flex-grow flex-col items-center">
+            <Link
+              aria-label={projects[currentProjectIndex].name}
+              className="h-full fill-dark-lighter transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
+              href={`/projects/${projects[currentProjectIndex].slug}`}
+            >
+              {projects[currentProjectIndex].CMR2SVG}
+            </Link>
+          </div>
           <HorizontalMenu
             className="my-10"
             onClick={menuItemClickHandler}
