@@ -100,3 +100,9 @@ export type SvgPathData = {
   path: string;
   pathId: string;
 };
+
+export type HorizontalMenuItem = {
+  name: string;
+  // eslint-disable-next-line
+  [key: string]: any;
+};

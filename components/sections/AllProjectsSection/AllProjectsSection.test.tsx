@@ -6,11 +6,6 @@ import { AllProjectsSection } from './AllProjectsSection';
 
 window.HTMLMenuElement.prototype.scrollBy = jest.fn(() => {});
 
-jest.mock('../../../utils/helpers.ts', () => ({
-  ...jest.requireActual('../../../utils/helpers.ts'),
-  extendArray: () => allProjects.map((project) => project.name),
-}));
-
 describe('AllProjectsSection', () => {
   it('should render heading with "projects" text within', () => {
     const text = /projects/i;

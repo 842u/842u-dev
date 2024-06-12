@@ -1,11 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef } from 'react';
 
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
+import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
 import { Project } from '@/types';
+import { defaultMediaBreakpoints } from '@/utils/defaults';
 
 import { Section } from '../Section';
 
@@ -14,32 +16,12 @@ type AllProjectsSectionProps = {
 };
 
 export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const menuElementRef = useRef<HTMLMenuElement>(null);
 
-  const menuItemClickHandler = (event: React.MouseEvent) => {
-    const clickedProjectIndex = projects.findIndex(
-      (project) =>
-        project.name.toLowerCase() ===
-        (event.target as HTMLButtonElement).innerText,
-    );
-
-    setCurrentProjectIndex(clickedProjectIndex);
-  };
-
-  const menuSwipeLeftHandler = () => {
-    if (currentProjectIndex + 1 >= projects.length) {
-      setCurrentProjectIndex(0);
-    } else {
-      setCurrentProjectIndex(currentProjectIndex + 1);
-    }
-  };
-  const menuSwipeRightHandler = () => {
-    if (currentProjectIndex - 1 < 0) {
-      setCurrentProjectIndex(projects.length - 1);
-    } else {
-      setCurrentProjectIndex(currentProjectIndex - 1);
-    }
-  };
+  const { activeElementIndex } = useInfiniteMenu(
+    menuElementRef,
+    defaultMediaBreakpoints,
+  );
 
   return (
     <div>
@@ -51,21 +33,18 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
           <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
           <div className="flex flex-grow flex-col items-center">
             <Link
-              aria-label={projects[currentProjectIndex].name}
+              aria-label={projects[activeElementIndex].name}
               className="h-full fill-dark-lighter transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
-              href={`/projects/${projects[currentProjectIndex].slug}`}
+              href={`/projects/${projects[activeElementIndex].slug}`}
             >
-              {projects[currentProjectIndex].CMR2SVG}
+              {projects[activeElementIndex].CMR2SVG}
             </Link>
           </div>
           <HorizontalMenu
+            ref={menuElementRef}
             className="my-10"
-            onClick={menuItemClickHandler}
-            onLeftSwipe={menuSwipeLeftHandler}
-            onRightSwipe={menuSwipeRightHandler}
-          >
-            {projects.map((project) => project.name.toLowerCase())}
-          </HorizontalMenu>
+            items={projects}
+          />
         </div>
         <div aria-hidden className="hidden">
           {/* hidden links for site crawlers */}
@@ -78,7 +57,7 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
       </Section>
 
       <Section className="mt-0 md:mt-0 lg:mt-0">
-        <ProjectCard headingTag="h2" project={projects[currentProjectIndex]} />
+        <ProjectCard headingTag="h2" project={projects[activeElementIndex]} />
       </Section>
     </div>
   );

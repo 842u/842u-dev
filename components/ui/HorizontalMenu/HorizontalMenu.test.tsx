@@ -1,63 +1,25 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 
-import { defaultMediaBreakpoints, HorizontalMenu } from './HorizontalMenu';
+import { HorizontalMenu } from './HorizontalMenu';
 
-const mockItems = ['item 1', 'item 2', 'item 3'];
-
-window.HTMLMenuElement.prototype.scrollBy = jest.fn(() => {});
-
-jest.mock('../../../utils/helpers.ts', () => ({
-  ...jest.requireActual('../../../utils/helpers.ts'),
-  extendArray: () => mockItems,
-}));
+const mockItems = [{ name: 'item1' }, { name: 'item2' }, { name: 'item3' }];
 
 describe('HorizontalMenu', () => {
   it('should render menu list', () => {
-    render(
-      <HorizontalMenu mediaBreakpoints={defaultMediaBreakpoints}>
-        {mockItems}
-      </HorizontalMenu>,
-    );
+    render(<HorizontalMenu items={mockItems} />);
 
     const menu = screen.getByRole('list');
 
     expect(menu).toBeInTheDocument();
   });
 
-  it('should render button for at least every children', () => {
-    const itemsNumber = mockItems.length;
+  it('should render all provided items', () => {
+    render(<HorizontalMenu items={mockItems} />);
 
-    render(
-      <HorizontalMenu mediaBreakpoints={defaultMediaBreakpoints}>
-        {mockItems}
-      </HorizontalMenu>,
-    );
+    mockItems.forEach((item) => {
+      const itemName = screen.getByText(item.name);
 
-    const buttons = screen.getAllByRole('button');
-
-    expect(buttons.length).toBeGreaterThanOrEqual(itemsNumber);
-  });
-
-  it('should call onClick when some button is clicked', async () => {
-    const user = userEvent.setup();
-    const clickHandler = jest.fn();
-
-    render(
-      <HorizontalMenu
-        mediaBreakpoints={defaultMediaBreakpoints}
-        onClick={clickHandler}
-      >
-        {mockItems}
-      </HorizontalMenu>,
-    );
-
-    const buttons = screen.getAllByRole('button');
-
-    buttons.forEach(async (button) => {
-      await user.click(button);
-
-      expect(clickHandler).toHaveBeenCalled();
+      expect(itemName).toBeInTheDocument();
     });
   });
 });

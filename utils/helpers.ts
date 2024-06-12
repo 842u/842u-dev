@@ -15,7 +15,12 @@ export function createSlug(text: string) {
 }
 
 export function extendArray<T>(array: T[], multiplier: number): T[] {
-  if (!multiplier || multiplier === 1 || multiplier < 0) {
+  if (
+    !multiplier ||
+    multiplier === 1 ||
+    multiplier < 0 ||
+    !Number.isFinite(multiplier)
+  ) {
     return [...array];
   }
 
@@ -65,6 +70,10 @@ export function scrollToElement(
   }
 }
 
+export function getChildElements(container: HTMLElement) {
+  return Array.from(container.children || []);
+}
+
 export function getContainerElementsArray(
   container: HTMLElement,
   querySelector: string,
@@ -97,7 +106,7 @@ export function getMediaBreakpointData(mediaBreakpoints: MediaBreakpoints) {
   return mediaBreakpoints.SM;
 }
 
-export function getSectorElementsWidth(sectorElements: Element[]) {
+export function calculateSectorElementsWidth(sectorElements: Element[]) {
   const sectorWidth = sectorElements.reduce(
     (previousWidth, currentElement) =>
       previousWidth + currentElement.getBoundingClientRect().width,
@@ -108,13 +117,96 @@ export function getSectorElementsWidth(sectorElements: Element[]) {
   return sectorWidth;
 }
 
+export function calculateMiddleIndex(
+  elements: Element[],
+  baseElementsCount: number,
+) {
+  const totalSectors = elements.length / baseElementsCount;
+
+  const middleSector = Math.floor(totalSectors / 2);
+
+  return middleSector * baseElementsCount;
+}
+
+export function calculateIndexOffset(
+  currentIndex: number,
+  baseElementsCount: number,
+) {
+  const sectorIndex = Math.floor(currentIndex / baseElementsCount) || 0;
+  const sectorStartIndex = sectorIndex * baseElementsCount || 0;
+
+  return currentIndex - sectorStartIndex;
+}
+
+export function fillContainerWithElements(
+  container: HTMLElement,
+  elements: Element[],
+  multiplier: number,
+) {
+  while (container?.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+
+  for (let i = 0; i < multiplier; i++) {
+    elements.forEach((element) => {
+      const clone = element.cloneNode(true);
+      container?.appendChild(clone);
+    });
+  }
+}
+
 export function calculateSectorMultiplier(
   container: HTMLElement,
   sectorWidth: number,
 ) {
-  const containerWidth = (container?.getBoundingClientRect().width || 0) * 5;
+  const containerWidthMultiplier = 5;
 
-  const multiplier = Math.ceil(containerWidth / sectorWidth) || 0;
+  const containerWidth = container?.getBoundingClientRect().width || 0;
+
+  const multiplier =
+    Math.ceil((containerWidth * containerWidthMultiplier) / sectorWidth) || 0;
 
   return multiplier;
+}
+
+// eslint-disable-next-line
+export function throttle<T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number,
+) {
+  let wait = false;
+  let storedArgs: Parameters<T> | null = null;
+
+  function checkStoredArgs() {
+    if (storedArgs == null) {
+      wait = false;
+    } else {
+      callback(...storedArgs);
+      storedArgs = null;
+      setTimeout(checkStoredArgs, delay);
+    }
+  }
+
+  return (...args: Parameters<T>) => {
+    if (wait) {
+      storedArgs = args;
+      return;
+    }
+
+    callback(...args);
+    wait = true;
+    setTimeout(checkStoredArgs, delay);
+  };
+}
+
+export function removeFromClassList(element: Element, className: string) {
+  if (element?.classList.contains(className)) {
+    element?.classList.remove(className);
+  }
+}
+
+export function addToClassList(element: Element, className: string) {
+  if (!element?.classList.contains(className)) {
+    element?.classList.add(className);
+  }
 }
