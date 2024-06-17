@@ -123,6 +123,54 @@ export function useInfiniteMenu(
 
   const throttledWindowResizeHandler = throttle(windowResizeHandler, 150);
 
+  function activeNextItem() {
+    const menuElements = getChildElements(menuElement.current!);
+
+    middleIndex.current = calculateMiddleIndex(
+      menuElements,
+      initialMenuElementsCount.current,
+    );
+
+    previousActiveElement.current = currentActiveElement.current;
+    if (previousActiveElement.current)
+      removeFromClassList(previousActiveElement.current, 'operational');
+
+    currentActiveElement.current =
+      menuElements[middleIndex.current + offsetFromMiddleIndex.current + 1];
+    addToClassList(currentActiveElement.current, 'operational');
+
+    scrollToElement(
+      menuElement.current!,
+      currentActiveElement.current,
+      'smooth',
+      activeItemPositionOffset.current,
+    );
+  }
+
+  function activePreviousItem() {
+    const menuElements = getChildElements(menuElement.current!);
+
+    middleIndex.current = calculateMiddleIndex(
+      menuElements,
+      initialMenuElementsCount.current,
+    );
+
+    previousActiveElement.current = currentActiveElement.current;
+    if (previousActiveElement.current)
+      removeFromClassList(previousActiveElement.current, 'operational');
+
+    currentActiveElement.current =
+      menuElements[middleIndex.current + offsetFromMiddleIndex.current - 1];
+    addToClassList(currentActiveElement.current, 'operational');
+
+    scrollToElement(
+      menuElement.current!,
+      currentActiveElement.current,
+      'smooth',
+      activeItemPositionOffset.current,
+    );
+  }
+
   useLayoutEffect(() => {
     if (isInitialized.current) return;
 
@@ -195,6 +243,7 @@ export function useInfiniteMenu(
 
   return {
     activeElementIndex,
-    setActiveElementIndex,
+    activeNextItem,
+    activePreviousItem,
   };
 }

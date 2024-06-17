@@ -6,6 +6,7 @@ import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { CourseCard } from '@/components/ui/CourseCard/CourseCard';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
+import { useTouchSwipe } from '@/hooks/useTouchSwipe';
 import { Course } from '@/types';
 import { defaultMediaBreakpoints } from '@/utils/defaults';
 
@@ -16,12 +17,12 @@ type CoursesSectionProps = {
 };
 
 export function CoursesSection({ courses }: CoursesSectionProps) {
-  const menuElementRef = useRef<HTMLMenuElement>(null);
+  const menuElement = useRef<HTMLMenuElement>(null);
 
-  const { activeElementIndex } = useInfiniteMenu(
-    menuElementRef,
-    defaultMediaBreakpoints,
-  );
+  const { activeElementIndex, activeNextItem, activePreviousItem } =
+    useInfiniteMenu(menuElement, defaultMediaBreakpoints);
+
+  useTouchSwipe(menuElement, 50, activeNextItem, activePreviousItem);
 
   return (
     <Section ariaLabel="finished courses" title="Courses">
@@ -29,7 +30,7 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
         In addition to my practical experience, I have completed several online
         courses to further enhance my skills and knowledge.
       </SectionParagraph>
-      <HorizontalMenu ref={menuElementRef} className="my-10" items={courses} />
+      <HorizontalMenu ref={menuElement} className="my-10" items={courses} />
       <CourseCard course={courses[activeElementIndex]} />
     </Section>
   );

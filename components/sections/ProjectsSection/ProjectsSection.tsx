@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
 import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
+import { useTouchSwipe } from '@/hooks/useTouchSwipe';
 import { Project } from '@/types';
 import { defaultMediaBreakpoints } from '@/utils/defaults';
 
@@ -15,16 +16,16 @@ type ProjectsSectionProps = {
 };
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const menuElementRef = useRef<HTMLMenuElement>(null);
+  const menuElement = useRef<HTMLMenuElement>(null);
 
-  const { activeElementIndex } = useInfiniteMenu(
-    menuElementRef,
-    defaultMediaBreakpoints,
-  );
+  const { activeElementIndex, activeNextItem, activePreviousItem } =
+    useInfiniteMenu(menuElement, defaultMediaBreakpoints);
+
+  useTouchSwipe(menuElement, 50, activeNextItem, activePreviousItem);
 
   return (
     <Section ariaLabel="projects overview" title="Projects">
-      <HorizontalMenu ref={menuElementRef} className="my-10" items={projects} />
+      <HorizontalMenu ref={menuElement} className="my-10" items={projects} />
 
       <div aria-hidden className="hidden">
         {/* hidden links for site crawlers */}
