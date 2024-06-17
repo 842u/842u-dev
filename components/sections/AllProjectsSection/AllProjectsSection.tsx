@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
 import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
+import { useTouchSwipe } from '@/hooks/useTouchSwipe';
 import { Project } from '@/types';
 import { defaultMediaBreakpoints } from '@/utils/defaults';
 
@@ -16,12 +17,23 @@ type AllProjectsSectionProps = {
 };
 
 export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
-  const menuElementRef = useRef<HTMLMenuElement>(null);
+  const menuElement = useRef<HTMLMenuElement>(null);
+  const logoElement = useRef<HTMLDivElement>(null);
 
-  const { activeElementIndex } = useInfiniteMenu(
-    menuElementRef,
-    defaultMediaBreakpoints,
-  );
+  const { activeElementIndex, activeNextItem, activePreviousItem } =
+    useInfiniteMenu(menuElement, defaultMediaBreakpoints);
+
+  const swipeRightHandler = () => {
+    activePreviousItem();
+  };
+
+  const swipeLeftHandler = () => {
+    activeNextItem();
+  };
+
+  useTouchSwipe(menuElement, 50, swipeLeftHandler, swipeRightHandler);
+
+  useTouchSwipe(logoElement, 50, swipeLeftHandler, swipeRightHandler);
 
   return (
     <div>
@@ -31,7 +43,10 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
       >
         <div className="flex h-screen max-h-screen flex-col justify-between">
           <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
-          <div className="flex flex-grow flex-col items-center">
+          <div
+            ref={logoElement}
+            className="flex flex-grow flex-col items-center"
+          >
             <Link
               aria-label={projects[activeElementIndex].name}
               className="h-full fill-dark-lighter transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
@@ -41,7 +56,7 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
             </Link>
           </div>
           <HorizontalMenu
-            ref={menuElementRef}
+            ref={menuElement}
             className="my-10"
             items={projects}
           />
