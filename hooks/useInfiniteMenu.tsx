@@ -1,195 +1,200 @@
-/*
- * Heavy imperative approach to create infinite horizontal menu.
- * Takes an array of string nodes as children and mediaBreakpoints object to
- * properly place active item acording to actual screen size.
- */
-
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { ItemOffset, MediaBreakpoints } from '@/types';
 import {
+  addToClassList,
+  calculateIndexOffset,
+  calculateMiddleIndex,
+  calculateSectorElementsWidth,
   calculateSectorMultiplier,
-  extendArray,
-  getContainerElementsArray,
+  fillContainerWithElements,
+  getChildElements,
   getMediaBreakpointData,
-  getSectorElementsWidth,
+  removeFromClassList,
   scrollToElement,
+  throttle,
 } from '@/utils/helpers';
 
 export function useInfiniteMenu(
-  children: React.ReactNode[],
-  menuElementRef: React.MutableRefObject<HTMLMenuElement | null>,
+  menuElement: React.RefObject<HTMLMenuElement>,
   mediaBreakpoints: MediaBreakpoints,
-  onLeftSwipe?: () => void,
-  onRightSwipe?: () => void,
 ) {
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
-  const [items, setItems] = useState([...children]);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [activeElementIndex, setActiveElementIndex] = useState(0);
 
-  const sectorWidth = useRef(0);
-  const activeItemOffset = useRef<ItemOffset>(0);
+  const isInitialized = useRef(false);
+  const initialMenuElementsCount = useRef(0);
+  const activeItemPositionOffset = useRef<ItemOffset>(0);
+  const middleIndex = useRef(0);
+  const offsetFromMiddleIndex = useRef(0);
+  const previousActiveElement = useRef<Element | null>(null);
+  const currentActiveElement = useRef<Element | null>(null);
 
-  const middleSectorIndex =
-    Math.floor(items.length / children.length / 2) * children.length;
+  function scrollEndHandler() {
+    const menuElements = getChildElements(menuElement.current!);
 
-  const offsetFromMiddleIndex =
-    activeItemIndex -
-    Math.floor(activeItemIndex / children.length) * children.length;
+    offsetFromMiddleIndex.current = calculateIndexOffset(
+      menuElements.indexOf(currentActiveElement.current!),
+      initialMenuElementsCount.current,
+    );
 
-  const minSwipeDistance = 50;
+    previousActiveElement.current = currentActiveElement.current;
+    if (previousActiveElement.current)
+      removeFromClassList(previousActiveElement.current, 'operational');
 
-  /*
-   * Dynamicly set items array acording to menu element width to prevent scroll
-   * bugs and optimize items number.
-   */
+    currentActiveElement.current =
+      menuElements[middleIndex.current + offsetFromMiddleIndex.current];
+    addToClassList(currentActiveElement.current, 'operational');
+
+    scrollToElement(
+      menuElement.current!,
+      currentActiveElement.current,
+      'instant',
+      activeItemPositionOffset.current,
+    );
+
+    setActiveElementIndex(offsetFromMiddleIndex.current);
+  }
+
+  function elementClickHandler(event: Event) {
+    event.stopPropagation();
+
+    if (!(event.currentTarget instanceof HTMLElement)) return;
+
+    previousActiveElement.current = currentActiveElement.current;
+    if (previousActiveElement.current)
+      removeFromClassList(previousActiveElement.current, 'operational');
+
+    currentActiveElement.current = event.currentTarget;
+    addToClassList(currentActiveElement.current, 'operational');
+
+    scrollToElement(
+      menuElement.current!,
+      event.currentTarget,
+      'smooth',
+      activeItemPositionOffset.current,
+    );
+  }
+
+  function elementKeyDownHandler(event: Event) {
+    if (
+      event instanceof KeyboardEvent &&
+      (event.key === ' ' || event.key === 'Enter')
+    ) {
+      elementClickHandler(event);
+    }
+  }
 
   function windowResizeHandler() {
     const { offset } = getMediaBreakpointData(mediaBreakpoints);
+    activeItemPositionOffset.current = offset;
 
-    activeItemOffset.current = offset;
+    const menuElements = getChildElements(menuElement.current!);
+    menuElements.length = initialMenuElementsCount.current;
 
+    const sectorWidth = calculateSectorElementsWidth(menuElements);
     const multiplier = calculateSectorMultiplier(
-      menuElementRef.current!,
-      sectorWidth.current,
+      menuElement.current!,
+      sectorWidth,
     );
 
-    setItems(extendArray(children, multiplier));
-  }
+    fillContainerWithElements(menuElement.current!, menuElements, multiplier);
 
-  function scrollEndHandler() {
-    const itemsElements = getContainerElementsArray(
-      menuElementRef.current!,
-      'button',
+    const newElements = getChildElements(menuElement.current!);
+    middleIndex.current = calculateMiddleIndex(
+      newElements,
+      initialMenuElementsCount.current,
     );
 
-    if (
-      activeItemIndex >= middleSectorIndex + children.length ||
-      activeItemIndex < middleSectorIndex
-    ) {
-      setActiveItemIndex(middleSectorIndex + offsetFromMiddleIndex);
+    newElements.forEach((element) => {
+      element.addEventListener('click', elementClickHandler);
+      element.addEventListener('keydown', elementKeyDownHandler);
+    });
 
-      scrollToElement(
-        menuElementRef.current!,
-        itemsElements[middleSectorIndex + offsetFromMiddleIndex],
-        'instant',
-        activeItemOffset.current,
-      );
-    }
+    currentActiveElement.current = newElements[middleIndex.current];
+    addToClassList(currentActiveElement.current, 'operational');
+
+    scrollToElement(
+      menuElement.current!,
+      currentActiveElement.current,
+      'instant',
+      activeItemPositionOffset.current,
+    );
   }
 
-  const touchStartHandler = (event: TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(event.targetTouches[0].clientX);
-  };
+  const throttledWindowResizeHandler = throttle(windowResizeHandler, 150);
 
-  const touchMoveHandler = (event: TouchEvent) => {
-    setTouchEnd(event.targetTouches[0].clientX);
-  };
-
-  const touchEndHandler = () => {
-    if (!touchStart || !touchEnd) return;
-
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-    const listItems = menuElementRef.current?.getElementsByTagName('li');
-
-    if (isRightSwipe) {
-      if (onRightSwipe) onRightSwipe();
-
-      setActiveItemIndex(activeItemIndex - 1);
-
-      scrollToElement(
-        menuElementRef.current!,
-        listItems?.[activeItemIndex - 1] as HTMLLIElement,
-        'smooth',
-        activeItemOffset.current,
-      );
-    } else if (isLeftSwipe) {
-      if (onLeftSwipe) onLeftSwipe();
-
-      setActiveItemIndex(activeItemIndex + 1);
-
-      scrollToElement(
-        menuElementRef.current!,
-        listItems?.[activeItemIndex + 1] as HTMLLIElement,
-        'smooth',
-        activeItemOffset.current,
-      );
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', windowResizeHandler);
+  useLayoutEffect(() => {
+    if (isInitialized.current) return;
 
     const { offset } = getMediaBreakpointData(mediaBreakpoints);
+    activeItemPositionOffset.current = offset;
 
-    activeItemOffset.current = offset;
+    const initialMenuElements = getChildElements(menuElement.current!);
+    initialMenuElementsCount.current = initialMenuElements.length;
 
-    const itemsElements = getContainerElementsArray(
-      menuElementRef.current!,
-      'button',
-    );
-
-    sectorWidth.current = getSectorElementsWidth(itemsElements);
-
+    const sectorWidth = calculateSectorElementsWidth(initialMenuElements);
     const multiplier = calculateSectorMultiplier(
-      menuElementRef.current!,
-      sectorWidth.current,
+      menuElement.current!,
+      sectorWidth,
     );
 
-    setItems(extendArray(children, multiplier));
+    fillContainerWithElements(
+      menuElement.current!,
+      initialMenuElements,
+      multiplier,
+    );
 
-    return () => {
-      window.removeEventListener('resize', windowResizeHandler);
-    };
+    isInitialized.current = true;
   }, []);
 
   useEffect(() => {
-    menuElementRef.current?.addEventListener('scrollend', scrollEndHandler);
-    menuElementRef.current?.addEventListener('touchstart', touchStartHandler);
-    menuElementRef.current?.addEventListener('touchmove', touchMoveHandler);
-    menuElementRef.current?.addEventListener('touchend', touchEndHandler);
-
-    return () => {
-      menuElementRef.current?.removeEventListener(
-        'scrollend',
-        scrollEndHandler,
-      );
-      menuElementRef.current?.removeEventListener(
-        'touchstart',
-        touchStartHandler,
-      );
-      menuElementRef.current?.removeEventListener(
-        'touchmove',
-        touchMoveHandler,
-      );
-      menuElementRef.current?.removeEventListener('touchend', touchEndHandler);
-    };
-  }, [activeItemIndex, touchEnd, touchStart]);
-
-  useEffect(() => {
-    const itemsElements = getContainerElementsArray(
-      menuElementRef.current!,
-      'button',
+    const menuElements = getChildElements(menuElement.current!);
+    middleIndex.current = calculateMiddleIndex(
+      menuElements,
+      initialMenuElementsCount.current,
     );
 
-    setActiveItemIndex(middleSectorIndex + offsetFromMiddleIndex);
+    menuElements.forEach((element) => {
+      element.addEventListener('click', elementClickHandler);
+      element.addEventListener('keydown', elementKeyDownHandler);
+    });
+
+    currentActiveElement.current = menuElements[middleIndex.current];
+    addToClassList(currentActiveElement.current, 'operational');
+
+    menuElements.forEach((element, index) => {
+      if (
+        index >= middleIndex.current &&
+        index < middleIndex.current + initialMenuElementsCount.current
+      ) {
+        element.setAttribute('tabindex', '0');
+      } else {
+        element.setAttribute('tabindex', '-1');
+      }
+    });
 
     scrollToElement(
-      menuElementRef.current!,
-      itemsElements[middleSectorIndex + offsetFromMiddleIndex],
+      menuElement.current!,
+      currentActiveElement.current,
       'instant',
-      activeItemOffset.current,
+      activeItemPositionOffset.current,
     );
-  }, [items]);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', throttledWindowResizeHandler);
+
+    menuElement.current?.addEventListener('scrollend', scrollEndHandler);
+
+    return () => {
+      window.removeEventListener('resize', throttledWindowResizeHandler);
+
+      menuElement.current?.removeEventListener('scrollend', scrollEndHandler);
+    };
+  }, []);
 
   return {
-    items,
-    activeItemIndex,
-    setActiveItemIndex,
-    activeItemContainerOffset: activeItemOffset,
+    activeElementIndex,
+    setActiveElementIndex,
   };
 }

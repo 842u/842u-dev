@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef } from 'react';
 
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
 import { ProjectCard } from '@/components/ui/ProjectCard/ProjectCard';
+import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
 import { Project } from '@/types';
+import { defaultMediaBreakpoints } from '@/utils/defaults';
 
 import { Section } from '../Section';
 
@@ -13,43 +15,16 @@ type ProjectsSectionProps = {
 };
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const menuElementRef = useRef<HTMLMenuElement>(null);
 
-  const menuItemClickHandler = (event: React.MouseEvent) => {
-    const clickedProjectIndex = projects.findIndex(
-      (project) =>
-        project.name.toLowerCase() ===
-        (event.target as HTMLButtonElement).innerText,
-    );
-
-    setCurrentProjectIndex(clickedProjectIndex);
-  };
-
-  const menuSwipeLeftHandler = () => {
-    if (currentProjectIndex + 1 >= projects.length) {
-      setCurrentProjectIndex(0);
-    } else {
-      setCurrentProjectIndex(currentProjectIndex + 1);
-    }
-  };
-  const menuSwipeRightHandler = () => {
-    if (currentProjectIndex - 1 < 0) {
-      setCurrentProjectIndex(projects.length - 1);
-    } else {
-      setCurrentProjectIndex(currentProjectIndex - 1);
-    }
-  };
+  const { activeElementIndex } = useInfiniteMenu(
+    menuElementRef,
+    defaultMediaBreakpoints,
+  );
 
   return (
     <Section ariaLabel="projects overview" title="Projects">
-      <HorizontalMenu
-        className="my-10"
-        onClick={menuItemClickHandler}
-        onLeftSwipe={menuSwipeLeftHandler}
-        onRightSwipe={menuSwipeRightHandler}
-      >
-        {projects.map((project) => project.name.toLowerCase())}
-      </HorizontalMenu>
+      <HorizontalMenu ref={menuElementRef} className="my-10" items={projects} />
 
       <div aria-hidden className="hidden">
         {/* hidden links for site crawlers */}
@@ -60,7 +35,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         ))}
       </div>
 
-      <ProjectCard project={projects[currentProjectIndex]} />
+      <ProjectCard project={projects[activeElementIndex]} />
     </Section>
   );
 }

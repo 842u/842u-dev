@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef } from 'react';
 
 import { SectionParagraph } from '@/components/sections/SectionParagraph';
 import { CourseCard } from '@/components/ui/CourseCard/CourseCard';
 import { HorizontalMenu } from '@/components/ui/HorizontalMenu/HorizontalMenu';
+import { useInfiniteMenu } from '@/hooks/useInfiniteMenu';
 import { Course } from '@/types';
+import { defaultMediaBreakpoints } from '@/utils/defaults';
 
 import { Section } from '../Section';
 
@@ -14,17 +16,12 @@ type CoursesSectionProps = {
 };
 
 export function CoursesSection({ courses }: CoursesSectionProps) {
-  const [currentCourse, setCurrentCourse] = useState(courses[0]);
+  const menuElementRef = useRef<HTMLMenuElement>(null);
 
-  const menuItemClickHandler = (event: React.MouseEvent) => {
-    const clickedItem = courses.find(
-      (course) =>
-        course.name.toLowerCase() ===
-        (event.target as HTMLButtonElement).innerText,
-    );
-
-    setCurrentCourse(clickedItem || courses[0]);
-  };
+  const { activeElementIndex } = useInfiniteMenu(
+    menuElementRef,
+    defaultMediaBreakpoints,
+  );
 
   return (
     <Section ariaLabel="finished courses" title="Courses">
@@ -32,10 +29,8 @@ export function CoursesSection({ courses }: CoursesSectionProps) {
         In addition to my practical experience, I have completed several online
         courses to further enhance my skills and knowledge.
       </SectionParagraph>
-      <HorizontalMenu className="my-10" onClick={menuItemClickHandler}>
-        {courses.map((course) => course.name.toLowerCase())}
-      </HorizontalMenu>
-      <CourseCard course={currentCourse} />
+      <HorizontalMenu ref={menuElementRef} className="my-10" items={courses} />
+      <CourseCard course={courses[activeElementIndex]} />
     </Section>
   );
 }
