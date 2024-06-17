@@ -23,17 +23,9 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
   const { activeElementIndex, activeNextItem, activePreviousItem } =
     useInfiniteMenu(menuElement, defaultMediaBreakpoints);
 
-  const swipeRightHandler = () => {
-    activePreviousItem();
-  };
+  useTouchSwipe(menuElement, 50, activeNextItem, activePreviousItem);
 
-  const swipeLeftHandler = () => {
-    activeNextItem();
-  };
-
-  useTouchSwipe(menuElement, 50, swipeLeftHandler, swipeRightHandler);
-
-  useTouchSwipe(logoElement, 50, swipeLeftHandler, swipeRightHandler);
+  useTouchSwipe(logoElement, 50, activeNextItem, activePreviousItem);
 
   return (
     <div>
