@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="bg-light text-dark transition-colors dark:bg-dark dark:text-light">
+    <html suppressHydrationWarning lang="en">
+      <body className="bg-light text-dark dark:bg-dark dark:text-light transition-colors">
         <GlobalThemeProvider>
           <NavBar />
           {children}

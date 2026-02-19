@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import type { JSX } from 'react';
 
 export enum AvaliableTools {
   TailwindCSS = 'TailwindCSS',

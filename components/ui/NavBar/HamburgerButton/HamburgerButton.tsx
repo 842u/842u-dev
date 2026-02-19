@@ -22,15 +22,15 @@ export function HamburgerButton({
       onClick={onClick}
     >
       <div className="flex aspect-square w-full flex-col items-center justify-around overflow-hidden">
-        <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0 dark:bg-light" />
+        <div className="bg-dark group-operational:opacity-0 dark:bg-light h-1 w-full transition-opacity" />
 
         <div className="relative h-1 w-full">
-          <div className="absolute h-full w-full origin-center bg-dark transition-transform group-operational:rotate-45 dark:bg-light" />
+          <div className="bg-dark group-operational:rotate-45 dark:bg-light absolute h-full w-full origin-center transition-transform" />
 
-          <div className=" absolute h-full w-full origin-center bg-dark transition-transform group-operational:rotate-[-45deg] dark:bg-light" />
+          <div className="bg-dark group-operational:rotate-45deg dark:bg-light absolute h-full w-full origin-center transition-transform" />
         </div>
 
-        <div className="h-1 w-full bg-dark transition-opacity group-operational:opacity-0 dark:bg-light" />
+        <div className="bg-dark group-operational:opacity-0 dark:bg-light h-1 w-full transition-opacity" />
       </div>
     </button>
   );

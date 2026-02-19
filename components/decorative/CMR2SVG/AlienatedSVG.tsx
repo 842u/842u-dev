@@ -22,7 +22,7 @@ export function AlienatedSVG({ className }: AlienatedSVGProps) {
       characterRotation="0"
       characterSpacing={0.09}
       className={twMerge(
-        'fill-dark-lighter text-[5px] dark:fill-light-darker',
+        'fill-dark-lighter dark:fill-light-darker text-[5px]',
         className,
       )}
       pathId={pathData.pathId}

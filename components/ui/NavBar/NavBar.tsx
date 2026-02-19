@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { HamburgerButton } from './HamburgerButton/HamburgerButton';
 import { NavMenu } from './NavMenu/NavMenu';
@@ -32,7 +32,7 @@ export function NavBar() {
 
   const [mobileIsActive, setMobileIsActive] = useState(false);
 
-  const scrollHandler = () => {
+  const scrollHandler = useCallback(() => {
     if (window.scrollY > lastScrollY) {
       setScrollShow(false);
     } else {
@@ -40,7 +40,7 @@ export function NavBar() {
     }
 
     setLastScrollY(window.scrollY);
-  };
+  }, [lastScrollY]);
 
   const windowResizeHandler = () => {
     setMobileIsActive(false);
@@ -69,17 +69,17 @@ export function NavBar() {
     return () => {
       window.removeEventListener('scroll', scrollHandler);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, scrollHandler]);
 
   return (
     <header
-      className={`fixed left-0 top-0 z-50 h-20 w-full backdrop-blur-[6px] transition-transform md:px-10 ${
-        !scrollShow && !mobileIsActive ? 'translate-y-[-100%]' : 'translate-y-0'
+      className={`fixed top-0 left-0 z-50 h-20 w-full backdrop-blur-[6px] transition-transform md:px-10 ${
+        !scrollShow && !mobileIsActive ? '-translate-y-full' : 'translate-y-0'
       }`}
     >
       <nav className="flex h-full w-full items-center md:flex-row-reverse md:justify-between">
         <HamburgerButton
-          className="fixed right-0 top-0 z-40 md:invisible"
+          className="fixed top-0 right-0 z-40 md:invisible"
           isActive={mobileIsActive}
           onClick={hamburgerButtonHandler}
         />
@@ -94,10 +94,15 @@ export function NavBar() {
           onItemClick={itemClickHandler}
         />
       </nav>
-      {/* eslint-disable-next-line */}
+      {}
       <div
         aria-hidden
         className="fixed left-0 hidden h-4 w-full lg:block"
+        onFocus={() => {
+          if (!scrollShow) {
+            setScrollShow(true);
+          }
+        }}
         onMouseOver={() => {
           if (!scrollShow) {
             setScrollShow(true);

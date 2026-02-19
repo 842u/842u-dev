@@ -12,7 +12,7 @@ export default function DockerRpiSVG() {
   const text = 'docker rpi ';
 
   return (
-    <div aria-hidden className="h-full flex-grow">
+    <div aria-hidden className="h-full grow">
       <CMR2SVG
         instantStart
         animationDuration={35}

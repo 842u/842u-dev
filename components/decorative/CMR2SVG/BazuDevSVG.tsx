@@ -12,7 +12,7 @@ export default function BazuDevSVG() {
   const text = '842u dev ';
 
   return (
-    <div aria-hidden className="h-full flex-grow">
+    <div aria-hidden className="h-full grow">
       <CMR2SVG
         instantStart
         animationDuration={20}
