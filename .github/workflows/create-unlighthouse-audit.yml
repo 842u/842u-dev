@@ -1,5 +1,9 @@
 name: Create Unlighthouse Audit
 
+env:
+  SITE_URL: https://842u.dev
+  AUDIT_URL: https://insights.842u.dev
+
 on:
   workflow_dispatch:
   workflow_call:
@@ -10,14 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: Insights
-      url: https://insights.842u.dev
+      url: ${{ env.AUDIT_URL }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Get Npm Global Directory
         id: npm-global-dir
@@ -39,7 +43,7 @@ jobs:
         run: npm install --global @unlighthouse/cli
 
       - name: Run Unlighthouse Audit
-        run: unlighthouse-ci --site https://www.842u.dev --build-static --no-cache --throttle --samples 5
+        run: unlighthouse-ci --site ${{ env.SITE_URL }} --build-static --no-cache --throttle --samples 5
 
       - name: Push To Static Audit Repo
         uses: s0/git-publish-subdir-action@v2.6.0
@@ -58,4 +62,4 @@ jobs:
         with:
           args: |
             New AUDIT for {{ EVENT_PAYLOAD.repository.full_name }}
-            https://insights.842u.dev
+            ${{ env.AUDIT_URL }}
