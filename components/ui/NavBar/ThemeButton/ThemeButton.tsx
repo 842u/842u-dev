@@ -27,16 +27,16 @@ function ThemeButton({ className, isActive }: ThemeButtonProps) {
       className={twMerge(
         `${
           isActive ? 'operational' : ''
-        } invisible flex aspect-square w-full flex-col items-center justify-center opacity-0 transition-opacity hover:animate-blink operational:visible operational:opacity-100 md:visible md:opacity-100`,
+        } hover:animate-blink operational:visible operational:opacity-100 invisible flex aspect-square w-full flex-col items-center justify-center opacity-0 transition-opacity md:visible md:opacity-100`,
         className,
       )}
       type="button"
       onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
     >
       {resolvedTheme === 'dark' ? (
-        <SunIcon className="h-full w-full fill-light" />
+        <SunIcon className="fill-light h-full w-full" />
       ) : (
-        <MoonIcon className="h-full w-full fill-dark" />
+        <MoonIcon className="fill-dark h-full w-full" />
       )}
     </button>
   );

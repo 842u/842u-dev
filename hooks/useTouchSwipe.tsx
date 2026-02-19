@@ -1,7 +1,7 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useCallback, useEffect, useState } from 'react';
 
 export function useTouchSwipe(
-  element: RefObject<HTMLElement>,
+  element: RefObject<HTMLElement | null>,
   swipeDistance: number,
   onSwipeLeft: () => void,
   onSwipeRight: () => void,
@@ -18,7 +18,7 @@ export function useTouchSwipe(
     setTouchEnd(event.targetTouches[0].clientX);
   };
 
-  const touchEndHandler = () => {
+  const touchEndHandler = useCallback(() => {
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
@@ -30,17 +30,18 @@ export function useTouchSwipe(
     } else if (isRightSwipe) {
       onSwipeRight();
     }
-  };
+  }, [onSwipeLeft, onSwipeRight, swipeDistance, touchEnd, touchStart]);
 
   useEffect(() => {
-    element.current?.addEventListener('touchstart', touchStartHandler);
-    element.current?.addEventListener('touchmove', touchMoveHandler);
-    element.current?.addEventListener('touchend', touchEndHandler);
+    const currentElement = element.current;
+    currentElement?.addEventListener('touchstart', touchStartHandler);
+    currentElement?.addEventListener('touchmove', touchMoveHandler);
+    currentElement?.addEventListener('touchend', touchEndHandler);
 
     return () => {
-      element.current?.removeEventListener('touchstart', touchStartHandler);
-      element.current?.removeEventListener('touchmove', touchMoveHandler);
-      element.current?.removeEventListener('touchend', touchEndHandler);
+      currentElement?.removeEventListener('touchstart', touchStartHandler);
+      currentElement?.removeEventListener('touchmove', touchMoveHandler);
+      currentElement?.removeEventListener('touchend', touchEndHandler);
     };
-  }, [element, touchStart, touchEnd]);
+  }, [element, touchEndHandler]);
 }

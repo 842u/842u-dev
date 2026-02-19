@@ -35,13 +35,10 @@ export function AllProjectsSection({ projects }: AllProjectsSectionProps) {
       >
         <div className="flex h-screen max-h-screen flex-col justify-between">
           <h1 className="mt-24 text-right text-4xl md:text-5xl">Projects</h1>
-          <div
-            ref={logoElement}
-            className="flex flex-grow flex-col items-center"
-          >
+          <div ref={logoElement} className="flex grow flex-col items-center">
             <Link
               aria-label={projects[activeElementIndex].name}
-              className="h-full fill-dark-lighter transition-all hover:scale-105 hover:fill-dark dark:fill-light-darker dark:hover:fill-light"
+              className="fill-dark-lighter hover:fill-dark dark:fill-light-darker dark:hover:fill-light h-full transition-all hover:scale-105"
               href={`/projects/${projects[activeElementIndex].slug}`}
             >
               {projects[activeElementIndex].CMR2SVG}

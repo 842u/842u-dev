@@ -8,17 +8,17 @@ export function Footer() {
       <address className="flex flex-col items-center gap-10 p-5 not-italic lg:flex-row lg:justify-between lg:px-10">
         <div className="flex h-10 w-full justify-evenly md:w-1/2 lg:h-7 lg:w-1/6 lg:justify-between">
           <GitHubIcon
-            className="h-full hover:animate-blink"
+            className="hover:animate-blink h-full"
             href="https://github.com/842u"
           />
-          <div aria-hidden className="h-full w-0.5 bg-dark dark:bg-light" />
+          <div aria-hidden className="bg-dark dark:bg-light h-full w-0.5" />
           <LinkedinIcon
-            className="h-full hover:animate-blink"
+            className="hover:animate-blink h-full"
             href="https://www.linkedin.com/in/kamil-ba%C5%BCanow-025837234"
           />
-          <div aria-hidden className="h-full w-0.5 bg-dark dark:bg-light" />
+          <div aria-hidden className="bg-dark dark:bg-light h-full w-0.5" />
           <MailIcon
-            className="h-full hover:animate-blink"
+            className="hover:animate-blink h-full"
             href="mailto:contact@842u.dev"
           />
         </div>

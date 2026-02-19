@@ -1,15 +1,14 @@
-/* eslint  simple-import-sort/imports: 0 */
-
 import sendgridMail from '@sendgrid/mail';
 import { NextResponse } from 'next/server';
+
+import { ContactFormValues, FormInputsIdentifiers } from '@/types';
 import {
-  InputValidationError,
   emailInputValidationRules,
+  InputValidationError,
   messageInputValidationRules,
   nameInputValidationRules,
   validateInput,
 } from '@/utils/validation';
-import { ContactFormValues, FormInputsIdentifiers } from '@/types';
 
 sendgridMail.setApiKey(process.env.SENDGRID_API_KEY!);
 
@@ -60,7 +59,6 @@ export async function POST(request: Request) {
       { status: 200 },
     );
   } catch (error) {
-    // eslint-disable-next-line
     console.log(error);
 
     return NextResponse.json(

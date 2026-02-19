@@ -19,7 +19,7 @@ export function CourseCard({ course }: CourseCardProps) {
         src={course.image}
       />
 
-      <div className="my-8 flex flex-col lg:my-0 lg:max-w-md lg:flex-grow">
+      <div className="my-8 flex flex-col lg:my-0 lg:max-w-md lg:grow">
         <h3 className="text-2xl md:text-3xl">{course.name}</h3>
         <div className="my-10">
           <p className="text-xl">

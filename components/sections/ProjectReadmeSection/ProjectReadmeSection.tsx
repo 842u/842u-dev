@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { compileMDX } from 'next-mdx-remote/rsc';
+import type { JSX } from 'react';
 import remarkGfm from 'remark-gfm';
 
 import { Project } from '@/types';
@@ -18,7 +19,7 @@ async function getProjectReadme(project: Project) {
       const markdown = await response.text();
       return markdown;
     }
-  } catch (error: unknown) {
+  } catch (_error: unknown) {
     throw new Error('Something went wrong. Cannot get project README.');
   }
 
@@ -54,7 +55,7 @@ export async function ProjectReadmeSection({
 
   return (
     <Section ariaLabel="project more info">
-      <article className="prose max-w-full overflow-hidden text-dark-lighter md:prose-lg lg:prose-base prose-headings:text-dark prose-a:inline-block prose-a:text-dark prose-code:text-dark prose-pre:bg-light-darker prose-thead:border-dark prose-tr:border-dark-lighter prose-img:m-0 dark:text-light-darker dark:prose-headings:text-light dark:prose-a:text-light dark:prose-code:text-light dark:prose-pre:bg-dark-lighter dark:prose-thead:border-light dark:prose-tr:border-light-darker lg:max-w-2xl">
+      <article className="prose text-dark-lighter md:prose-lg lg:prose-base prose-headings:text-dark prose-a:inline-block prose-a:text-dark prose-code:text-dark prose-pre:bg-light-darker prose-thead:border-dark prose-tr:border-dark-lighter prose-img:m-0 dark:text-light-darker dark:prose-headings:text-light dark:prose-a:text-light dark:prose-code:text-light dark:prose-pre:bg-dark-lighter dark:prose-thead:border-light dark:prose-tr:border-light-darker max-w-full overflow-hidden lg:max-w-2xl">
         {sourceReadError || content}
       </article>
     </Section>

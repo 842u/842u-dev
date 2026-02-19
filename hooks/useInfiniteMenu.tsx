@@ -1,4 +1,10 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import { ItemOffset, MediaBreakpoints } from '@/types';
 import {
@@ -16,7 +22,7 @@ import {
 } from '@/utils/helpers';
 
 export function useInfiniteMenu(
-  menuElement: React.RefObject<HTMLMenuElement>,
+  menuElement: React.RefObject<HTMLMenuElement | null>,
   mediaBreakpoints: MediaBreakpoints,
 ) {
   const [activeElementIndex, setActiveElementIndex] = useState(0);
@@ -29,7 +35,7 @@ export function useInfiniteMenu(
   const previousActiveElement = useRef<Element | null>(null);
   const currentActiveElement = useRef<Element | null>(null);
 
-  function scrollEndHandler() {
+  const scrollEndHandler = useCallback(() => {
     const menuElements = getChildElements(menuElement.current!);
 
     offsetFromMiddleIndex.current = calculateIndexOffset(
@@ -53,36 +59,42 @@ export function useInfiniteMenu(
     );
 
     setActiveElementIndex(offsetFromMiddleIndex.current);
-  }
+  }, [menuElement]);
 
-  function elementClickHandler(event: Event) {
-    event.stopPropagation();
+  const elementClickHandler = useCallback(
+    (event: Event) => {
+      event.stopPropagation();
 
-    if (!(event.currentTarget instanceof HTMLElement)) return;
+      if (!(event.currentTarget instanceof HTMLElement)) return;
 
-    previousActiveElement.current = currentActiveElement.current;
-    if (previousActiveElement.current)
-      removeFromClassList(previousActiveElement.current, 'operational');
+      previousActiveElement.current = currentActiveElement.current;
+      if (previousActiveElement.current)
+        removeFromClassList(previousActiveElement.current, 'operational');
 
-    currentActiveElement.current = event.currentTarget;
-    addToClassList(currentActiveElement.current, 'operational');
+      currentActiveElement.current = event.currentTarget;
+      addToClassList(currentActiveElement.current, 'operational');
 
-    scrollToElement(
-      menuElement.current!,
-      event.currentTarget,
-      'smooth',
-      activeItemPositionOffset.current,
-    );
-  }
+      scrollToElement(
+        menuElement.current!,
+        event.currentTarget,
+        'smooth',
+        activeItemPositionOffset.current,
+      );
+    },
+    [menuElement],
+  );
 
-  function elementKeyDownHandler(event: Event) {
-    if (
-      event instanceof KeyboardEvent &&
-      (event.key === ' ' || event.key === 'Enter')
-    ) {
-      elementClickHandler(event);
-    }
-  }
+  const elementKeyDownHandler = useCallback(
+    (event: Event) => {
+      if (
+        event instanceof KeyboardEvent &&
+        (event.key === ' ' || event.key === 'Enter')
+      ) {
+        elementClickHandler(event);
+      }
+    },
+    [elementClickHandler],
+  );
 
   function windowResizeHandler() {
     const { offset } = getMediaBreakpointData(mediaBreakpoints);
@@ -193,7 +205,7 @@ export function useInfiniteMenu(
     );
 
     isInitialized.current = true;
-  }, []);
+  }, [mediaBreakpoints, menuElement]);
 
   useEffect(() => {
     const menuElements = getChildElements(menuElement.current!);
@@ -227,19 +239,21 @@ export function useInfiniteMenu(
       'instant',
       activeItemPositionOffset.current,
     );
-  }, []);
+  }, [elementClickHandler, elementKeyDownHandler, menuElement]);
 
   useEffect(() => {
     window.addEventListener('resize', throttledWindowResizeHandler);
 
-    menuElement.current?.addEventListener('scrollend', scrollEndHandler);
+    const currentMenuElement = menuElement.current;
+
+    currentMenuElement?.addEventListener('scrollend', scrollEndHandler);
 
     return () => {
       window.removeEventListener('resize', throttledWindowResizeHandler);
 
-      menuElement.current?.removeEventListener('scrollend', scrollEndHandler);
+      currentMenuElement?.removeEventListener('scrollend', scrollEndHandler);
     };
-  }, []);
+  }, [menuElement, throttledWindowResizeHandler, scrollEndHandler]);
 
   return {
     activeElementIndex,

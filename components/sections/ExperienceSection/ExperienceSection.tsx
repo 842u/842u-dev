@@ -32,10 +32,13 @@ export function ExperienceSection({ skills }: ExperienceSectionProps) {
         Here you can check my base technology stack:
       </SectionParagraph>
       <div className="my-12 md:flex md:flex-wrap md:justify-evenly md:gap-10">
-        {skills.map((skill) => {
+        {skills.map((skill, index) => {
           const ToolIcon = toolIconMapping[skill.name];
           return (
-            <div className="my-4 flex flex-grow flex-col items-center justify-center md:my-0 md:w-1/3 md:max-w-[50%] lg:w-1/4 lg:min-w-max lg:max-w-[25%]">
+            <div
+              key={index}
+              className="my-4 flex grow flex-col items-center justify-center md:my-0 md:w-1/3 md:max-w-[50%] lg:w-1/4 lg:max-w-[25%] lg:min-w-max"
+            >
               <ToolIcon className="my-4 w-1/6 md:w-1/4" />
               <ProgressBar
                 endLabel="Advanced"

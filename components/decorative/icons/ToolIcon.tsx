@@ -29,7 +29,7 @@ export function ToolIcon({
       title={title}
     >
       <svg
-        className="fill-dark transition-colors dark:fill-light"
+        className="fill-dark dark:fill-light transition-colors"
         viewBox={viewBox}
       >
         {children}

@@ -44,7 +44,7 @@ export function ProjectCard({
         </SectionParagraph>
       </div>
 
-      <div className="my-8 flex flex-col lg:my-0 lg:max-w-md lg:flex-grow">
+      <div className="my-8 flex flex-col lg:my-0 lg:max-w-md lg:grow">
         <Heading className="text-2xl md:text-3xl" headingTag={headingTag}>
           Built with:
         </Heading>

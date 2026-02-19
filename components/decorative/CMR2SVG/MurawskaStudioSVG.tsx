@@ -12,7 +12,7 @@ export default function MurawskaStudioSVG() {
   const text = 'murawska studio ';
 
   return (
-    <div aria-hidden className="h-full flex-grow">
+    <div aria-hidden className="h-full grow">
       <CMR2SVG
         instantStart
         animationDuration={40}
