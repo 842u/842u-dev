@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+import ContactEmail from '@/emails/ContactEmail';
 import { ContactFormValues, FormInputsIdentifiers } from '@/types';
 import {
   emailInputValidationRules,
@@ -42,11 +43,8 @@ export async function POST(request: Request) {
     const { error } = await resend.emails.send({
       from: 'kamil.bazanow@contact.842u.dev',
       to: 'kamil.bazanow@gmail.com',
-      subject: '842u.dev: Someone wants to contact with you!',
-      html: `<h1>Hello Kamil. You have got a message from contact form. Here it is:</h1>
-    <p>Name: ${name}</p>
-    <p>Email: ${email}</p>
-    <p>${message}</p>`,
+      subject: `New contact form submission from ${name}`,
+      react: ContactEmail({ name, email, message }),
     });
 
     if (error) {
