@@ -1,29 +1,29 @@
-import { AvaliableTools } from '@/types';
+import { AvailableTools } from '@/types';
 
 export type Skill = {
-  name: AvaliableTools;
+  name: AvailableTools;
   progress: number;
 };
 
 export const mySkills: Skill[] = [
   {
-    name: AvaliableTools.JavaScript,
+    name: AvailableTools.JavaScript,
     progress: 50,
   },
   {
-    name: AvaliableTools.TypeScript,
+    name: AvailableTools.TypeScript,
     progress: 25,
   },
   {
-    name: AvaliableTools.React,
+    name: AvailableTools.React,
     progress: 25,
   },
   {
-    name: AvaliableTools.NextJS,
+    name: AvailableTools.NextJS,
     progress: 25,
   },
   {
-    name: AvaliableTools.Git,
+    name: AvailableTools.Git,
     progress: 25,
   },
 ];

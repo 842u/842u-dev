@@ -1,5 +1,5 @@
 import BazuDevSVG from '@/components/decorative/CMR2SVG/BazuDevSVG';
-import { AvaliableTools, ProjectData } from '@/types';
+import { AvailableTools, ProjectData } from '@/types';
 import { createProject } from '@/utils/helpers';
 
 const data: ProjectData[] = [
@@ -7,14 +7,14 @@ const data: ProjectData[] = [
     name: 'mock project 1',
     image: '/mockImage.svg',
     description: 'mock description',
-    tools: [AvaliableTools.Cypress, AvaliableTools.Git],
+    tools: [AvailableTools.Cypress, AvailableTools.Git],
     CMR2SVG: <BazuDevSVG />,
   },
   {
     name: 'mock project 2',
     image: '/mockImage.svg',
     description: 'mock description',
-    tools: [AvaliableTools.GraphQL, AvaliableTools.GitHub],
+    tools: [AvailableTools.GraphQL, AvailableTools.GitHub],
     CMR2SVG: <BazuDevSVG />,
   },
 ];

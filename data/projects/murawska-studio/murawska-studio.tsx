@@ -1,5 +1,5 @@
 import MurawskaStudioSVG from '@/components/decorative/CMR2SVG/MurawskaStudioSVG';
-import { AvaliableTools, ProjectData } from '@/types';
+import { AvailableTools, ProjectData } from '@/types';
 import { createProject } from '@/utils/helpers';
 
 const data: ProjectData = {
@@ -7,13 +7,13 @@ const data: ProjectData = {
   image: '/placeholder-image.jpg',
   description: `A project of a landing page for a private person. The goal was to create a page where user can add and show personal projects as a form of a business portfolio. There is integration with Sanity headless CMS to minimize the developer interference in adding and managing new content on the page and to give the user a clear and easy way to do that on his own. User can also live preview draft changes to see how new content will look without the need to incorporate those changes into the production dataset.`,
   tools: [
-    AvaliableTools.JavaScript,
-    AvaliableTools.React,
-    AvaliableTools.NextJS,
-    AvaliableTools.Sanity,
-    AvaliableTools.Sass,
-    AvaliableTools.Git,
-    AvaliableTools.GitHub,
+    AvailableTools.JavaScript,
+    AvailableTools.React,
+    AvailableTools.NextJS,
+    AvailableTools.Sanity,
+    AvailableTools.Sass,
+    AvailableTools.Git,
+    AvailableTools.GitHub,
   ],
   CMR2SVG: <MurawskaStudioSVG />,
   repository: 'https://github.com/842u/kor-mur',
