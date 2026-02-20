@@ -1,1 +1,1 @@
-npx prettier . --write && npm run lint && npx tsc --noEmit
+npx prettier --write ./app ./components ./data ./hooks ./utils && npm run lint && npx tsc --noEmit
