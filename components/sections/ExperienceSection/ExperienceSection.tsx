@@ -6,7 +6,7 @@ import { toolIconMapping } from '@/utils/toolIconMapping';
 
 import { Section } from '../Section';
 
-const learingSince = new Date('March 1, 2022');
+const learningSince = new Date('March 1, 2022');
 
 type ExperienceSectionProps = {
   skills: Skill[];
@@ -20,9 +20,9 @@ export function ExperienceSection({ skills }: ExperienceSectionProps) {
         of Technology, where I was introduced to the fundamentals of coding.
         <BreakLine />
         However, over the past{' '}
-        {new Date().getFullYear() - learingSince.getFullYear()} years, I&apos;ve
-        delved deeper into the world of programming and web technologies,
-        expanding my skills.
+        {new Date().getFullYear() - learningSince.getFullYear()} years,
+        I&apos;ve delved deeper into the world of programming and web
+        technologies, expanding my skills.
         <BreakLine />
         During this time, I have gained knowledge not only in frontend
         technologies but also in various other aspects of the programming
@@ -44,7 +44,7 @@ export function ExperienceSection({ skills }: ExperienceSectionProps) {
                 endLabel="Advanced"
                 middleLabel="Intermediate"
                 percentageValue={skill.progress}
-                startLabel="Begginer"
+                startLabel="Beginner"
               />
             </div>
           );

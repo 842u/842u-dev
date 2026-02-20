@@ -18,29 +18,29 @@ import { TailwindCSSIcon } from '@/components/decorative/icons/TailwindCSSIcon';
 import { SpecificToolIconProps } from '@/components/decorative/icons/ToolIcon';
 import { TypeScriptIcon } from '@/components/decorative/icons/TypeScriptIcon';
 import { VercelIcon } from '@/components/decorative/icons/VercelIcon';
-import { AvaliableTools } from '@/types';
+import { AvailableTools } from '@/types';
 
 export const toolIconMapping: Record<
-  AvaliableTools,
+  AvailableTools,
   React.FC<SpecificToolIconProps>
 > = {
-  [AvaliableTools.Cypress]: CypressIcon,
-  [AvaliableTools.ESLint]: ESlintIcon,
-  [AvaliableTools.Figma]: FigmaIcon,
-  [AvaliableTools.Git]: GitIcon,
-  [AvaliableTools.GitHub]: GitHubIcon,
-  [AvaliableTools.GraphQL]: GraphQLIcon,
-  [AvaliableTools.JavaScript]: JavaScriptIcon,
-  [AvaliableTools.Jest]: JestIcon,
-  [AvaliableTools.Jira]: JiraIcon,
-  [AvaliableTools.NextJS]: NextJSIcon,
-  [AvaliableTools.React]: ReactIcon,
-  [AvaliableTools.Sanity]: SanityIcon,
-  [AvaliableTools.Sass]: SassIcon,
-  [AvaliableTools.SendGrid]: SendGridIcon,
-  [AvaliableTools.TailwindCSS]: TailwindCSSIcon,
-  [AvaliableTools.TypeScript]: TypeScriptIcon,
-  [AvaliableTools.Vercel]: VercelIcon,
-  [AvaliableTools.Docker]: DockerIcon,
-  [AvaliableTools.RaspberryPi]: RaspberryPiIcon,
+  [AvailableTools.Cypress]: CypressIcon,
+  [AvailableTools.ESLint]: ESlintIcon,
+  [AvailableTools.Figma]: FigmaIcon,
+  [AvailableTools.Git]: GitIcon,
+  [AvailableTools.GitHub]: GitHubIcon,
+  [AvailableTools.GraphQL]: GraphQLIcon,
+  [AvailableTools.JavaScript]: JavaScriptIcon,
+  [AvailableTools.Jest]: JestIcon,
+  [AvailableTools.Jira]: JiraIcon,
+  [AvailableTools.NextJS]: NextJSIcon,
+  [AvailableTools.React]: ReactIcon,
+  [AvailableTools.Sanity]: SanityIcon,
+  [AvailableTools.Sass]: SassIcon,
+  [AvailableTools.SendGrid]: SendGridIcon,
+  [AvailableTools.TailwindCSS]: TailwindCSSIcon,
+  [AvailableTools.TypeScript]: TypeScriptIcon,
+  [AvailableTools.Vercel]: VercelIcon,
+  [AvailableTools.Docker]: DockerIcon,
+  [AvailableTools.RaspberryPi]: RaspberryPiIcon,
 };

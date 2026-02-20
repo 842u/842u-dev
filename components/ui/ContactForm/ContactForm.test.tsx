@@ -36,7 +36,7 @@ describe('ContactForm', () => {
     expect(submitButton).toBeInTheDocument();
   });
 
-  it('should initialy enable submit button', () => {
+  it('should initially enable submit button', () => {
     render(<ContactForm />);
 
     const submitButton = screen.getByRole('button');
@@ -44,7 +44,7 @@ describe('ContactForm', () => {
     expect(submitButton).toBeEnabled();
   });
 
-  it('should disable submit button after submiting form with wrong inputs', async () => {
+  it('should disable submit button after submitting form with wrong inputs', async () => {
     const user = userEvent.setup();
 
     render(<ContactForm />);
@@ -56,7 +56,7 @@ describe('ContactForm', () => {
     expect(submitButton).not.toBeEnabled();
   });
 
-  it('should enable submit button after providing correct imputs', async () => {
+  it('should enable submit button after providing correct inputs', async () => {
     const user = userEvent.setup();
     const correctName = 'name';
     const correctEmail = 'email@email.com';

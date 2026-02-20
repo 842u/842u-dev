@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 import type { JSX } from 'react';
 
-export enum AvaliableTools {
+export enum AvailableTools {
   TailwindCSS = 'TailwindCSS',
   NextJS = 'NextJS',
   JavaScript = 'JavaScript',
@@ -24,7 +24,7 @@ export enum AvaliableTools {
 }
 
 export type Tool = {
-  name: AvaliableTools;
+  name: AvailableTools;
 };
 
 export type Course = {
@@ -39,7 +39,7 @@ export type ProjectData = {
   name: string;
   image: string;
   description: string;
-  tools: AvaliableTools[];
+  tools: AvailableTools[];
   CMR2SVG: JSX.Element;
   repository?: string;
   remoteReadme?: string;
@@ -52,20 +52,20 @@ export type Project = ProjectData & {
 
 export type ItemOffset = number | 'center';
 
-export enum AvaliableBreakpoints {
+export enum AvailableBreakpoints {
   SM = 'sm',
   MD = 'md',
   LG = 'lg',
 }
 
 export type Breakpoint = {
-  id: AvaliableBreakpoints;
+  id: AvailableBreakpoints;
   minWidth: number;
   offset: ItemOffset;
 };
 
 export type MediaBreakpoints = {
-  [value in keyof typeof AvaliableBreakpoints]: Breakpoint;
+  [value in keyof typeof AvailableBreakpoints]: Breakpoint;
 };
 
 export enum FormInputsIdentifiers {

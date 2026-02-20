@@ -1,5 +1,3 @@
-/* eslint react/button-has-type:0 */
-
 import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
 
