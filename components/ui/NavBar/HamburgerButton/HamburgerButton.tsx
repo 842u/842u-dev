@@ -27,7 +27,7 @@ export function HamburgerButton({
         <div className="relative h-1 w-full">
           <div className="bg-dark group-operational:rotate-45 dark:bg-light absolute h-full w-full origin-center transition-transform" />
 
-          <div className="bg-dark group-operational:rotate-45deg dark:bg-light absolute h-full w-full origin-center transition-transform" />
+          <div className="bg-dark group-operational:rotate-[-45deg] dark:bg-light absolute h-full w-full origin-center transition-transform" />
         </div>
 
         <div className="bg-dark group-operational:opacity-0 dark:bg-light h-1 w-full transition-opacity" />
