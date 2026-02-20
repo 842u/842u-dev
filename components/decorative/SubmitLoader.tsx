@@ -8,7 +8,7 @@ type SubmitLoaderProps = {
 };
 
 export function SubmitLoader({ isSubmitting, text }: SubmitLoaderProps) {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function SubmitLoader({ isSubmitting, text }: SubmitLoaderProps) {
   return (
     <span>
       {isSubmitting && mounted ? (
-        <PulseLoader loading color={theme === 'dark' ? '#6b6b6b' : '#c0ac8c'} />
+        <PulseLoader loading color={resolvedTheme === 'dark' ? '#6b6b6b' : '#c0ac8c'} />
       ) : (
         text
       )}
