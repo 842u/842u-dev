@@ -36,22 +36,30 @@ describe('ContactForm', () => {
     expect(submitButton).toBeInTheDocument();
   });
 
-  it('should initially enable submit button', () => {
+  it('should initially disable submit button', () => {
     render(<ContactForm />);
 
     const submitButton = screen.getByRole('button');
 
-    expect(submitButton).toBeEnabled();
+    expect(submitButton).not.toBeEnabled();
   });
 
-  it('should disable submit button after submitting form with wrong inputs', async () => {
+  it('should disable submit button after providing wrong inputs', async () => {
     const user = userEvent.setup();
+    const incorrectName = 'a';
+    const incorrectEmail = 'email@email@com';
+    const incorrectMessage = 'short';
 
     render(<ContactForm />);
 
     const submitButton = screen.getByRole('button');
+    const nameInput = screen.getByPlaceholderText(/name/i);
+    const emailInput = screen.getByPlaceholderText(/e-mail/i);
+    const messageInput = screen.getByPlaceholderText(/message/i);
 
-    await user.click(submitButton);
+    await user.type(nameInput, incorrectName);
+    await user.type(emailInput, incorrectEmail);
+    await user.type(messageInput, incorrectMessage);
 
     expect(submitButton).not.toBeEnabled();
   });
@@ -69,7 +77,6 @@ describe('ContactForm', () => {
     const emailInput = screen.getByPlaceholderText(/e-mail/i);
     const messageInput = screen.getByPlaceholderText(/message/i);
 
-    await user.click(submitButton);
     await user.type(nameInput, correctName);
     await user.type(emailInput, correctEmail);
     await user.type(messageInput, correctMessage);
