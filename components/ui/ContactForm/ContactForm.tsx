@@ -19,7 +19,7 @@ type ContactFormProps = {
 };
 
 export function ContactForm({ className }: ContactFormProps) {
-  const responeMessageElementRef = useRef<HTMLParagraphElement>(null);
+  const responseMessageElementRef = useRef<HTMLParagraphElement>(null);
 
   const {
     register,
@@ -70,10 +70,10 @@ export function ContactForm({ className }: ContactFormProps) {
         { shouldFocus: true },
       );
     } else if (!response.ok) {
-      responeMessageElementRef.current!.innerText = responseData.message;
+      responseMessageElementRef.current!.innerText = responseData.message;
     }
 
-    responeMessageElementRef.current!.innerText = responseData.message;
+    responseMessageElementRef.current!.innerText = responseData.message;
   };
 
   function setFormInputBorder(
@@ -160,7 +160,7 @@ export function ContactForm({ className }: ContactFormProps) {
         <SubmitLoader isSubmitting={isSubmitting} text="Send" />
       </Button>
       <p
-        ref={responeMessageElementRef}
+        ref={responseMessageElementRef}
         className="my-10 whitespace-pre-wrap md:text-xl"
       >
         {' '}
