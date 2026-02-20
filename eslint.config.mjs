@@ -52,6 +52,7 @@ export default tseslint.config(
 
       ...prettier.rules,
 
+      'no-console': ['warn'],
       'no-param-reassign': ['error', { props: false }],
       'no-plusplus': 'off',
       'consistent-return': 'off',

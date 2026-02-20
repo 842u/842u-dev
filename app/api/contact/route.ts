@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
 import { ContactFormValues, FormInputsIdentifiers } from '@/types';
 import {
@@ -9,20 +10,10 @@ import {
   validateInput,
 } from '@/utils/validation';
 
-// sendgridMail.setApiKey(process.env.SENDGRID_API_KEY!);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   const { name, email, message } = (await request.json()) as ContactFormValues;
-
-  // const responseEmail = {
-  //   to: 'kamil.bazanow@gmail.com',
-  //   from: 'contact@842u.dev',
-  //   subject: '842u.dev: Someone wants to contact with you!',
-  //   html: `<h1>Hello Kamil. You have got a message from contact form. Here it is:</h1>
-  //   <p>Name: ${name}</p>
-  //   <p>Email: ${email}</p>
-  //   <p>${message}</p>`,
-  // };
 
   try {
     validateInput(FormInputsIdentifiers.Name, name, nameInputValidationRules);
@@ -48,7 +39,22 @@ export async function POST(request: Request) {
   }
 
   try {
-    // await sendgridMail.send(responseEmail);
+    const { error } = await resend.emails.send({
+      from: 'kamil.bazanow@contact.842u.dev',
+      to: 'kamil.bazanow@gmail.com',
+      subject: '842u.dev: Someone wants to contact with you!',
+      html: `<h1>Hello Kamil. You have got a message from contact form. Here it is:</h1>
+    <p>Name: ${name}</p>
+    <p>Email: ${email}</p>
+    <p>${message}</p>`,
+    });
+
+    if (error) {
+      return NextResponse.json(
+        { message: 'Failed to send email. Please try again later.' },
+        { status: 502 },
+      );
+    }
 
     return NextResponse.json(
       {
@@ -57,9 +63,7 @@ export async function POST(request: Request) {
       },
       { status: 200 },
     );
-  } catch (error) {
-    console.log(error);
-
+  } catch (_error) {
     return NextResponse.json(
       {
         message: `Something went wrong with mailing service. Please try again.`,
