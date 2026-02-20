@@ -16,21 +16,21 @@ export function validateInput(
   validationRules: ValidationRules,
 ) {
   const { required, minLength, maxLength, pattern } = validationRules;
-  const trimedInputValue = inputValue.trim();
+  const trimmedInputValue = inputValue.trim();
 
-  if (required && !trimedInputValue) {
+  if (required && !trimmedInputValue) {
     throw new InputValidationError(`${required}`, inputIdentifier);
   }
 
-  if (minLength && trimedInputValue.length < minLength.value) {
+  if (minLength && trimmedInputValue.length < minLength.value) {
     throw new InputValidationError(`${minLength.message}`, inputIdentifier);
   }
 
-  if (maxLength && trimedInputValue.length > maxLength.value) {
+  if (maxLength && trimmedInputValue.length > maxLength.value) {
     throw new InputValidationError(`${maxLength.message}`, inputIdentifier);
   }
 
-  if (pattern && !pattern.value.test(trimedInputValue)) {
+  if (pattern && !pattern.value.test(trimmedInputValue)) {
     throw new InputValidationError(`${pattern.message}`, inputIdentifier);
   }
 }
@@ -59,7 +59,7 @@ export const emailInputValidationRules: ValidationRules = {
   },
   pattern: {
     value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/i,
-    message: 'Enter valid e-mail adress.',
+    message: 'Enter valid e-mail address.',
   },
 };
 
