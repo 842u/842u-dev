@@ -22,7 +22,7 @@ export function ToolIcon({
 }: ToolIconProps) {
   return (
     <a
-      className={twMerge(`block aspect-square`, className)}
+      className={twMerge(className, `hover:animate-blink block aspect-square`)}
       href={href}
       rel="noreferrer"
       target="_blank"

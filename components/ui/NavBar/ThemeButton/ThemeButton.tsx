@@ -27,7 +27,7 @@ function ThemeButton({ className, isActive }: ThemeButtonProps) {
       className={twMerge(
         `${
           isActive ? 'operational' : ''
-        } hover:animate-blink operational:visible operational:opacity-100 invisible flex aspect-square w-full flex-col items-center justify-center opacity-0 transition-opacity md:visible md:opacity-100`,
+        } hover:animate-blink operational:visible operational:opacity-100 invisible flex aspect-square w-full cursor-pointer flex-col items-center justify-center opacity-0 transition-opacity md:visible md:opacity-100`,
         className,
       )}
       type="button"

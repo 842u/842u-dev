@@ -64,7 +64,7 @@
     padding: 0;
   }
 
-  :focus-visible {
+  :focus-visible:not(input):not(textarea):not(select) {
     @apply animate-blink outline-hidden;
   }
 }

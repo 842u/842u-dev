@@ -1,5 +1,3 @@
-/* eslint react/jsx-props-no-spreading: 0, no-nested-ternary: 0  */
-
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -93,6 +91,8 @@ export function ContactForm({ className }: ContactFormProps) {
     return 'border-dark dark:border-light';
   }
 
+  const canSubmit = (!isSubmitting && isValid) || !isSubmitted;
+
   return (
     <form
       className={twMerge(`flex flex-col`, className)}
@@ -150,8 +150,11 @@ export function ContactForm({ className }: ContactFormProps) {
       </p>
 
       <Button
-        className="mt-14"
-        disabled={(isSubmitted && !isValid) || isSubmitting}
+        className={twMerge(
+          !canSubmit ? 'cursor-not-allowed' : '',
+          'mt-14 transition-colors',
+        )}
+        disabled={!canSubmit}
         type="submit"
       >
         <SubmitLoader isSubmitting={isSubmitting} text="Send" />

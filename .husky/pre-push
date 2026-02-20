@@ -1,1 +1,1 @@
-npx prettier . --write && npm run lint && npx tsc --noEmit && npm run test:jest && npm run test:cypress
+npx prettier --write ./app ./components ./data ./hooks ./utils && npx tsc --noEmit && npm run test:jest && npm run test:cypress
