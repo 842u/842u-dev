@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 
@@ -27,24 +27,15 @@ export function ContactForm({ className }: ContactFormProps) {
     reset,
     setError,
     resetField,
-    formState: {
-      errors,
-      isSubmitted,
-      isSubmitSuccessful,
-      isValid,
-      isSubmitting,
-    },
+    formState: { errors, dirtyFields, isValid, isSubmitting },
   } = useForm<ContactFormValues>({
     defaultValues: {
       name: '',
       email: '',
       message: '',
     },
+    mode: 'onChange',
   });
-
-  useEffect(() => {
-    reset();
-  }, [isSubmitSuccessful, reset]);
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (data) => {
     const formData = JSON.stringify(data);
@@ -70,28 +61,30 @@ export function ContactForm({ className }: ContactFormProps) {
         { shouldFocus: true },
       );
     } else if (!response.ok) {
+      reset();
+      responseMessageElementRef.current!.innerText = responseData.message;
+    } else {
+      reset();
       responseMessageElementRef.current!.innerText = responseData.message;
     }
-
-    responseMessageElementRef.current!.innerText = responseData.message;
   };
 
   function setFormInputBorder(
-    formIsSubmitted: boolean,
+    isDirty: boolean | undefined,
     errorMessage: string | undefined,
   ) {
-    if (formIsSubmitted && errorMessage) {
+    if (isDirty && errorMessage) {
       return 'border-error dark:border-error';
     }
 
-    if (formIsSubmitted && !errorMessage) {
+    if (isDirty && !errorMessage) {
       return 'border-success dark:border-success';
     }
 
     return 'border-dark dark:border-light';
   }
 
-  const canSubmit = (!isSubmitting && isValid) || !isSubmitted;
+  const canSubmit = !isSubmitting && isValid;
 
   return (
     <form
@@ -103,7 +96,7 @@ export function ContactForm({ className }: ContactFormProps) {
       </label>
       <input
         className={`bg-light placeholder:text-dark-lighter dark:bg-dark mt-10 border-b-2 text-2xl transition-[background-color] placeholder:text-2xl md:text-3xl ${setFormInputBorder(
-          isSubmitted,
+          dirtyFields.name,
           errors.name?.message,
         )}`}
         {...register('name', nameInputValidationRules)}
@@ -120,7 +113,7 @@ export function ContactForm({ className }: ContactFormProps) {
       </label>
       <input
         className={`bg-light placeholder:text-dark-lighter dark:bg-dark mt-10 border-b-2 text-2xl transition-[background-color] placeholder:text-2xl md:text-3xl ${setFormInputBorder(
-          isSubmitted,
+          dirtyFields.email,
           errors.email?.message,
         )}`}
         {...register('email', emailInputValidationRules)}
@@ -137,7 +130,7 @@ export function ContactForm({ className }: ContactFormProps) {
       </label>
       <textarea
         className={`bg-light placeholder:text-dark-lighter dark:bg-dark mt-10 border-b-2 text-2xl transition-[background-color] placeholder:text-2xl md:text-3xl ${setFormInputBorder(
-          isSubmitted,
+          dirtyFields.message,
           errors.message?.message,
         )}`}
         {...register('message', messageInputValidationRules)}
@@ -151,8 +144,8 @@ export function ContactForm({ className }: ContactFormProps) {
 
       <Button
         className={twMerge(
-          !canSubmit ? 'cursor-not-allowed' : '',
           'mt-14 transition-colors',
+          !canSubmit ? 'cursor-not-allowed' : '',
         )}
         disabled={!canSubmit}
         type="submit"
