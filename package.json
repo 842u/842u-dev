@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "email:dev": "email dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -14,7 +15,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.2.0",
-    "@sendgrid/mail": "8.1.6",
+    "@react-email/components": "^1.0.8",
     "@tailwindcss/postcss": "4.2.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
@@ -27,6 +28,7 @@
     "react-hook-form": "7.71.1",
     "react-spinners": "0.17.0",
     "remark-gfm": "4.0.1",
+    "resend": "6.9.2",
     "sharp": "0.34.5",
     "tailwind-merge": "3.5.0",
     "tailwindcss": "4.2.0",
@@ -35,6 +37,7 @@
   "devDependencies": {
     "@eslint/js": "9.39.2",
     "@next/eslint-plugin-next": "16.1.6",
+    "@react-email/preview-server": "5.2.8",
     "@tailwindcss/typography": "0.5.19",
     "@testing-library/cypress": "10.1.0",
     "@testing-library/jest-dom": "6.9.1",
@@ -54,6 +57,7 @@
     "jest-environment-jsdom": "30.2.0",
     "prettier": "3.8.1",
     "prettier-plugin-tailwindcss": "0.7.2",
+    "react-email": "5.2.8",
     "typescript-eslint": "8.56.0"
   },
   "overrides": {
