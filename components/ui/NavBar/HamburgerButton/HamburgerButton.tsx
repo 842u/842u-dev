@@ -15,7 +15,7 @@ export function HamburgerButton({
     <button
       aria-label="menu"
       className={twMerge(
-        `${isActive ? 'operational' : ''} group aspect-square w-20 p-3`,
+        `${isActive ? 'operational' : ''} group aspect-square w-20 cursor-pointer p-3`,
         className,
       )}
       type="button"
